@@ -33,7 +33,7 @@ so in comparisons we need to escape type and vendor.
 {% endcomment %}
 {% assign type_escaped = collection.products.first.type | escape %}
 {% assign vendor_escaped = collection.products.first.vendor | escape %}
-<ul class="collection-sub-categories clearfix">
+<ul class="collection-sub-categories clearfix buttons">
   <li{% unless current_tags %} class="active"{% endunless %}>
     {% if collection.handle %}
     {% comment %}Good for /collections/all collection and regular collections{% endcomment %}

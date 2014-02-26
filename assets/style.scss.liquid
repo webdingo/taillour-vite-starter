@@ -22,19 +22,35 @@ img, iframe { max-width: 100%; }
   background-color: white;
 }
 
-/* Grids of products and collections */
-.grid { 
+/* Grids of products and collections, menus, buttons */
+.grid, .buttons, .nav, .articles { 
   margin: 0;
   padding: 0;
 }
-.grid li { 
+.grid li, .buttons li, .nav li, .articles li { 
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+.grid li, .articles li { 
+  padding: 1rem 0;
+}
+.buttons li, .nav li { 
+  padding: 0.5rem 0;
+}
+.buttons li, .nav li {
+  display:-moz-inline-stack;
+  display:inline-block;
+  zoom:1;
+  *display:inline;
+}
 
 /* Medium and large screens */
-@media (min-width: 30rem) { 
+@media (min-width: 30rem) {
+  .row {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  } 
   .column {
     float: left;
     padding-left: 1rem;
@@ -46,7 +62,10 @@ img, iframe { max-width: 100%; }
   .column.third { width: 33.3%; }
   .column.fourth { width: 24.95%; }
   .column.flow-opposite { float: right; } 
-  .grid li {
+  .grid { 
+    @extend .row; 
+  }
+  .grid li, header, footer, #main {
     @extend .column;
   }
   .two-per-row {
@@ -58,7 +77,7 @@ img, iframe { max-width: 100%; }
   .four-per-row {
     @extend .column.fourth;
   }
-  header, footer {
+  header, footer, #main {
     @extend .column.full;
   }
 }
