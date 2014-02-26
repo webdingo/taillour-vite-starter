@@ -1,11 +1,43 @@
-<div itemscope itemtype="http://schema.org/Product">
+<div class="product" itemscope itemtype="http://schema.org/Product">
   
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
   <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
   
   <form action="/cart/add" method="post" enctype="multipart/form-data">
     
-    <div id="product-details">
+    <div class="product-photos">
+  
+    {% if product.images.size == 0 %}
+  
+      <div id="product-photo-container">
+        <img src="{{ '' | product_img_url: 'grande' }}" alt="" />
+      </div>
+    
+    {% else %}
+    
+      <div id="product-photo-container">
+        <a class="gallery" href="{{ product.featured_image.src | product_img_url: 'original' }}" rel="gallery">
+          <img src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" />
+        </a>
+      </div>
+
+      {% if product.images.size > 1 %}
+      <ul id="product-photo-thumbs" class="clearfix grid">
+        {% for image in product.images offset:1 %}
+        <li class="product-photo-thumb">
+          <a class="gallery" href="{{ image.src | product_img_url: 'original' }}" rel="gallery">
+            <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    
+    {% endif %}
+
+    </div><!-- .product-photos -->
+    
+    <div class="product-details">
       
       <h1 itemprop="name">{{ product.title }}</h1>
       {% assign product_vendor_handle = product.vendor | handle %}
@@ -83,41 +115,9 @@
         {% endif %}
       {% endif %}
       
-    </div><!-- #product-details -->
+    </div><!-- .product-details -->
 
   </form>
-  
-  <div id="product-photos">
-  
-  {% if product.images.size == 0 %}
-  
-    <div id="product-photo-container">
-      <img src="{{ '' | product_img_url: 'grande' }}" alt="" />
-    </div>
-    
-  {% else %}
-    
-    <div id="product-photo-container">
-      <a class="gallery" href="{{ product.featured_image.src | product_img_url: 'original' }}" rel="gallery">
-        <img src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" />
-      </a>
-    </div>
-
-    {% if product.images.size > 1 %}
-    <ul id="product-photo-thumbs" class="clearfix grid">
-      {% for image in product.images offset:1 %}
-      <li class="product-photo-thumb">
-        <a class="gallery" href="{{ image.src | product_img_url: 'original' }}" rel="gallery">
-          <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-    
-  {% endif %}
-
-  </div><!-- #product-photos -->
 
 </div>
 

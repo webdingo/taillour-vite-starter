@@ -29,7 +29,7 @@ img, iframe { max-width: 100%; }
 }
 
 /* Grids of products and collections, menus, buttons */
-.grid, .buttons, .nav, .articles { 
+.grid, .buttons, .nav, .articles, .product-details > div { 
   margin: $gutter 0;
   padding: 0;
 }
@@ -85,6 +85,13 @@ img, iframe { max-width: 100%; }
   }
   header, footer, #main {
     @extend .column.full;
+  }
+  .product {
+    @extend .row;
+  }
+  .product-photos, .product-details {
+    @extend .column;
+    @extend .column.half;
   }
 }
 
