@@ -5,7 +5,6 @@
    ========================================================================== */
    
 /* The width shall contain the padding for block-level elements. */
-/* http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -24,11 +23,11 @@ img, iframe { max-width: 100%; }
 }
 
 /* Grids of products and collections */
-.products, .collections { 
+.grid { 
   margin: 0;
   padding: 0;
 }
-.products li, .collections li { 
+.grid li { 
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -47,7 +46,7 @@ img, iframe { max-width: 100%; }
   .column.third { width: 33.3%; }
   .column.fourth { width: 24.95%; }
   .column.flow-opposite { float: right; } 
-  .products li, .collections li {
+  .grid li {
     @extend .column;
   }
   .two-per-row {
