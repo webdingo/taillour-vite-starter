@@ -3,6 +3,12 @@
 /* ==========================================================================
    Additional styles for the Skeleton Theme - Replace that with your own CSS
    ========================================================================== */
+
+/* Some variables */
+$site-max-width:          60rem;
+$breakpoint-small-screen: 30rem;
+$gutter:                  1rem;
+   
    
 /* The width shall contain the padding for block-level elements. */
 *, *:before, *:after {
@@ -17,14 +23,14 @@ img, iframe { max-width: 100%; }
 /* Control the pages maximum width. */
 .container {
   margin: 0 auto;
-  max-width: 60rem;
+  max-width: $site-max-width;
   width: 90%;
   background-color: white;
 }
 
 /* Grids of products and collections, menus, buttons */
 .grid, .buttons, .nav, .articles { 
-  margin: 0;
+  margin: $gutter 0;
   padding: 0;
 }
 .grid li, .buttons li, .nav li, .articles li { 
@@ -33,10 +39,10 @@ img, iframe { max-width: 100%; }
   padding: 0;
 }
 .grid li, .articles li { 
-  padding: 1rem 0;
+  padding: $gutter 0;
 }
 .buttons li, .nav li { 
-  padding: 0.5rem 0;
+  padding: $gutter/2 0;
 }
 .buttons li, .nav li {
   display:-moz-inline-stack;
@@ -46,15 +52,15 @@ img, iframe { max-width: 100%; }
 }
 
 /* Medium and large screens */
-@media (min-width: 30rem) {
+@media (min-width: $breakpoint-small-screen) {
   .row {
-    margin-left: -1rem;
-    margin-right: -1rem;
+    margin-left: -$gutter;
+    margin-right: -$gutter;
   } 
   .column {
     float: left;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: $gutter;
+    padding-right: $gutter;
   }  
   .column.full { width: 100%; }
   .column.two-thirds { width: 66.7%; }
