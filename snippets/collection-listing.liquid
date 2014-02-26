@@ -18,7 +18,7 @@ and don't want that collection to appear on their /collections page.
 <h1>{% if using_link_list %}{{ linklists[collection-listing].title }}{% else %}Collections{% endif %}</h1>
 
 {% if using_link_list %}
-<ul class="grid clearfix">
+<ul class="collections clearfix">
 {% for link in linklists[collection-listing].links %}
   {% if link.type == 'collection_link' %}
   {% assign collection = link.object %}
