@@ -117,3 +117,33 @@ img, iframe { max-width: 100%; }
 #searchresults input {
   width: auto;
 }
+
+/* Main navigation with drop-down menu support */
+nav ul {
+  padding:0;
+  margin:0;
+  li {
+    position:relative;
+    a {
+      white-space:nowrap;
+      text-decoration:none;
+      padding:1em;
+    }
+  }
+  ul {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    border:#000 1px solid;
+    background-color:#fff;
+  }
+}
+/* Revealing drop-down menus on hover */
+nav li:hover ul {
+  display:block;
+}
+/* Making active links red for debugging purposes */
+nav li.active > a {
+  color:#f00;
+}

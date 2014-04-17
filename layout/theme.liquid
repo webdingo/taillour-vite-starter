@@ -25,6 +25,7 @@
   {{ content_for_header }}
 
   {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+  {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' | stylesheet_tag }}
 
   <!--[if lt IE 9]>
   {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
@@ -85,7 +86,7 @@
       {% endcomment %}
       
       <p class="checkout-link">
-        <a href="/cart">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>  · 
+        <a href="/cart"><i class="fa fa-shopping-cart"></i> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>  · 
         <a href="/cart">Check out</a>
       </p>
       
@@ -140,21 +141,20 @@
           {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
             {% assign has_sub_categories = true %}
           {% endif %}
-          <li class="nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if link.active or parent_link_active %} active{% endif %}{% if has_sub_menu or has_sub_categories %} has-dropdown{% endif %}">
-            {{ link.title | link_to: link.url }}
+          <li class="{% if link.active or parent_link_active %} active{% endif %}{% if has_sub_menu or has_sub_categories %} has-dropdown{% endif %}">
+            <a href="{{ link.url }}">{{ link.title }}{% if has_sub_menu or has_sub_categories %} <i class="fa fa-angle-down"></i>{% endif %}</a> 
             {% if has_sub_menu or has_sub_categories %}
             <ul class="sub-nav">
-              <li class="sub-nav-niblet"></li>
               {% if has_sub_menu %}
                 {% for l in linklists[child_list_handle].links %}
-                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if l.active %} active{% endif %}">
-                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ l.url }}">{{ l.title }}</a>
+                <li class="{% if l.active %} active{% endif %}">
+                  <a href="{{ l.url }}">{{ l.title }}</a>
                 </li>
                 {% endfor %}
               {% elsif has_sub_categories %}
                 {% for tag in link.object.all_tags %}
-                <li class="sub-nav-item{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}{% if current_tags contains tag %} active{% endif %}">
-                  <a class="{% if forloop.first %}first{% elsif forloop.last %}last{% endif %}" href="{{ link.url }}/{{ tag | handle }}">{{ tag }}</a>
+                <li class="{% if current_tags contains tag %} active{% endif %}">
+                  <a href="{{ link.url }}/{{ tag | handle }}">{{ tag }}</a>
                 </li>
                 {% endfor %}
               {% endif %}
@@ -190,7 +190,7 @@
     </footer>
 
     {% comment %}Shopify does not support Internet Explorer 6.{% endcomment %}
-    <!--[if lt IE 7]>
+    <!--[if lt IE 8]>
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
     
