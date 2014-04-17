@@ -9,7 +9,6 @@ $site-max-width:          60rem;
 $breakpoint-small-screen: 30rem;
 $gutter:                  1rem;
    
-   
 /* Using border-box makes it easier to work with grids: http://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
@@ -20,7 +19,7 @@ $gutter:                  1rem;
 /* Responsive images and videos. */
 img, iframe { max-width: 100%; }
 
-/* Control the pages maximum width. */
+/* Control the web page maximum width. */
 .container {
   margin: 0 auto;
   max-width: $site-max-width;
@@ -38,17 +37,12 @@ img, iframe { max-width: 100%; }
   margin: 0;
   padding: 0;
 }
-.grid li, .articles li { 
+.grid li, .articles li {
   padding: $gutter 0;
 }
-.buttons li, .nav li { 
-  padding: $gutter/2 0;
-}
 .buttons li, .nav li {
-  display:-moz-inline-stack;
-  display:inline-block;
-  zoom:1;
-  *display:inline;
+  display: inline-block;
+  padding: $gutter/2;
 }
 
 /* Medium and large screens */
@@ -124,28 +118,24 @@ nav ul {
   li {
     position:relative;
     a {
-      white-space:nowrap;
-      text-decoration:none;
-      padding:1em;
+      white-space: nowrap;
+      text-decoration: none;    
     }
   }
   ul {
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    border:#000 1px solid;
-    background-color:#fff;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border: #000 1px solid;
+    background-color: #fff;
   }
 }
 /* Revealing drop-down menus on hover */
-nav li:hover ul {
-  display:block;
-}
+nav li:hover ul { display: block; }
+
 /* Making active links red for debugging purposes */
-nav li.active > a {
-  color:#f00;
-}
+nav li.active > a { color: #f00; }
 
 /* Footer */
 /* IE8 does not support SVG */
