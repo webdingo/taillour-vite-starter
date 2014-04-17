@@ -134,7 +134,9 @@
           {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
             {% assign has_sub_menu = true %}
             {% for l in linklists[child_list_handle].links %}
-              {% if handle == l.object.handle or page_title == l.title %}
+              {% if handle != blank and handle == l.object.handle %}
+                {% assign parent_link_active = true %}
+              {% elsif page_title == l.title %}
                 {% assign parent_link_active = true %}
               {% endif %}
             {% endfor %}
