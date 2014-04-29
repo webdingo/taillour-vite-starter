@@ -36,8 +36,8 @@
 
       <tr>
         <td>
-          <a href="{{ collection_url }}{{ item.product.url }}?variant={{ item.id }}">  
-            <img src="{{ item.product.featured_image.src | product_img_url: 'compact' }}" alt="{{ item.title | escape }}" />
+          <a href="{{ collection_url }}{{ item.product.url }}?variant={{ item.id }}">
+            <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
           </a>
         </td>
         <td>

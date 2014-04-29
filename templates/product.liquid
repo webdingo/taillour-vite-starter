@@ -9,23 +9,23 @@
   
     {% if product.images.size == 0 %}
   
-      <div id="product-photo-container">
+      <div class="product-photo-container">
         <img src="{{ '' | product_img_url: 'grande' }}" alt="" />
       </div>
     
     {% else %}
     
-      <div id="product-photo-container">
-        <a class="gallery" href="{{ product.featured_image.src | product_img_url: 'original' }}" rel="gallery">
-          <img src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" />
+      <div class="product-photo-container">
+        <a class="gallery" href="{{ product | first_variant_or_product_img_url: 'master' }}" rel="gallery">
+          <img src="{{ product | first_variant_or_product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />
         </a>
       </div>
 
       {% if product.images.size > 1 %}
-      <ul id="product-photo-thumbs" class="clearfix grid">
+      <ul class="product-photo-thumbs clearfix grid">
         {% for image in product.images offset:1 %}
         <li class="product-photo-thumb">
-          <a class="gallery" href="{{ image.src | product_img_url: 'original' }}" rel="gallery">
+          <a class="gallery" href="{{ image.src | product_img_url: 'master' }}" rel="gallery">
             <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
           </a>
         </li>
@@ -131,6 +131,19 @@ var selectCallback = function(variant, selector) {
 
   if (variant) {
     
+    // Swap image.
+    if (variant.featured_image) {
+      var newImage = variant.featured_image; // a JavaScript object with several properties.
+      var originalImage = jQuery('.product-photo-container img')[0]; // DOM element of image to update. 
+      Shopify.Image.switchImage(newImage, originalImage, function (newImageSrc, originalImage, el) {
+        // Note:
+        // newImageSrc is the source of the new image in its original size? We need the original size.
+        // originalImage is an image object? 
+        // el is the DOM element that was updated by Shopify.Image.switchImage.
+        jQuery(el).parents('a').attr('href', newImageSrc);
+      });
+    }
+    
     // Selected a valid variant that is available.
     if (variant.available) {
           
@@ -187,5 +200,8 @@ jQuery(function($) {
   {% endfor %}
 
 });
+
+Shopify.Image.preload({{ product.images | json }}, 'grande');
+Shopify.Image.preload({{ product.images | json }}, 'master');
 
 </script>
