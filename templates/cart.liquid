@@ -25,20 +25,24 @@
       Determining the handle of the collection that was last seen for the 'continue shopping' link.
       {% endcomment %}
       
+      {% assign collection_url = item.product.collections.last.url %}
+      {% if collection_url == '/collections/frontpage' or collection_url == blank %}
+        {% assign collection_url = '/collections/all' %}
+      {% endif %}
+      
       {% if forloop.first %}
-        {% assign collection_url = item.product.collections.first.url %}
-        {% if collection_url == '/collections/frontpage' or collection_url == '' %}{% assign collection_url = '/collections/all' %}{% endif %}
+        {% assign continue_shopping_url = collection_url %}
       {% endif %}
 
       <tr>
         <td>
-          <a href="{{ item.product.url | within: collections.all }}">  
+          <a href="{{ collection_url }}{{ item.product.url }}?variant={{ item.id }}">  
             <img src="{{ item.product.featured_image.src | product_img_url: 'compact' }}" alt="{{ item.title | escape }}" />
           </a>
         </td>
         <td>
           <h2>
-            <a href="{{ item.product.url | within: collections.all }}">
+            <a href="{{ collection_url }}{{ item.product.url }}?variant={{ item.id }}">
             {{ item.title }}
             </a>
           </h2>
@@ -84,7 +88,7 @@
   
   <div>
     <h3>Subtotal <em>{{ cart.total_price | money }}</em></h3>
-    <a href="{{ collection_url }}">Continue shopping</a>
+    <a href="{{ continue_shopping_url }}">Continue shopping</a>
     <span class="or">or</span>
     <input type="submit" name="update" value="Update cart" />
     <span class="or">or</span>
@@ -99,7 +103,7 @@
   
   {% comment %}
   For the special instructions to be submitted with order,
-  they need to use a name attribute set to 'note'. That's case-sensitive.
+  we need to use a name attribute set to 'note'.
   {% endcomment %}
   <div>
     <p>Special instructions for seller</p>
