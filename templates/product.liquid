@@ -133,8 +133,8 @@ var selectCallback = function(variant, selector) {
     
     // Swap image.
     if (variant.featured_image) {
-      var newImage = variant.featured_image; 
-      var originalImage = jQuery('.product-photo-container img')[0];
+      var newImage = variant.featured_image; // New image object representation.
+      var originalImage = jQuery('.product-photo-container img')[0]; // DOM element of main image we need to swap.
       Shopify.Image.switchImage(newImage, originalImage, function (newImageSrc, originalImage, el) {
         // newImageSrc is the path of the new image in the same size as originalImage is sized.
         // originalImage is Shopify's object representation of the old image, with various attributes, such as scr, id, position.
