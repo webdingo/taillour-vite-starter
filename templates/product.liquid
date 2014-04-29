@@ -133,15 +133,14 @@ var selectCallback = function(variant, selector) {
     
     // Swap image.
     if (variant.featured_image) {
-      var newImage = variant.featured_image; // a JavaScript object with several properties.
-      var originalImage = jQuery('.product-photo-container img')[0]; // DOM element of image to update.
+      var newImage = variant.featured_image; 
+      var originalImage = jQuery('.product-photo-container img')[0];
       Shopify.Image.switchImage(newImage, originalImage, function (newImageSrc, originalImage, el) {
-        // Note:
-        // newImageSrc is the source of the new image in its original size? We need the original size for lightbox.
-        // originalImage is an image object? 
-        // el is the DOM element that was updated by Shopify.Image.switchImage?
+        // newImageSrc is the path of the new image in the same size as originalImage is sized.
+        // originalImage is Shopify's object representation of the old image, with various attributes, such as scr, id, position.
+        // el is the passed domElement, which has not yet been manipulated.
         jQuery(el).parents('a').attr('href', newImageSrc);
-        jQuery(el).attr('src', newImageSrc); // how can I size appropriately?
+        jQuery(el).attr('src', newImageSrc);
       });
     }
     
