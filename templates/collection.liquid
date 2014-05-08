@@ -1,49 +1,44 @@
 {% comment %}
-Important notes about pagination:
-- Never access collection.products before the opening paginate tag.
-- Never paginate by more than 50.
+  Important notes about pagination:
+  - Never access collection.products before the opening paginate tag.
+  - Never paginate by more than 50.
 {% endcomment %}
 
 {% paginate collection.products by 6 %}
 
 {% comment %}
-Re-use the 'rte' class wherever you output content that was added by a merchant using
-the Rich Text Editor ( 'rte' stands for rich text editor ).
-Style all HTML elements in that content the same way across the board.
-Use the 'rte' class in your CSS to help maintain that consistency.
-Example: the h2 element should have the same size and color in:
-- product descriptions
-- collection descriptions
-- 'page' pages' content
-- blog post
+  Re-use the .rte class wherever you output content that was added by a merchant using
+  the Rich Text Editor ( 'rte' stands for rich text editor ).
+  Style all HTML elements in that content the same way across the board.
+  Use the .rte class in your CSS to help maintain consistency.
+  Example: the h2 element should have the same size and color in:
+  - product descriptions
+  - collection descriptions
+  - page content
+  - blog post
 {% endcomment %}
 
 <h1>{{ collection.title }}</h1>
 
 {% comment %}
-Listing all tags within the current collection.
-Shopify uses product tags to manage subcategories inside collections.
-See 'How do I create subcategories of products?' at 
-http://docs.shopify.com/manual/configuration/store-customization/subcategories for details.
+  Listing all tags within the current collection.
+  Shopify uses product tags to manage subcategories inside collections.
+  See 'How do I create subcategories of products?' at 
+  http://bit.ly/1j1Dti4 for details.
 {% endcomment %}
+
 {% if collection.all_tags.size > 0 %}
-{% comment %}
-Alas, the collection title is escaped, while vendor and type aren't,
-so in comparisons we need to escape type and vendor.
-{% endcomment %}
-{% assign type_escaped = collection.products.first.type | escape %}
-{% assign vendor_escaped = collection.products.first.vendor | escape %}
 <ul class="collection-sub-categories clearfix buttons">
   <li{% unless current_tags %} class="active"{% endunless %}>
     {% if collection.handle %}
     {% comment %}Good for /collections/all collection and regular collections{% endcomment %}
-    <a href="/collections/{{ collection.handle }}">All</a>
+    <a href="/collections/{{ collection.handle }}{% if collection.sort_by %}?sort_by={{ collection.sort_by }}{% endif %}">All</a>
     {% comment %}Good for automatic type collections{% endcomment %}
-    {% elsif type_escaped == collection.title %}
-    <a href="{{ collection.products.first.type | url_for_type }}">All</a>
+    {% elsif collection.current_type %}
+    <a href="{{ collection.current_type | url_for_type | sort_by: collection.sort_by }}">All</a>
     {% comment %}Good for automatic vendor collections{% endcomment %}
-    {% elsif vendor_escaped == collection.title %}
-    <a href="{{ collection.products.first.vendor | url_for_vendor }}">All</a>
+    {% elsif collection.current_vendor %}
+    <a href="{{ collection.current_vendor | url_for_vendor | sort_by: collection.sort_by }}">All</a>
     {% endif %}
   </li> 
   {% for tag in collection.all_tags %}
@@ -60,6 +55,23 @@ so in comparisons we need to escape type and vendor.
 </ul>
 {% endif %}
 
+{% comment %}
+  Collection sorting. Needs the JavaScript that is at the bottom of this file.
+{% endcomment %}
+<div>
+  <label>Sort by</label> 
+  <select class="sort-by">
+    <option value="">Sort Products</option>
+    <option value="price-ascending">Price: Low to High</option>
+    <option value="price-descending">Price: Hight to Low</option>
+    <option value="title-ascending">A-Z</option>
+    <option value="title-descending">Z-A</option>
+    <option value="created-ascending">Oldest to Newest</option>
+    <option value="created-descending">Newest to Oldest</option>
+    <option value="best-selling">Best Selling</option>
+  </select>
+</div>
+
 {% if collection.description.size > 0 %}
 <div class="rte">
   {{ collection.description }}
@@ -70,7 +82,7 @@ so in comparisons we need to escape type and vendor.
 {% for product in collection.products %}
   {% include 'product-grid-item' with 'three-per-row' %}
 {% else %}
-<li>There are no products in this view.</li>
+  <li>There are no products in this view.</li>
 {% endfor %}
 </ul>
 
@@ -81,3 +93,28 @@ so in comparisons we need to escape type and vendor.
 {% endif %}
 
 {% endpaginate %}
+
+{% comment %}
+  JavaScript for collection sorting.
+{% endcomment %}
+<script>
+jQuery('.sort-by')
+  .val('{{ collection.sort_by }}')
+  .bind('change', function() {
+    // Let's avoid getting an empty sort-by= in the URL.
+    if (jQuery(this).val()) {
+      Shopify.queryParams.sort_by = jQuery(this).val();                
+    }
+    else {
+      delete Shopify.queryParams.sort_by;
+    }
+    var search = jQuery.param(Shopify.queryParams);
+    // Let's avoid getting a URL like http://www.store.com?
+    if (search.length) {
+      location.search = jQuery.param(Shopify.queryParams);
+    }
+    else {
+      location.href = location.pathname;
+    }
+  });
+</script>
