@@ -4,7 +4,7 @@ Skeleton theme
 The Skeleton theme is a simplified Shopify theme, to be used as a "blank slate" starting point for theme designers.
 
 <b>Features:</b>
-- Almost no CSS or theme settings. Ready to be customized any way you want. 
+- Almost no theme settings. Ready to be customized any way you want. 
 - Only 150 lines of CSS including comments. 
 - Despite its 150 lines of CSS code, it is responsive and has styled drop-down menus.
 - Commented code to teach you Liquid concepts in practice.
