@@ -5,17 +5,16 @@ The Skeleton theme is a simplified Shopify theme, to be used as a "blank slate" 
 
 <b>Features:</b>
 - Almost no CSS or theme settings. Ready to be customized any way you want. 
+- Only 150 lines of CSS including comments. 
+- Despite its 150 lines of CSS code, it is responsive and has styled drop-down menus.
 - Commented code to teach you Liquid concepts in practice.
 
-
 Designing a store for a client? Earn 20% revenue through our <a href="http://www.shopify.com/partners">Partner program<a/>.
-
 
 Getting started
 ---------------------
 1. <a href="https://github.com/Shopify/skeleton-theme/archive/master.zip">Download</a> the latest version
 2. or clone the git repo: <code>git clone https://github.com/Shopify/skeleton-theme.git</code>
-
 
 Basic structure
 ---------------
