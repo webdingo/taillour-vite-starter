@@ -2,8 +2,10 @@
   "current": "Slate",
   "presets": {
     "Slate": {
+      "customer_layout": "theme",
       "use_logo": false,
-      "customer_layout": "theme"
+      "homepage_page": "frontpage",
+      "homepage_collection": "frontpage"
     }
   }
 }
