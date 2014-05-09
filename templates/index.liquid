@@ -9,6 +9,12 @@
   - blog posts
 {% endcomment %}
 
+{% comment %}
+  Very important reading:
+  http://docs.shopify.com/themes/liquid-basics/what-is-true-and-false-in-liquid
+  Learn how to read theme settings in your theme.
+{% endcomment %}
+
 {% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
 {% assign page = pages[settings.homepage_page] %}
 <div class="rte">
