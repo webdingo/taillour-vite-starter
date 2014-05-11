@@ -4,6 +4,15 @@
     "Slate": {
       "customer_layout": "theme",
       "use_logo": false,
+      "facebook_url": "https://www.facebook.com/shopify",
+      "twitter_url": "https://twitter.com/shopify",
+      "pinterest_url": "http://pinterest.com/shopify/",
+      "googleplus_url": "https://plus.google.com/+shopify",
+      "instagram_url": "http://instagram.com/shopify",
+      "vimeo_url": "http://vimeo.com/shopify",      
+      "youtube_url": "https://www.youtube.com/user/shopify",
+      "featured_blog": "news",
+      "social_icons_style": "-rounded",
       "homepage_page": "frontpage",
       "homepage_collection": "frontpage"
     }

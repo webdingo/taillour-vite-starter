@@ -26,6 +26,7 @@
   {{ content_for_header }}
 
   {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
   {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' | stylesheet_tag }}
 
   <!--[if lt IE 9]>
@@ -58,6 +59,8 @@
       to show and hide the placeholder text.
       Have a look in assets/shop.js.liquid to see sample JavaScript for this.
       {% endcomment %}
+      
+      {% include 'social-links' %}
       
       <form action="/search" method="get" class="search-form" role="search">
         <input name="q" type="text" id="search-field" placeholder="Search store..." class="hint" />
