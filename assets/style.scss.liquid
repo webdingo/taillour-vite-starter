@@ -119,9 +119,10 @@ img, iframe { max-width: 100%; }
 
 /* Styling #site-title as it uses h1 on home page and span on other pages. */
 #site-title {
-  font-size: 2em;
-  font-weight: bold;
-  line-height: 1.5;
+  font: bold 2em/1.5;
+  a {
+    text-decoration: none;
+  }
 }
 
 /* Override to globally-hosted search.css on the /search page */
