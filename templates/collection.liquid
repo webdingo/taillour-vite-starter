@@ -32,14 +32,15 @@
   <li{% unless current_tags %} class="active"{% endunless %}>
     {% if collection.handle %}
     {% comment %}Good for /collections/all collection and regular collections{% endcomment %}
-    <a href="/collections/{{ collection.handle }}{% if collection.sort_by %}?sort_by={{ collection.sort_by }}{% endif %}">All</a>
+    {% capture collection_url %}/collections/{{ collection.handle }}{% endcapture %}
     {% comment %}Good for automatic type collections{% endcomment %}
     {% elsif collection.current_type %}
-    <a href="{{ collection.current_type | url_for_type | sort_by: collection.sort_by }}">All</a>
+    {% assign collection_url = collection.current_type | url_for_type %}
     {% comment %}Good for automatic vendor collections{% endcomment %}
     {% elsif collection.current_vendor %}
-    <a href="{{ collection.current_vendor | url_for_vendor | sort_by: collection.sort_by }}">All</a>
+    {% assign collection_url = collection.current_vendor | url_for_vendor %}
     {% endif %}
+    <a href="{{ collection_url | sort_by: collection.sort_by }}">All</a>
   </li> 
   {% for tag in collection.all_tags %}
   {% if current_tags contains tag %}
@@ -58,10 +59,11 @@
 {% comment %}
   Collection sorting. Needs the JavaScript that is at the bottom of this file.
 {% endcomment %}
+{% if collection.products_count > 1 %}
 <div>
   <label>Sort by</label> 
   <select class="sort-by">
-    <option value="">Sort Products</option>
+    <option value="">Featured</option>
     <option value="price-ascending">Price: Low to High</option>
     <option value="price-descending">Price: Hight to Low</option>
     <option value="title-ascending">A-Z</option>
@@ -71,6 +73,7 @@
     <option value="best-selling">Best Selling</option>
   </select>
 </div>
+{% endif %}
 
 {% if collection.description.size > 0 %}
 <div class="rte">
