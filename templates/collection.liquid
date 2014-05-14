@@ -63,7 +63,7 @@
 <div>
   <label>Sort by</label> 
   <select class="sort-by">
-    <option value="">Featured</option>
+    <option value="manual">Featured</option>
     <option value="price-ascending">Price: Low to High</option>
     <option value="price-descending">Price: Hight to Low</option>
     <option value="title-ascending">A-Z</option>
@@ -102,22 +102,9 @@
 {% endcomment %}
 <script>
 jQuery('.sort-by')
-  .val('{{ collection.sort_by }}')
-  .bind('change', function() {
-    // Let's avoid getting an empty sort-by= in the URL.
-    if (jQuery(this).val()) {
-      Shopify.queryParams.sort_by = jQuery(this).val();                
-    }
-    else {
-      delete Shopify.queryParams.sort_by;
-    }
-    var search = jQuery.param(Shopify.queryParams);
-    // Let's avoid getting a URL like http://www.store.com?
-    if (search.length) {
-      location.search = jQuery.param(Shopify.queryParams);
-    }
-    else {
-      location.href = location.pathname;
-    }
+  .val('{{ collection.sort_by | default: collection.default_sort_by  }}')
+  .on('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams);
   });
 </script>
