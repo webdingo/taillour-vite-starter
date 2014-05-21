@@ -57,8 +57,14 @@ cycle element in a rendered view, you'll need to name all of them.
 The cycle element is documented here: http://docs.shopify.com/themes/liquid-basics/logic#cycle
 {% endcomment %}
 
-{% if product-grid-item == 'four-per-row' %}
+{% if product-grid-item == 'six-per-row' %}
+{% cycle 'clear': '', '', '', '', '', '<div style="clear:both"></div>' %}
+{% elsif product-grid-item == 'five-per-row' %}
+{% cycle 'clear': '', '', '', '', '<div style="clear:both"></div>' %}
+{% elsif product-grid-item == 'four-per-row' %}
 {% cycle 'clear': '', '', '', '<div style="clear:both"></div>' %}
 {% elsif product-grid-item == 'three-per-row' %}
 {% cycle 'clear': '', '', '<div style="clear:both"></div>' %}
+{% elsif product-grid-item == 'two-per-row' %}
+{% cycle 'clear': '', '<div style="clear:both"></div>' %}
 {% endif %}

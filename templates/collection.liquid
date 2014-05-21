@@ -4,7 +4,12 @@
   - Never paginate by more than 50.
 {% endcomment %}
 
-{% paginate collection.products by 6 %}
+{% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
+{% assign numbers = 'one, two, three, four, five, six' | split: ',' %}
+{% assign products_per_row = settings.products_per_row | minus: 1 %}
+{% assign products_per_row = numbers[products_per_row] | strip | append: '-per-row' %}
+
+{% paginate collection.products by products_per_page %}
 
 {% comment %}
   Re-use the .rte class wherever you output content that was added by a merchant using
@@ -70,14 +75,14 @@
 
 <ul class="grid clearfix">
 {% for product in collection.products %}
-  {% include 'product-grid-item' with 'three-per-row' %}
+  {% include 'product-grid-item' with products_per_row %}
 {% else %}
   <li>There are no products in this view.</li>
 {% endfor %}
 </ul>
 
 {% if paginate.pages > 1 %}
-<div class="pagination">
+<div class="pagination centered">
   {{ paginate | default_pagination }}
 </div>
 {% endif %}
