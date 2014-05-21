@@ -40,7 +40,7 @@ selectors inside search.css.
     {% endcomment %}
   
     {% if search.results_count == 0 %}  
-    <p>Your search for "{{ search.terms }}" did not yield any results.</p>              
+    <p class="centered">Your search for "{{ search.terms }}" did not yield any results.</p>              
     {% else %}
     <ol>
       {% for item in search.results %}      
