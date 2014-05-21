@@ -33,12 +33,12 @@
   {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
   <![endif]-->
 
-  {% if template contains 'customers' %}
   {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% if template contains 'customers' %}  
   {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
   {% endif %}
   
-  <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day -->
+  <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
   {{ 'shopify_common.js'  | asset_url | script_tag }}
 
   {{ 'option_selection.js' | shopify_asset_url | script_tag }}
@@ -52,78 +52,94 @@
 
   <div class="container">
 
-    <header>
+    <header class="row">
       
-      {% comment %}
-      Older browsers don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
-      to show and hide the placeholder text.
-      Have a look in assets/shop.js.liquid to see sample JavaScript for this.
-      {% endcomment %}
-      
+      <div class="social-links half column left-aligned">
       {% include 'social-links' %}
-      
-      <form action="/search" method="get" class="search-form" role="search">
-        <input name="q" type="text" id="search-field" placeholder="Search store..." class="hint" />
-        <input type="submit" id="search-submit" value="Search" />
-      </form>
-      
-      {% if shop.customer_accounts_enabled %}
-      <p class="customer-links">
-        {% if customer %}
-          Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
-        {% else %}
-          {{ 'Log in' | customer_login_link }}
-          {% if shop.customer_accounts_optional %}
-          or {{ 'Create an account' | customer_register_link }}
-          {% endif %}
-        {% endif %}
-      </p>
-      {% endif %}
+      </div>      
       
       {% comment %}
-      Note on checkout link: it is a good idea to avoid linking to /checkout directly because shops that use 
-      Paypal Express Checkout and/or Google Checkout have special checkout buttons on the /cart page. Also,
-      special instructions for the seller are entered on the /cart page.
+        Note on checkout link: it is a good idea to avoid linking to /checkout directly because shops that use 
+        Paypal Express Checkout and/or Google Checkout have special checkout buttons on the /cart page. Also,
+        special instructions for the seller are entered on the /cart page. Finally, the universal tracking code 
+        of Google Analytics may not work if linking directly to the /checkout page.
       {% endcomment %}
       
-      <p class="checkout-link">
-        <a href="/cart"><i class="fa fa-shopping-cart"></i> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>  · 
-        <a href="/cart">Check out</a>
-      </p>
+      <div class="half column right-aligned">
+              
+        <div class="cart-link">
+          <a href="/cart"><img src="{{ 'cart.svg' | asset_url }}" /> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
+        </div>
+            
+        {% if shop.customer_accounts_enabled %}
+        <div class="customer-links">
+          {% if customer %}
+            Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
+          {% else %}
+            {{ 'Log in' | customer_login_link }}
+            {% if shop.customer_accounts_optional %}
+            or {{ 'Create an account' | customer_register_link }}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endif %}
+        
+      </div>
       
       {% comment %}
-      It would be nice if the logo was a shop setting, rather than a theme setting.
-      But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
-      Link to the theme settings page of currently published theme will always be:
-      http://www.shopify.com/admin/themes/current/settings.
-      To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
-      Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
+        It would be nice if the logo was a shop setting, rather than a theme setting.
+        But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
+        Link to the theme settings page of currently published theme will always be:
+        http://www.shopify.com/admin/themes/current/settings.
+        To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
+        Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
       {% endcomment %}
     
-      {% if settings.use_logo %}
-      <a id="logo" href="/" role="banner">
-        {{ 'logo.png' | asset_url | img_tag: shop.name }}
-      </a><!-- #logo -->
-      {% endif %}
-      {% if template == 'index' %}
-      <h1 id="site-title"{% if settings.use_logo %} class="hidden"{% endif %}>
-        <a href="/">{{ shop.name }}</a>
-      </h1>
-      {% else %}
-      <a id="site-title" href="/"{% if settings.use_logo %} class="hidden"{% endif %}>{{ shop.name }}</a>
-      {% endif %}
+      <div class="masthead full column clear centered" role="banner">
+        {% if settings.use_logo %}
+        <a id="logo" href="/">
+          {{ 'logo.png' | asset_url | img_tag: shop.name }}
+        </a>
+        {% else %}
+        <a id="site-title" href="/">
+          {{ shop.name }}
+        </a>
+        {% endif %}
+        {% if template == 'index' %}
+        {% comment %}
+          Many SEO audit tools look for a h1 tag on the home page. Let's give 'em one.
+          Other pages should use the resource name as h1 tag. For example, on the product
+          page, the product title will use a h1 tag.
+        {% endcomment %}
+        <h1 class="hidden">{{ shop.name }}</h1>
+        {% endif %}
+      </div>
       
-      {% comment %}
-        Main Navigation 
-      {% endcomment %}
-      {% include 'site-nav' %}
+      <div class="clear full column">
+      
+        {% comment %}
+          Main Navigation 
+        {% endcomment %}
+        {% include 'site-nav' %}
+      
+        {% comment %}
+          IE8 and IE9 don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
+          to show and hide the placeholder text.
+          Have a look in assets/shop.js.liquid to see sample JavaScript for this.
+        {% endcomment %}      
+        <form action="/search" method="get" class="search-form right" role="search">
+          <input name="q" type="search" id="search-field" placeholder="Search store..." class="hint" value="{{ search.terms | escape }}" />
+          <input type="submit" id="search-submit" value="Search" />
+        </form>
+
+      </div>
       
     </header>
 
     <div id="main" role="main">
       {% comment %}}
-      We have a template file to render.
-      That's what content_for_layout is for.
+        We have a template file to render.
+        That's what content_for_layout is for.
       {% endcomment %}
       {{ content_for_layout }}
     </div>
@@ -141,7 +157,7 @@
       {% unless shop.enabled_payment_types == empty %}
 	  <div class="payment-types">
         {% for type in shop.enabled_payment_types %}
-        <img width="50" src="{{ type | payment_type_img_url }}" />
+        <img width="40" src="{{ type | payment_type_img_url }}" />
         {% endfor %}
       </div>
       {% endunless %}

@@ -2,13 +2,44 @@
 
 <fieldset>
   <legend>Colors</legend>
+  <h3>Background</h3>
   <table>
+    <tr>
+      <th><label for="background_color">Background color</label></th>
+      <td><input id="background_color" name="background_color" type="text" class="color" /></td>
+    </tr>
+  </table>
+  <h3>Text</h3>
+  <table>
+    <tr>
+      <th><label for="text_color">Text color</label></th>
+      <td><input id="text_color" name="text_color" type="text" class="color" /></td>
+    </tr>
+    <tr>
+      <th><label for="link_color">Link color</label></th>
+      <td><input id="link_color" name="link_color" type="text" class="color" /></td>
+    </tr>
   </table>
 </fieldset>
 
 <fieldset>
   <legend>Typography</legend>
   <table>
+    <tr>
+      <th><label for="base_font_family">Typeface</label></th>
+      <td><select id="base_font_family" name="base_font_family" class="font" /></td>
+    </tr>
+    <tr>
+      <th><label for="base_font_size">Base font size</label></th>
+      <td>
+        <select id="base_font_size" name="base_font_size">
+          <option value="13px">13px</option>
+          <option value="14px">14px</option>
+          <option value="15px">15px</option>
+          <option value="16px">16px</option>
+        </select>
+       </td>
+    </tr>
   </table>
 </fieldset>
 

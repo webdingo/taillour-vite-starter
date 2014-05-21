@@ -18,7 +18,7 @@ jQuery(function($){
     if ($(this).val() === '') {
       $(this).val($(this).attr('placeholder')).addClass('hint');
     }
-  });                    
+  });
 
   /* Form validation JS */
   /*==========================*/
@@ -33,5 +33,15 @@ jQuery(function($){
     });
     return true;
   });
+  
+  /* Remove SVG images to avoid broken images in all browsers that don't support SVG. */
+  /*==========================*/
+  
+  var supportsSVG = function() {
+    return document.implementation.hasFeature('http://www.w3.org/TR/SVG11/feature#Image', '1.1');
+  }  
+  if (!supportsSVG()) {
+    $('img[src*=".svg"]').remove();  
+  }
 
 });

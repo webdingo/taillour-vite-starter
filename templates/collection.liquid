@@ -18,7 +18,23 @@
   - blog post
 {% endcomment %}
 
-<h1>{{ collection.title }}</h1>
+<h1 class="left">{{ collection.title }}</h1>
+
+{% comment %}
+  Collection sorting. Needs the JavaScript that is at the bottom of this file.
+{% endcomment %}
+{% if collection.products_count > 1 %}
+<select class="sort-by right">
+  <option value="manual">Featured</option>
+  <option value="price-ascending">Price: Low to High</option>
+  <option value="price-descending">Price: Hight to Low</option>
+  <option value="title-ascending">A-Z</option>
+  <option value="title-descending">Z-A</option>
+  <option value="created-ascending">Oldest to Newest</option>
+  <option value="created-descending">Newest to Oldest</option>
+  <option value="best-selling">Best Selling</option>
+ </select>
+{% endif %}
 
 {% comment %}
   Listing all tags within the current collection.
@@ -28,8 +44,8 @@
 {% endcomment %}
 
 {% if collection.all_tags.size > 0 %}
-<ul class="collection-sub-categories clearfix buttons">
-  <li{% unless current_tags %} class="active"{% endunless %}>
+<ul class="subcategories clearfix clear">
+  <li class="{% unless current_tags %} active{% endunless %}">
     {{ 'All' | link_to_remove_tag: current_tags.first }}
   </li>
   {% for tag in collection.all_tags %}
@@ -44,25 +60,6 @@
   {% endif %}
   {% endfor %}  
 </ul>
-{% endif %}
-
-{% comment %}
-  Collection sorting. Needs the JavaScript that is at the bottom of this file.
-{% endcomment %}
-{% if collection.products_count > 1 %}
-<div>
-  <label>Sort by</label> 
-  <select class="sort-by">
-    <option value="manual">Featured</option>
-    <option value="price-ascending">Price: Low to High</option>
-    <option value="price-descending">Price: Hight to Low</option>
-    <option value="title-ascending">A-Z</option>
-    <option value="title-descending">Z-A</option>
-    <option value="created-ascending">Oldest to Newest</option>
-    <option value="created-descending">Newest to Oldest</option>
-    <option value="best-selling">Best Selling</option>
-  </select>
-</div>
 {% endif %}
 
 {% if collection.description.size > 0 %}

@@ -3,16 +3,20 @@
   "presets": {
     "Slate": {
       "customer_layout": "theme",
-      "use_logo": false,
+      "background_color": "#ffffff",
+      "text_color": "#555555",
+      "link_color": "#3d9970",
       "facebook_url": "https://www.facebook.com/shopify",
       "twitter_url": "https://twitter.com/shopify",
       "pinterest_url": "http://pinterest.com/shopify/",
-      "googleplus_url": "https://plus.google.com/+shopify",
       "instagram_url": "http://instagram.com/shopify",
-      "vimeo_url": "http://vimeo.com/shopify",      
+      "vimeo_url": "http://vimeo.com/shopify",
       "youtube_url": "https://www.youtube.com/user/shopify",
+      "base_font_size": "16px",
+      "social_icons_style": "",
+      "use_logo": false,
+      "base_font_family": "Helvetica, Arial, sans-serif",
       "featured_blog": "news",
-      "social_icons_style": "-rounded",
       "homepage_page": "frontpage",
       "homepage_collection": "frontpage"
     }

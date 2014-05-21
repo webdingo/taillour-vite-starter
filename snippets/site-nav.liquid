@@ -8,7 +8,7 @@
   A word on sub-categories: Shopify manages sub-categories using product tags: http://docs.shopify.com/manual/configuration/store-customization/page-specific/collections/subcategories
 {% endcomment %}
 
-<nav role="navigation">
+<nav role="navigation" class="left">
   <ul class="nav">
     {% for link in linklists.main-menu.links %}
     {% assign has_sub_menu = false %}
@@ -27,7 +27,7 @@
     {% elsif link.type == 'collection_link' and link.object.all_tags.size > 0 %}
       {% assign has_sub_categories = true %}
     {% endif %}
-    <li class="{% if link.active or parent_link_active %} active{% endif %}{% if has_sub_menu or has_sub_categories %} has-dropdown{% endif %}">
+    <li class="{% if link.active or parent_link_active %} active{% endif %}{% if has_sub_menu or has_sub_categories %} has-dropdown{% endif %}{% if forloop.first %} first{% elsif forloop.last %} last{% endif %}">
       <a href="{{ link.url }}">{{ link.title }}{% if has_sub_menu or has_sub_categories %} <i class="fa fa-angle-down"></i>{% endif %}</a> 
       {% if has_sub_menu or has_sub_categories %}
       <ul class="sub-nav">
@@ -48,5 +48,10 @@
       {% endif %}
     </li>
     {% endfor %}
+    <li class="show-on-small{% if template == 'search' %} active{% endif %}">
+      <a href="/search">
+        <i class="fa fa-search"></i>
+      </a>
+    </li>
   </ul>
 </nav>

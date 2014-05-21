@@ -8,12 +8,12 @@
     
     <thead>
       <tr>
-        <th>Item</th>
+        <th class="hide-on-small">Item</th>
         <th>&nbsp;</th>
-        <th>Price</th>
+        <th class="hide-on-small">Price</th>
         <th>Quantity</th>
         <th>Total</th>
-        <th>&nbsp;</th>
+        <th class="hide-on-small">&nbsp;</th>
       </tr>
     </thead>
     
@@ -35,13 +35,13 @@
       {% endif %}
 
       <tr>
-        <td>
+        <td class="hide-on-small">
           <a href="{{ collection_url }}{{ item.url }}">
             <img src="{{ item | img_url: 'compact' }}"  alt="{{ item.title | escape }}" />
           </a>
         </td>
         <td>
-          <h2>
+          <h2 class="epsilon">
             <a href="{{ collection_url }}{{ item.url }}">
             {{ item.title }}
             </a>
@@ -64,14 +64,14 @@
             {% endfor %}
           </p>
           {% endif %}
-          <h3>{{ item.vendor }}</h3>
+          <h3 class="zeta">{{ item.vendor }}</h3>
         </td>
-        <td>{{ item.price | money }}</td>
+        <td class="hide-on-small">{{ item.price | money }}</td>
         <td>
-          <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" />
+          <input type="number" name="updates[]" id="updates_{{ item.id }}" class="quantity" value="{{ item.quantity }}" />
         </td>
         <td>{{ item.line_price | money }}</td>
-        <td>
+        <td class="hide-on-small">
           <a href="/cart/change?line={{ forloop.index }}&quantity=0">Remove</a>
         </td>
       </tr>
@@ -86,7 +86,7 @@
   a name attribute set to 'checkout' and 'update', respectively. That's case-sensitive.
   {% endcomment %}
   
-  <div>
+  <div class="column two-thirds flow-opposite right-aligned">
     <h3>Subtotal <em>{{ cart.total_price | money }}</em></h3>
     <a href="{{ continue_shopping_url }}">Continue shopping</a>
     <span class="or">or</span>
@@ -105,7 +105,7 @@
   For the special instructions to be submitted with order,
   we need to use a name attribute set to 'note'.
   {% endcomment %}
-  <div>
+  <div class="column third flow-opposite">
     <p>Special instructions for seller</p>
     <textarea name="note">{{ cart.note }}</textarea>
   </div>
@@ -115,8 +115,8 @@
 {% else %}
 
 <div>
-  <h2>It appears that your cart is currently empty!</h2>
-  <h3>You can continue browsing <a href="/collections/all">here</a>.</h3>
+  <h2 class="delta">It appears that your cart is currently empty!</h2>
+  <h3 class="epsilon">You can continue browsing <a href="/collections/all">here</a>.</h3>
 </div>
 
 {% endif %}

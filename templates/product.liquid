@@ -40,6 +40,7 @@
     <div class="product-details">
       
       <h1 itemprop="name">{{ product.title }}</h1>
+      
       {% assign product_vendor_handle = product.vendor | handle %}
       {% comment %}
       Do we have a collection that has the same name as our product vendor name?
@@ -51,7 +52,7 @@
       {% else %}
         {% assign vendor_url = product.vendor | url_for_vendor %}
       {% endif %}
-      <h2 itemprop="brand">{{ product.vendor | link_to: vendor_url }}</h2>
+      <h2 itemprop="brand" class="delta">{{ product.vendor | link_to: vendor_url }}</h2>
       
       <div id="product-description" class="rte" itemprop="description">
         {{ product.description }}
@@ -97,7 +98,7 @@
       </div>
         
       <div id="product-add">
-        <input type="submit" name="add" id="add" value="Add to cart">
+        <input type="submit" name="add" id="add" class="primary button" value="Add to cart">
       </div>
       
       {% if collection %}
@@ -122,7 +123,7 @@
 </div>
 
 {% comment %}
-Adding support for product options. See here for details: http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
+  Adding support for product options. See here for details: http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options
 {% endcomment %}
 
 <script>
