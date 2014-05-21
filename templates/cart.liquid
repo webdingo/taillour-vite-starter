@@ -87,7 +87,7 @@
   {% endcomment %}
   
   <div class="column two-thirds flow-opposite right-aligned">
-    <h3>Subtotal <em>{{ cart.total_price | money }}</em></h3>
+    <h3 class="delta">Subtotal <em>{{ cart.total_price | money }}</em></h3>
     <a href="{{ continue_shopping_url }}">Continue shopping</a>
     <span class="or">or</span>
     <input type="submit" name="update" value="Update cart" />
