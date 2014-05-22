@@ -3,7 +3,7 @@
 /* ==========================================================================
    Most theme settings should be stored in Sassy CSS variables here, for reuse.
    ========================================================================== */
-
+/*!theme settings */
 $site-max-width:          60 * {{ settings.base_font_size }};
 $breakpoint-small-screen: 30 * {{ settings.base_font_size }};
 $gutter:                  1 *  {{ settings.base_font_size }}; 
@@ -197,7 +197,7 @@ select::-ms-expand {
 }
 
 /* Text inputs. */
-.input {
+%input {
   display: inline-block;
   max-width: 100%;
   padding: .4em .6em;
@@ -209,11 +209,7 @@ select::-ms-expand {
 }
 
 textarea, input[type="text"], input[type="email"], input[type="url"], input[type="tel"], input[type="date"], input[type="search"], input[type="number"], input[type="password"] {
-  @extend .input;
-}
-
-input[type="submit"], input[type="button"], button {
-  @extend .button; 
+  @extend %input;
 }
 
 .input.small { width: 50px; }
@@ -231,7 +227,7 @@ textarea, input[type="text"], input[type="email"], input[type="url"], input[type
   }
 }
 
-.input[type="search"] {
+input[type="search"] {
   @extend .input.medium;
 }
 
@@ -247,11 +243,12 @@ input.quantity, input[type="number"] {
   border: darken( $background-color, 10%) 1px solid;
   border-radius: .25em;
   text-decoration: none;
-  a { 
-    text-decoration: none;
-  }
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
+}
+
+input[type="submit"], input[type="button"], button {
+  @extend .button; 
 }
 
 /* Big, important buttons get a special treatment */
@@ -588,7 +585,7 @@ nav li.active > a { color: $link-color; }
 /* Styling all search forms. You can reuse this for newsletter signup form. */
 .search-form {
   display: inline-block;
-  margin-top: .2 * {{ settings.base_font_size }};
+  margin-top: .2 * $base-font-size;
   @extend .inline-collapse;  
 }
 /* Hiding search form in header on small screens */
