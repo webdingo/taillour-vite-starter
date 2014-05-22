@@ -17,7 +17,7 @@
 
 {% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
 {% assign page = pages[settings.homepage_page] %}
-<div class="rte">
+<div class="rte grid-margins">
   {{ page.content }}
 </div>
 {% endunless %}
