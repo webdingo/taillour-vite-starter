@@ -328,6 +328,7 @@ header, #main {
 }
 
 /* Medium and large screens */
+/* http://www.adamkaplan.me/grid/ */
 @media (min-width: $breakpoint-small-screen) {
   .row {
     margin-left: -$gutter;
@@ -339,10 +340,13 @@ header, #main {
     padding-right: $gutter;
   }  
   .column.full { width: 100%; }
-  .column.two-thirds { width: 66.7%; }
+  .column.three-quarters { width: 75%; }
+  .column.two-thirds { width: 66.6%; }
   .column.half { width: 50%; }
   .column.third { width: 33.3%; }
-  .column.fourth { width: 24.95%; }
+  .column.fourth { width: 25%; }
+  .column.fifth { width: 20%; }
+  .column.sixth { width: 16.6%; }
   .column.flow-opposite { float: right; } 
   .grid { 
     @extend .row; 
@@ -358,6 +362,12 @@ header, #main {
   }
   .four-per-row {
     @extend .column.fourth;
+  }
+  .five-per-row {
+    @extend .column.fifth;
+  }
+  .six-per-row {
+    @extend .column.sixth;
   }
   .product {
     @extend .row;
@@ -377,7 +387,7 @@ header, #main {
 }
 
 /* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
-.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
@@ -401,6 +411,7 @@ header, #main {
   }
 }
 .clear:before { content: ''; display: block; clear: both; height: 1px; line-height: 0px; font-size: 0px; margin-bottom: -1px; }
+.clear-after:after { content: ''; display: block; clear: both; height: 1px; line-height: 0px; font-size: 0px; margin-bottom: -1px; }
 
 /* ==========================================================================
    5. Header
