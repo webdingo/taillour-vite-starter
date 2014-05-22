@@ -88,8 +88,8 @@
   
   <div class="column two-thirds flow-opposite right-aligned">
     <h3 class="delta">Subtotal <em>{{ cart.total_price | money }}</em></h3>
-    <a href="{{ continue_shopping_url }}">Continue shopping</a>
-    <span class="or">or</span>
+    <a class="hide-on-small" href="{{ continue_shopping_url }}">Continue shopping</a>
+    <span class="or hide-on-small">or</span>
     <input type="submit" name="update" value="Update cart" />
     <span class="or">or</span>
     <input type="submit" name="checkout" value="Check out" />    
@@ -98,14 +98,14 @@
     <p class="additional-checkout-buttons">
       {{ content_for_additional_checkout_buttons }}
     </p>
-    {% endif %}    
+    {% endif %}
   </div>
   
   {% comment %}
   For the special instructions to be submitted with order,
   we need to use a name attribute set to 'note'.
   {% endcomment %}
-  <div class="column third flow-opposite">
+  <div class="column third flow-opposite left-aligned">
     <p>Special instructions for seller</p>
     <textarea name="note">{{ cart.note }}</textarea>
   </div>
