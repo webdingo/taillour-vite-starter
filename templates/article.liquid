@@ -29,7 +29,7 @@ Note that comment.created_at will only be defined if the comment did not have an
   <h1 class="title">
     {{ article.title }}
   </h1>
-  <h3 class="date epsilon">
+  <h3 class="date">
     <time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' }}</time>
   </h3>
   <div class="rte">
