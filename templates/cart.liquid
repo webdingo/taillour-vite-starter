@@ -41,7 +41,7 @@
           </a>
         </td>
         <td>
-          <h2 class="epsilon">
+          <h2 class="delta">
             <a href="{{ collection_url }}{{ item.url }}">
             {{ item.title }}
             </a>
@@ -64,7 +64,7 @@
             {% endfor %}
           </p>
           {% endif %}
-          <h3 class="zeta">{{ item.vendor }}</h3>
+          <h3 class="epsilon">{{ item.vendor }}</h3>
         </td>
         <td class="hide-on-small">{{ item.price | money }}</td>
         <td>
@@ -87,7 +87,7 @@
   {% endcomment %}
   
   <div class="column two-thirds flow-opposite right-aligned">
-    <h3 class="delta">Subtotal <em>{{ cart.total_price | money }}</em></h3>
+    <h3 class="gamma">Subtotal <em>{{ cart.total_price | money }}</em></h3>
     <a class="hide-on-small" href="{{ continue_shopping_url }}">Continue shopping</a>
     <span class="or hide-on-small">or</span>
     <input type="submit" name="update" value="Update cart" />
@@ -115,8 +115,8 @@
 {% else %}
 
 <div>
-  <h2 class="delta">It appears that your cart is currently empty!</h2>
-  <h3 class="epsilon">You can continue browsing <a href="/collections/all">here</a>.</h3>
+  <h2 class="gamma">It appears that your cart is currently empty!</h2>
+  <h3 class="delta">You can continue browsing <a href="/collections/all">here</a>.</h3>
 </div>
 
 {% endif %}

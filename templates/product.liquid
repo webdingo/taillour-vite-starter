@@ -64,7 +64,7 @@
       {% endcomment %}
       <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
       
-      <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+      <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
         {% if product.available %}
         <link itemprop="availability" href="http://schema.org/InStock" />

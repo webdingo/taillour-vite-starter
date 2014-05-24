@@ -23,7 +23,7 @@ $heading-font-weight:     600;
    5.  Header
    6.  Navigation
    7.  Tags
-   8.  Social
+   8.  Social and payment methods
    9.  Blog
    10. Product and collection
    11. Search form and search results
@@ -53,54 +53,57 @@ h1, h2, h3, h4, h5, h6 {
   @extend .paragraph-margins;
 }
 
+/* Modular scale */
+/* http://modularscale.com/scale/?px1=16&px2=32&ra1=1.667&ra2=0 */
+
 .tera {
-  font-size: 6.5 * $base-font-size;
+  font-size: 5.558 * $base-font-size;
   line-height: 1;
 }
 
 .giga {
-  font-size: 5 * $base-font-size;
+  font-size: 4.632 * $base-font-size;
   line-height: 1;
 }
 
 .mega {
-  font-size: 4 * $base-font-size;
+  font-size: 3.334 * $base-font-size;
   line-height: 1;
 }
 
 .alpha, h1 {
-  font-size: 3.3125 * $base-font-size;
+  font-size: 2.779 * $base-font-size;
   line-height: 1.1;
 }
 
 .beta, h2 {
-  font-size: 2.6875 * $base-font-size;
-  line-height: 1.2;
+  font-size: 2 * $base-font-size;
+  line-height: 1.1;
 }
 
 .gamma, h3 {
-  font-size: 2 * $base-font-size;
+  font-size: 1.667 * $base-font-size;
   line-height: 1.2;
 }
 
 .delta, h4 {
-  font-size: 1.3125 * $base-font-size;
+  font-size: 1.2 * $base-font-size;
   line-height: 1.4;
 }
 
 .epsilon, h5 {
-  font-size: 1.1875 * $base-font-size;
-  line-height: 1.5;
+  font-size: 1 * $base-font-size;
+  line-height: 1.6;
 }
 
 .zeta, h6 {
-  font-size: 1 * $base-font-size;
+  font-size: 0.72 * $base-font-size;
   line-height: 1.6;
 }
 
 /* Styling all pages main heading in one fell swoop. */
 #main > h1, #main .title, .product-details h1 {
-  @extend .gamma;
+  @extend .beta;
 }
 
 /* Responsive images and videos. */
@@ -276,20 +279,26 @@ input[type="submit"], input[type="button"], button {
   }      
 }
 
+.lt-ie9 .inline-collapse input { *zoom: 1; *display: inline; float: none; }
+.lt-ie9 .inline-collapse { display: block; width: 260px; margin: 0 auto; }
+
 
 /* ==========================================================================
    3. Tables
    ========================================================================== */
 
 table { 
-  width: 100%; 
+  width: 100%;
+  @extend .section-margins; 
   th, td {
     padding: 1em;
   }
   tr {
     border-bottom: darken( $background-color, 10%) 1px solid;      
   }
-  @extend .section-margins;  
+  th {
+    text-align: left;
+  } 
 }
 
 
@@ -330,6 +339,8 @@ header, #main {
   .row {
     margin-left: -$gutter;
     margin-right: -$gutter;
+    margin-bottom: $gutter;
+    clear: both;
   } 
   .column {
     float: left;
@@ -375,6 +386,16 @@ header, #main {
   }
 }
 
+/* When grid elements are stacked, let's add some space between them. */ 
+@media (max-width: $breakpoint-small-screen) {
+  .column + .column {
+    margin-top: $gutter;
+  }
+}
+
+/* Clearfix applied to .row */
+.row { @extend .clearfix; }
+
 /* Show and hide depending on screen size */
 @media (max-width: $breakpoint-small-screen) {
 .show-on-large, .show-on-medium, .hide-on-small { display: none; }
@@ -382,6 +403,8 @@ header, #main {
 @media (min-width: $breakpoint-small-screen) {
 .hide-on-large, .show-on-medium, .show-on-small { display: none; }
 }
+
+.lt-ie9 .show-on-medium, .lt-ie9 .show-on-small { display: none; }
 
 /* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
 .clearfix:before, .clearfix:after { content: ''; display: table; }
@@ -407,8 +430,9 @@ header, #main {
     margin: $gutter 0;
   }
 }
-.clear:before { content: ''; display: block; clear: both; height: 1px; line-height: 0px; font-size: 0px; margin-bottom: -1px; }
-.clear-after:after { content: ''; display: block; clear: both; height: 1px; line-height: 0px; font-size: 0px; margin-bottom: -1px; }
+.clear { clear: both; }
+.clear-after { *zoom: 1; }
+.clear-after:after { content: ''; display: table; clear: both; }
 
 /* ==========================================================================
    5. Header
@@ -417,7 +441,7 @@ header, #main {
 #site-title {
   display: block;
   @extend .section-margins;
-  @extend .mega;
+  @extend .giga;
   color: $text-color;
   text-decoration: none;
 }
@@ -549,6 +573,61 @@ nav li.active > a { color: $link-color; }
   }
 }
 
+@media (max-width: $breakpoint-small-screen) {
+  .template-article .article img {
+    display: block;
+    width: 100% !important;
+    float: none !important;
+    margin-top: $gutter/2 !important;
+    margin-bottom: $gutter/2 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    clear: both;
+    @extend .clear-after;
+  }
+}
+
+.date {
+  @extend .zeta;
+}
+
+.square-holder {
+  display: block; 
+  background-position: center center;
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  width: 100%; 
+  height: 0; 
+  padding-bottom: 100%;
+}
+
+.fadeout-overflow-bottom {
+  position: relative;
+  height: 0; 
+  padding-bottom: 33.33%; 
+  overflow: hidden;
+}
+
+.fadeout-overflow-bottom:after {
+  display: block;
+  position: absolute;
+  bottom: 0;  
+  height: $gutter;
+  width: 100%;
+  content: "";
+  background: linear-gradient(to top, rgba($background-color, 1) 0, rgba($background-color, 0) 100%);
+  pointer-events: none;
+}
+
+.lt-ie9 .square-holder {
+  display: none;
+}
+
+.lt-ie9 .fadeout-overflow-bottom {
+  height: auto;
+  padding-bottom: 0;
+}
+
 /* ==========================================================================
    10. Product
    ========================================================================== */
@@ -568,7 +647,7 @@ nav li.active > a { color: $link-color; }
 }
 
 .sort-by {
-  margin-top: .4rem;
+  margin-top: .25rem;
 }
 
 @media (max-width: $breakpoint-small-screen) {
