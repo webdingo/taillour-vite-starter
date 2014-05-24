@@ -609,14 +609,24 @@ nav li.active > a { color: $link-color; }
 }
 
 .fadeout-overflow-bottom:after {
+  content: "";
   display: block;
   position: absolute;
   bottom: 0;  
-  height: 3 * $gutter;
   width: 100%;
-  content: "";
+  height: 3 * $gutter;
   background: linear-gradient(to top, rgba($background-color, 1) 0, rgba($background-color, 0) 100%);
   pointer-events: none;
+}
+
+@media (max-width: $breakpoint-small-screen) {
+  .fadeout-overflow-bottom {
+    height: auto;
+    padding-bottom: 0;
+  }
+  .fadeout-overflow-bottom:after {
+    background: transparent;
+  }
 }
 
 .lt-ie9 .square-holder {
