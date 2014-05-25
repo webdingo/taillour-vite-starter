@@ -490,8 +490,10 @@ nav ul {
     position: absolute;
     top: 100%;
     left: -0.5 * $gutter;
-    border: darken( $background-color, 15% ) 1px solid;
     background-color: lighten( $background-color, 15% );
+    -webkit-box-shadow: 0px 1px 1px 0px rgba(50, 50, 50, 0.2);
+    -moz-box-shadow:    0px 1px 1px 0px rgba(50, 50, 50, 0.2);
+    box-shadow:         0px 1px 1px 0px rgba(50, 50, 50, 0.2);
     text-align: left;
     z-index: 1;
     li {
@@ -504,6 +506,16 @@ nav ul {
       }
     }
   }
+}
+
+/* CSS triangle at the top of the drop-down menu. */
+nav ul ul li:first-child a:after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid lighten( $background-color, 15% );
 }
 
 /* Revealing drop-down menus on hover */
