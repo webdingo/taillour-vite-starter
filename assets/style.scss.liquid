@@ -508,7 +508,7 @@ nav ul {
   }
 }
 
-/* CSS triangle at the top of the drop-down menu. */
+/* CSS triangle at the top of drop-down menus. */
 nav ul ul li:first-child a:after {
   content: '';
   position: absolute;
@@ -567,13 +567,14 @@ nav li.active > a { color: $link-color; }
   text-decoration: none;
 }
 
-/* IE8 does not support SVG */
+/* IE8 does not support SVG. */
 .lt-ie9 .payment-types { display:none; }
 
 /* ==========================================================================
    9. Blog
    ========================================================================== */
 
+/* Separating articles with a border on the blog landing page.*/
 .template-blog .article {
   border-bottom: darken( $background-color, 5%) 0.07rem solid;
   padding: $gutter 0;
@@ -585,6 +586,7 @@ nav li.active > a { color: $link-color; }
   }
 }
 
+/* All blog images should stretch to the full width on small screens. */
 @media (max-width: $breakpoint-small-screen) {
   .template-article .article img {
     display: block;
@@ -599,10 +601,12 @@ nav li.active > a { color: $link-color; }
   }
 }
 
-.date {
-  @extend .zeta;
-}
+.date, .comment-date { @extend .zeta; }
 
+.meta > span + span { padding-left: $gutter/2; }
+
+/* Square element that contains the blog image, which is
+set as a centered background image. */
 .square-holder {
   display: block; 
   background-position: center center;
@@ -613,13 +617,14 @@ nav li.active > a { color: $link-color; }
   padding-bottom: 100%;
 }
 
+/* Fading out content so that the height of the article excerpt
+always matches the height of the blog image on the left. */
 .fadeout-overflow-bottom {
   position: relative;
   height: 0; 
   padding-bottom: 33.33%; 
   overflow: hidden;
 }
-
 .fadeout-overflow-bottom:after {
   content: "";
   display: block;
@@ -631,6 +636,9 @@ nav li.active > a { color: $link-color; }
   pointer-events: none;
 }
 
+/* On small screens, we don't truncate content, and don't fade
+it out since the blog image is full-width, and the excerpt
+is below it. */
 @media (max-width: $breakpoint-small-screen) {
   .fadeout-overflow-bottom {
     height: auto;
@@ -641,14 +649,11 @@ nav li.active > a { color: $link-color; }
   }
 }
 
-.lt-ie9 .square-holder {
-  display: none;
-}
+.lt-ie9 .square-holder { display: none; }
 
-.lt-ie9 .fadeout-overflow-bottom {
-  height: auto;
-  padding-bottom: 0;
-}
+.lt-ie9 .fadeout-overflow-bottom { height: auto; padding-bottom: 0; }
+
+#comments { margin: 2 * $gutter 0; }
 
 /* ==========================================================================
    10. Product
