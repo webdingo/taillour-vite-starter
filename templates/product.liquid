@@ -16,17 +16,17 @@
     {% else %}
     
       <div class="product-photo-container">
-        <a class="gallery" href="{{ product.featured_image | product_img_url: 'master' }}" rel="gallery">
-          <img src="{{ product.featured_image | product_img_url: 'grande' }}" alt="{{ product.title | escape }}" />
+        <a class="gallery" href="{{ product.selected_or_first_available_variant | img_url: 'master' }}" rel="gallery">
+          <img src="{{ product.selected_or_first_available_variant | img_url: 'grande' }}" alt="{{ product.title | escape }}" />
         </a>
       </div>
 
       {% if product.images.size > 1 %}
       <ul class="product-photo-thumbs clearfix grid">
-        {% for image in product.images offset:1 %}
-        <li class="product-photo-thumb">
+        {% for image in product.images %}
+        <li class="product-photo-thumb two-per-row">
           <a class="gallery" href="{{ image.src | product_img_url: 'master' }}" rel="gallery">
-            <img src="{{ image.src | product_img_url: 'compact' }}" alt="{{ image.alt | escape }}" />
+            <img src="{{ image.src | product_img_url: 'large' }}" alt="{{ image.alt | escape }}" />
           </a>
         </li>
         {% endfor %}
@@ -182,23 +182,15 @@ var selectCallback = function(variant, selector) {
   
 jQuery(function($) {
 
-  new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback });
+  var optionSelectors = new Shopify.OptionSelectors('product-select', { product: {{ product | json }}, onVariantSelected: selectCallback });
   
   // Add label if only one product option and it isn't 'Title'.
   {% if product.options.size == 1 and product.options.first != 'Title' %}
     $('.selector-wrapper:eq(0)').prepend('<label>{{ product.options.first }}</label>');
   {% endif %}
   
-  // Auto-select first available variant on page load.
-  {% assign found_one_in_stock = false %}
-  {% for variant in product.variants %}
-    {% if variant.available and found_one_in_stock == false %}
-      {% assign found_one_in_stock = true %}
-      {% for option in product.options %}
-      $('.single-option-selector:eq({{ forloop.index0 }})').val({{ variant.options[forloop.index0] | json }}).trigger('change');
-      {% endfor %}
-    {% endif %}
-  {% endfor %}
+  // Grab the variant currently selected with ?variant=ID in the URL, or the first in stock variant, on page load.
+  optionSelectors.selectVariant({{ product.selected_or_first_available_variant.id }});
 
 });
 
