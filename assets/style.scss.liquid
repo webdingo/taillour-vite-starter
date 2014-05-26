@@ -498,6 +498,7 @@ nav ul {
     text-align: left;
     z-index: 1;
     li {
+      display: block;
       padding: $gutter/3 $gutter;
       &:first-child {
         padding-top: $gutter;
@@ -514,6 +515,8 @@ nav ul ul li:first-child a:after {
   content: '';
   position: absolute;
   top: -6px;
+  left: 50%;
+  margin-left: -6px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
   border-bottom: 6px solid lighten( $background-color, 15% );
