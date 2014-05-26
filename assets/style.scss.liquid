@@ -25,7 +25,7 @@ $heading-font-weight:     600;
    7.  Tags
    8.  Social and payment methods
    9.  Blog
-   10. Product and collection
+   10. Product and collection pages
    11. Search form and search results
    12. Footer
 */
@@ -656,13 +656,21 @@ is below it. */
 
 #comments { margin: 2 * $gutter 0; }
 
-/* ==================
-   10. Product
-   ================== */
+/* ==========================================================================
+  10. Product and collection pages.
+  ========================================================================== */
 
 .product-details > div,
 .product-details > p {
   @extend .section-margins;
+}
+
+.product-photo-container {
+  @extend .grid-margins;
+}
+
+.product-photo-thumb:nth-child(2n+1) {
+  @extend .clear;
 }
 
 /* Quickly hiding default variant drop-down when JavaScript is enabled */
