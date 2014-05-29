@@ -46,10 +46,10 @@ selectors inside search.css.
       {% for item in search.results %}      
       <li class="clearfix">
         <h3>{{ item.title | link_to: item.url }}</h3>
-        {% if item.featured_image %}
+        {% if item.vendor %}
         <div class="result-image">
           <a href="{{ item.url }}" title="{{ item.title | escape }}">
-            {{ item.featured_image.src | product_img_url: 'small' | img_tag: item.featured_image.alt }}
+            {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
           </a>
         </div>
         {% endif %}

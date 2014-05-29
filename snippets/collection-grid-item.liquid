@@ -6,9 +6,9 @@
   <div class="coll-image-wrap">
     <a href="{{ collection.url }}">
       {% if collection.image %}
-      <img src="{{ collection.image.src | collection_img_url: 'medium' }}" alt="{{ collection.image.alt | escape }}" />
+      <img src="{{ collection | img_url: 'grande' }}" alt="{{ collection.image.alt | escape }}" />
       {% else %}
-      <img src="{{ collection.products.first.featured_image.src | product_img_url: 'medium' }}" alt="{{ collection.title | escape }}" />
+      <img src="{{ collection.products.first | img_url: 'grande' }}" alt="{{ collection.title | escape }}" />
       {% endif %}
     </a>
   </div><!-- .coll-image-wrap -->
