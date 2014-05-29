@@ -1,3 +1,14 @@
+/*============================*/
+/* Update main product image. */
+/*============================*/
+var switchImage = function(newImageSrc, originalImage, el) {
+  // newImageSrc is the path of the new image in the same size as originalImage is sized.
+  // originalImage is Shopify's object representation of the old image, with various attributes, such as scr, id, position.
+  // el is the passed domElement, which has not yet been manipulated.
+  jQuery(el).parents('a').attr('href', newImageSrc);
+  jQuery(el).attr('src', newImageSrc);
+};
+
 jQuery(function($){
                     
   /* Placeholder JS */
@@ -53,15 +64,11 @@ jQuery(function($){
     $(this).attr('src', src).attr('width', width).removeAttr('height');
   });
   
+  /* Update main product image when a thumbnail is clicked. */
+  /*==========================*/
+  $('.product-photo-thumb a').on('click', function(e) { 
+    e.preventDefault();
+    switchImage($(this).attr('href'), null, jQuery('.product-photo-container img')[0]);
+  } );
+  
 });
-
-/*============================*/
-/* Update main product image. */
-/*============================*/
-var switchImage = function(newImageSrc, originalImage, el) {
-  // newImageSrc is the path of the new image in the same size as originalImage is sized.
-  // originalImage is Shopify's object representation of the old image, with various attributes, such as scr, id, position.
-  // el is the passed domElement, which has not yet been manipulated.
-  jQuery(el).parents('a').attr('href', newImageSrc);
-  jQuery(el).attr('src', newImageSrc);
-};
