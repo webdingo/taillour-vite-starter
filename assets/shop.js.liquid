@@ -1,10 +1,10 @@
 /*============================*/
 /* Update main product image. */
 /*============================*/
-var switchImage = function(newImageSrc, originalImage, el) {
+var switchImage = function(newImageSrc, newImage, el) {
   // newImageSrc is the path of the new image in the same size as originalImage is sized.
-  // originalImage is Shopify's object representation of the old image, with various attributes, such as scr, id, position.
-  // el is the passed domElement, which has not yet been manipulated.
+  // newImage is Shopify's object representation of the new image, with various attributes, such as scr, id, position.
+  // el is the passed domElement, which has not yet been manipulated. Let's manipulate it now.
   jQuery(el).parents('a').attr('href', newImageSrc);
   jQuery(el).attr('src', newImageSrc);
 };
