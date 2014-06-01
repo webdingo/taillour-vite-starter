@@ -53,7 +53,6 @@ h1, h2, h3, h4, h5, h6 {
   @extend .paragraph-margins;
 }
 
-/* Modular scale */
 /* http://modularscale.com/scale/?px1=16&px2=32&ra1=1.667&ra2=0 */
 
 .tera {
@@ -113,17 +112,16 @@ img, iframe { max-width: 100%; }
 .hint { color: lighten( $text-color, 15% ); }
 i, em { font-style: italic; }
 b, strong { font-weight: 600; }
+.fine-print { @extend .zeta; }
 
 a {
   color: $link-color;
   text-decoration: none;
-  header &, footer & {
-    white-space: nowrap;
-  }
   &:hover {
     color: darken( $link-color, 10% );
   }
   header &, footer & {
+    white-space: nowrap;
     color: $text-color;
   }
   header &:hover, footer &:hover {
@@ -155,6 +153,7 @@ ul, ol {
    2. Forms
    ================= */
 
+/* Remove placeholder text in inputs when they get focus. */
 input:focus::-webkit-input-placeholder { color: transparent; }
 input:focus::-moz-placeholder { color:transparent; }
 
@@ -193,7 +192,7 @@ select {
 
 /* Getting rid of arrow in IE10 and IE11. */
 select::-ms-expand {
-  display:none;
+  display: none;
 }
 
 /* Using default arrow with no box in IE8 and IE9. */
@@ -209,7 +208,7 @@ select::-ms-expand {
   max-width: 100%;
   padding: .4em .6em;
   background-color: transparent;
-  border: darken( $background-color, 10%) 1px solid;
+  border: darken( $background-color, 10% ) 1px solid;
   border-radius: .25em;
   outline: none;
   -webkit-appearance: none;
@@ -234,7 +233,7 @@ textarea, input[type="text"], input[type="email"], input[type="url"], input[type
   }
 }
 
-input[type="search"] {
+input[type="search"], #searchresults input[type="search"] {
   @extend .input.medium;
 }
 
@@ -242,7 +241,7 @@ input.quantity, input[type="number"] {
   @extend .input.small;
 }
 
-/* All submit buttons. */
+/* All buttons. */
 .button {
   display: inline-block;
   padding: .4em .6em;
@@ -257,6 +256,8 @@ input.quantity, input[type="number"] {
 input[type="submit"], input[type="button"], button {
   @extend .button; 
 }
+
+#searchresults input[type="submit"] { width: inherit; }
 
 /* Big, important buttons get a special treatment */
 .primary.button {
@@ -283,10 +284,9 @@ input[type="submit"], input[type="button"], button {
   }      
 }
 
-/* For older IEs. */
+/* For IE8. */
 .lt-ie9 .inline-collapse input, .lt-ie9 #searchresults .inline-collapse input { display: inline-block; zoom: 1; width: 130px; }
 .lt-ie9 .inline-collapse { display: block; width: 300px; }
-
 
 /* ================
    3. Tables
@@ -305,7 +305,6 @@ table {
     text-align: left;
   } 
 }
-
 
 /* ================
    4. Layout
@@ -338,71 +337,68 @@ header, #main {
   box-sizing: border-box;
 }
 
-/* Medium and large screens */
-/* http://www.adamkaplan.me/grid/ */
-@media (min-width: $breakpoint-small-screen) {
-  .row {
-    margin-left: -$gutter;
-    margin-right: -$gutter;
-    margin-bottom: $gutter;
-    clear: both;
-  } 
-  .column {
-    float: left;
-    padding-left: $gutter;
-    padding-right: $gutter;
-    padding-bottom: $gutter;
-  }
-  .column.full { width: 100%; }
-  .column.three-quarters { width: 75%; }
-  .column.two-thirds { width: 66.6%; }
-  .column.half { width: 50%; }
-  .column.third { width: 33.3%; }
-  .column.fourth { width: 25%; }
-  .column.fifth { width: 20%; }
-  .column.sixth { width: 16.6%; }
-  .column.flow-opposite { float: right; } 
-  .grid { 
-    @extend .row; 
-  }
-  .grid > li {
-    @extend .column;
-  }
-  .two-per-row {
-    @extend .column.half;
-  }
-  .three-per-row {
-    @extend .column.third;
-  }
-  .four-per-row {
-    @extend .column.fourth;
-  }
-  .five-per-row {
-    @extend .column.fifth;
-  }
-  .six-per-row {
-    @extend .column.sixth;
-  }
-  .product {
-    @extend .row;
-  }
-  .product-photos, .product-details {
-    @extend .column;
-    @extend .column.half;
-  }
+/* The Grid. */
+.row {
+  margin-left: -$gutter;
+  margin-right: -$gutter;
+  margin-bottom: $gutter;
+  clear: both;
+} 
+.column {
+  float: left;
+  padding-left: $gutter;
+  padding-right: $gutter;
+  padding-bottom: $gutter;
+}
+.column.full { width: 100%; }
+.column.three-quarters { width: 75%; }
+.column.two-thirds { width: 66.6%; }
+.column.half { width: 50%; }
+.column.third { width: 33.3%; }
+.column.fourth { width: 25%; }
+.column.fifth { width: 20%; }
+.column.sixth { width: 16.6%; }
+.column.flow-opposite { float: right; } 
+.grid { 
+  @extend .row; 
+}
+.grid > li {
+  @extend .column;
+}
+.two-per-row {
+  @extend .column.half;
+}
+.three-per-row {
+  @extend .column.third;
+}
+.four-per-row {
+  @extend .column.fourth;
+}
+.five-per-row {
+  @extend .column.fifth;
+}
+.six-per-row {
+  @extend .column.sixth;
+}
+.product {
+  @extend .row;
+}
+.product-photos, .product-details {
+  @extend .column;
+  @extend .column.half;
 }
 
-/* When grid elements are stacked, let's add some space between them. */ 
 @media (max-width: $breakpoint-small-screen) {
-  .column + .column, .grid > li + li {
-    margin-top: $gutter;
+  .column {
+    float: none;
+    width: 100% !important;
   }
 }
 
-/* Clearfix applied to .row */
+/* Clearfix applied to .row because row content is floated. */
 .row { @extend .clearfix; }
 
-/* Show and hide depending on screen size */
+/* Show and hide depending on screen size. */
 @media (max-width: $breakpoint-small-screen) {
 .show-on-large, .show-on-medium, .hide-on-small { display: none; }
 }
@@ -410,6 +406,7 @@ header, #main {
 .hide-on-large, .show-on-medium, .show-on-small { display: none; }
 }
 
+/* IE8 does not support media queries */
 .lt-ie9 .show-on-medium, .lt-ie9 .show-on-small { display: none; }
 
 /* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */ 
@@ -633,7 +630,7 @@ set as a centered background image. */
 .square-holder {
   display: block; 
   background-position: center center;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover; 
   width: 100%; 
   height: 0; 
@@ -671,8 +668,6 @@ is below it. */
     background: transparent;
   }
 }
-
-.lt-ie9 .square-holder { display: none; }
 
 .lt-ie9 .fadeout-overflow-bottom { height: auto; padding-bottom: 0; }
 
@@ -726,9 +721,6 @@ is below it. */
 /* Override to globally-hosted search.css on the /search page */
 #searchresults {
   @extend .paragraph-margins;
-}
-#searchresults input {
-  width: inherit;
 }
 /* Styling all search forms. You can reuse this for newsletter signup form. */
 .search-form {
