@@ -130,7 +130,7 @@
           Have a look in assets/shop.js.liquid to see sample JavaScript for this.
         {% endcomment %}      
         <form action="/search" method="get" class="search-form right" role="search">
-          <input name="q" type="search" id="search-field" placeholder="Search store..." class="hint" value="{{ search.terms | escape }}" />
+          <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
           <input type="submit" id="search-submit" value="Search" />
         </form>
 
@@ -174,7 +174,7 @@
     <![endif]-->
     
   </div><!-- end of #container -->
-  
+
   {{ 'shop.js'  | asset_url | script_tag }}
 
 </body>

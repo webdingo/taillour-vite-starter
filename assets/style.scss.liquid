@@ -109,7 +109,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Responsive images and videos. */
 img, iframe { max-width: 100%; }
 
-.quiet, .hint { color: lighten( $text-color, 20% ); }
+.quiet { color: lighten( $text-color, 10% ); } 
+.hint { color: lighten( $text-color, 15% ); }
 i, em { font-style: italic; }
 b, strong { font-weight: 600; }
 
@@ -153,6 +154,9 @@ ul, ol {
 /* =================
    2. Forms
    ================= */
+
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus::-moz-placeholder { color:transparent; }
 
 label {
   display: block;
@@ -266,21 +270,22 @@ input[type="submit"], input[type="button"], button {
 /* For search and newsletter forms, eliminate any spacing between the text box and submit button on the right. */ 
 .inline-collapse {
   @extend .clearfix;
-  & > input {
+  & input {
     float: left;
   }  
-  & > input:first-child {
+  & input:first-child {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
-  & > input:last-child {
+  & input:last-child {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }      
 }
 
-.lt-ie9 .inline-collapse input { *zoom: 1; *display: inline; float: none; }
-.lt-ie9 .inline-collapse { display: block; width: 260px; margin: 0 auto; }
+/* For older IEs. */
+.lt-ie9 .inline-collapse input, .lt-ie9 #searchresults .inline-collapse input { display: inline-block; zoom: 1; width: 130px; }
+.lt-ie9 .inline-collapse { display: block; width: 300px; }
 
 
 /* ================
