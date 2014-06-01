@@ -389,7 +389,7 @@ header, #main {
 
 /* When grid elements are stacked, let's add some space between them. */ 
 @media (max-width: $breakpoint-small-screen) {
-  .column + .column {
+  .column + .column, .grid > li + li {
     margin-top: $gutter;
   }
 }
