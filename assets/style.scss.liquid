@@ -178,10 +178,12 @@ select {
 }
 
 @-moz-document url-prefix() {
-  /* Firefox hack to hide the arrow. */
+  /* Impossible to hide the native arrow in Firefox.
+     https://gist.github.com/joaocunha/6273016
+     Please upvote the bug: https://bugzilla.mozilla.org/show_bug.cgi?id=649849 */
   select {
-    text-indent: 0.01px;
-    text-overflow: '';
+    background-image: none;
+    padding-right: 0;
   }
   /* Getting rid of dotted line around text in Firefox. */
   select:-moz-focusring {
