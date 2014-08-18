@@ -112,7 +112,7 @@ img, iframe { max-width: 100%; }
 .hint { color: lighten( $text-color, 15% ); }
 i, em { font-style: italic; }
 b, strong { font-weight: 600; }
-.fine-print { @extend .zeta; }
+.small-print { @extend .zeta; }
 
 a {
   color: $link-color;
@@ -253,6 +253,14 @@ input.quantity, input[type="number"] {
   text-decoration: none;
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
+  &:hover {
+    background-color: darken( $background-color, 20%);
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 input[type="submit"], input[type="button"], button {
@@ -268,6 +276,9 @@ input[type="submit"], input[type="button"], button {
   background-color: $link-color;
   border-color: $link-color;  
   color: $background-color;
+  &:hover {
+    background-color: darken( $link-color, 10% );
+  }
 }
 
 /* For search and newsletter forms, eliminate any spacing between the text box and submit button on the right. */ 
