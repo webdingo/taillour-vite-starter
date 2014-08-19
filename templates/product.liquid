@@ -1,3 +1,8 @@
+{% assign add_to_cart = 'Add to cart' %}
+{% assign sold_out = 'Sold Out' %}
+{% assign unavailable = 'Unavailable' %}
+
+
 <div class="product" itemscope itemtype="http://schema.org/Product">
   
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
@@ -103,7 +108,7 @@
       </div>
         
       <div id="product-add">
-        <input type="submit" name="add" id="add" class="primary button" value="Add to cart">
+        <input type="submit" name="add" id="add" class="primary button" value="{{ add_to_cart | escape }}">
       </div>
       
       {% if collection %}
@@ -142,7 +147,7 @@ var selectCallback = function(variant, selector) {
     if (variant.available) {
           
       // Enabling add to cart button.
-      jQuery('#add').removeClass('disabled').prop('disabled', false).val('Add to Cart').fadeTo(200,1);
+      jQuery('#add').removeClass('disabled').prop('disabled', false).val({{ add_to_cart | json }});
     
       // If item is backordered yet can still be ordered, we'll show special message.
       if (variant.inventory_management && variant.inventory_quantity <= 0) {
@@ -155,7 +160,7 @@ var selectCallback = function(variant, selector) {
     } else {
       // Variant is sold out.
       jQuery('#backorder').addClass('hidden');
-      jQuery('#add').val('Sold Out').addClass('disabled').prop('disabled', true).fadeTo(200,0.5);        
+      jQuery('#add').val({{ sold_out | json }}).addClass('disabled').prop('disabled', true);       
     }
     
     // Whether the variant is in stock or not, we can update the price and compare at price.
@@ -169,7 +174,7 @@ var selectCallback = function(variant, selector) {
     // variant doesn't exist.
     jQuery('#product-price').empty();
     jQuery('#backorder').addClass('hidden');
-    jQuery('#add').val('Unavailable').addClass('disabled').prop('disabled', true).fadeTo(200,0.5);
+    jQuery('#add').val({{ unavailable | json }}).addClass('disabled').prop('disabled', true);
   }
 
 };

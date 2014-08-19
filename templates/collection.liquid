@@ -5,8 +5,8 @@
 {% endcomment %}
 
 {% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
-{% assign numbers = 'one, two, three, four, five, six' | split: ',' %}
-{% assign products_per_row = settings.products_per_row | minus: 1 %}
+{% assign numbers = 'zero, one, two, three, four, five, six' | split: ',' %}
+{% assign products_per_row = settings.products_per_row | times: 1 %}
 {% assign products_per_row = numbers[products_per_row] | strip | append: '-per-row' %}
 
 {% paginate collection.products by products_per_page %}
@@ -68,7 +68,7 @@
 {% endif %}
 
 {% if collection.description.size > 0 %}
-<div class="rte">
+<div class="rte clearfix">
   {{ collection.description }}
 </div>
 {% endif %}
@@ -77,7 +77,7 @@
 {% for product in collection.products %}
   {% include 'product-grid-item' with products_per_row %}
 {% else %}
-  <li>There are no products in this view.</li>
+  <p>There are no products in this view.</p>
 {% endfor %}
 </ul>
 
@@ -97,6 +97,6 @@ jQuery('.sort-by')
   .val('{{ collection.sort_by | default: collection.default_sort_by }}')
   .on('change', function() {
     Shopify.queryParams.sort_by = jQuery(this).val();
-    location.search = jQuery.param(Shopify.queryParams);
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
   });
 </script>
