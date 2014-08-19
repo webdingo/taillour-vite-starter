@@ -143,6 +143,13 @@ var selectCallback = function(variant, selector) {
 
   if (variant) {
     
+    // Swap image.
+    if (variant.featured_image) {
+      var newImage = variant.featured_image; // New image object.
+      var mainImageDomEl = jQuery('.product-photo-container img')[0]; // DOM element of main image we need to swap.
+      Shopify.Image.switchImage(newImage, mainImageDomEl, switchImage); // Define switchImage (the callback) in your theme's JavaScript file.
+    }
+    
     // Selected a valid variant that is available.
     if (variant.available) {
           
