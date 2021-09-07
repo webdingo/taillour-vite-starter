@@ -1,32 +1,26 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="shortcut icon" href="" type="image/png">
-    <title>{{ page_title }}
-        {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
-        {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
-        {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
-    </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="" type="image/png">
+  <title>{{ page_title }}
+    {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+    {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
+    {% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
 
-    {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}" />
-    {% endif %}
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
 
-    <link rel="canonical" href="{{ canonical_url }}">
-    {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+  <link rel="canonical" href="{{ canonical_url }}">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="{{ 'common.min.js' | asset_url }}"></script>
-    
-    {{ content_for_header }}
+  {{ content_for_header }}
 </head>
 
 <body>
-
-    {{ content_for_layout }}
-
+  {{ content_for_layout }}
 </body>
 </html>

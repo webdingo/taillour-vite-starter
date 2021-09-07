@@ -1,0 +1,11 @@
+{
+  "name": "index",
+  "sections": {
+    "products": {
+      "type": "index-products"
+    }
+  },
+  "order":[
+    "products"
+  ]
+}
