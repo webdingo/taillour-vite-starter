@@ -80,7 +80,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/coffee-and-cake.jpg",
-        "object_fit": "contain",
+        "object_fit": "cover",
         "object_position": "center",
         "image_position": "right"
       }
