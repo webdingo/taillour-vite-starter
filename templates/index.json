@@ -44,13 +44,49 @@
       ],
       "settings": {
         "image": "shopify://shop_images/CountdowntoXmas.png",
-        "background": "#ffffff",
+        "background": "#f5f5f5",
         "object_fit": "cover",
+        "object_position": "center"
+      }
+    },
+    "image_with_text_pjRwPQ": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aRADHH": {
+          "type": "heading",
+          "settings": {
+            "text": "Headline",
+            "size": "h2"
+          }
+        },
+        "text_amNwtU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sed error voluptate voluptas quaerat odit officiis provident. Dolorum sed eum dolore. Repellendus velit facere non soluta rerum unde ut. Eveniet non rerum et illo maiores illo sit molestiae. Totam maxime in esse nihil reprehenderit. Expedita quod facere asperiores eos tempore in.</p><p>Non praesentium voluptatem deleniti totam. Nisi ut aut illo rerum. Veritatis distinctio sed error. Ipsam iure esse omnis similique omnis consequatur vel. Cum dolore in dignissimos quo.</p>"
+          }
+        },
+        "buttons_hEXxe6": {
+          "type": "buttons",
+          "settings": {
+            "button_label": "Go",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aRADHH",
+        "text_amNwtU",
+        "buttons_hEXxe6"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/footprint.png",
+        "object_fit": "contain",
         "object_position": "center"
       }
     }
   },
   "order": [
-    "image_banner_6NDtLC"
+    "image_banner_6NDtLC",
+    "image_with_text_pjRwPQ"
   ]
 }
