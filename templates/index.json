@@ -82,12 +82,52 @@
         "image": "shopify://shop_images/coffee-and-cake.jpg",
         "object_fit": "cover",
         "object_position": "center",
+        "aspect_ratio": "1/1",
         "image_position": "right"
+      }
+    },
+    "image_with_video_NCkDCh": {
+      "type": "image-with-video",
+      "blocks": {
+        "heading_JbRWKC": {
+          "type": "heading",
+          "settings": {
+            "text": "Headline",
+            "size": "h2"
+          }
+        },
+        "text_VhigEQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Asperiores voluptatem rerum fuga assumenda similique voluptatem sapiente qui non voluptatibus.</p>"
+          }
+        },
+        "buttons_jzKH3h": {
+          "type": "buttons",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_JbRWKC",
+        "text_VhigEQ",
+        "buttons_jzKH3h"
+      ],
+      "settings": {
+        "video": "https://www.youtube.com/watch?v=flatH_6iyf8",
+        "object_fit": "contain",
+        "object_position": "center",
+        "aspect_ratio": "4/3",
+        "video_width": 1020,
+        "video_position": "left"
       }
     }
   },
   "order": [
     "image_banner_6NDtLC",
-    "image_with_text_pjRwPQ"
+    "image_with_text_pjRwPQ",
+    "image_with_video_NCkDCh"
   ]
 }
