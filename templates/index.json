@@ -79,6 +79,7 @@
         "buttons_hEXxe6"
       ],
       "settings": {
+        "image": "shopify://shop_images/coffee-and-cake.jpg",
         "object_fit": "contain",
         "object_position": "center",
         "image_position": "right"
