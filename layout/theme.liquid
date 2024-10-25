@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="" type="image/png">
+
   <title>{{ page_title }}
     {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
     {% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
@@ -17,10 +18,17 @@
 
   <link rel="canonical" href="{{ canonical_url }}">
 
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  <script src="{{ 'theme.js' | asset_url }}"></script>
+
   {{ content_for_header }}
 </head>
 
 <body>
-  {{ content_for_layout }}
+  {% sections 'header-group' %}
+
+  <main>
+    {{ content_for_layout }}
+  </main>
 </body>
 </html>

@@ -1,0 +1,28 @@
+<nav class="fill">
+  <div class="container">
+    {% assign menu_handle = section.settings.menu %}
+    <ul>
+      {% for link in linklists[menu_handle].links %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Nav",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

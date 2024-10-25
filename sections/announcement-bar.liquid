@@ -1,0 +1,18 @@
+<div class="fill center">
+  {{ section.settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "class": "announcement-bar-section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "Welcome to our store! <a href=\"#\"> Find out more</a>"
+    }
+  ]
+}
+{% endschema %}
