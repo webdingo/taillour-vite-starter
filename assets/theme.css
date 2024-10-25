@@ -20,7 +20,6 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
-  position: relative;
 }
 
 html {
@@ -58,7 +57,6 @@ sup {
 }
 
 header,
-main,
 footer {
   margin: 0 auto;
   max-width: var(--max-width);
@@ -71,8 +69,9 @@ footer img {
   display: block;
 }
 
-section {
-  padding: 24px;
+.section {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 .uppercase {
@@ -219,28 +218,23 @@ input[type="checkbox"]:checked {
 button,
 .button {
   font-family: var(--font-stack);
-  font-size: 1.125rem;
-  font-style: italic;
-  background: transparent;
+  font-size: 1rem;
+  font-weight: var(--regular);
+  text-transform: uppercase;
   cursor: pointer;
   display: inline-block;
   text-decoration: none;
-  color: var(--black);
   line-height: 1;
-}
-button.black,
-.button.black {
   background-color: var(--black);
   color: var(--white);
   padding: 14px 16px;
   position: relative;
   margin-bottom: 8px;
+  border-radius: 5px;
 }
-button.black:before,
-.button.black:before,
-.input:before,
-#modal-container:before,
-article pre.highlight:before {
+button:before,
+.button:before,
+.input:before {
   content: "";
   background-image: var(--shading);
   position: absolute;
@@ -250,10 +244,11 @@ article pre.highlight:before {
   left: 4px;
   z-index: -1;
   opacity: 0.75;
+  border-radius: 5px;
 }
-.button.checkout {
-  min-width: 136px;
-  height: 54px;
+button + button,
+.button + .button {
+  margin-left: 1rem;
 }
 
 /* Typography */
@@ -261,11 +256,12 @@ h1 {
   font-size: 78px;
   font-size: 4.875rem;
   font-weight: var(--bold);
-  margin-top: 16px;
-  margin-bottom: 32px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
 }
 h1:after {
-  content: attr(title);
+  content: attr(data-title);
   background-image: var(--shading);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -280,7 +276,7 @@ h1:after {
 h2 {
   font-size: 2.25rem;
   font-weight: var(--bold);
-  margin: 16px auto 48px auto;
+  margin: 1rem auto 3rem auto;
   text-align: center;
 }
 h2.align-left {
@@ -290,7 +286,7 @@ h2.align-left {
 h3 {
   font-size: inherit;
   font-weight: var(--bold);
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
   line-height: 1.4;
 }
 article h3 {

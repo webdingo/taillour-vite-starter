@@ -1,11 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "name": "index",
   "sections": {
-    "products": {
-      "type": "index-products"
+    "image_banner_6NDtLC": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gnR7KK": {
+          "type": "heading",
+          "settings": {
+            "text": "Headline",
+            "size": "h1"
+          }
+        },
+        "text_yz7Gyj": {
+          "type": "text",
+          "settings": {
+            "text": "Asperiores voluptatem rerum fuga assumenda similique voluptatem sapiente qui non voluptatibus."
+          }
+        },
+        "buttons_zUiW9p": {
+          "type": "buttons",
+          "settings": {
+            "button1_label": "Button label",
+            "button1_link": "",
+            "button1_enable": true,
+            "button2_label": "Button label",
+            "button2_link": "",
+            "button2_enable": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_gnR7KK",
+        "text_yz7Gyj",
+        "buttons_zUiW9p"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/CountdowntoXmas.png",
+        "background": "#ffffff",
+        "object_fit": "cover",
+        "object_position": "center"
+      }
     }
   },
-  "order":[
-    "products"
+  "order": [
+    "image_banner_6NDtLC"
   ]
 }
