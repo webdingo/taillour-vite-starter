@@ -43,10 +43,10 @@
         "buttons_zUiW9p"
       ],
       "settings": {
-        "image": "shopify://shop_images/CountdowntoXmas.png",
+        "image": "shopify://shop_images/beautiful-day-at-the-beach.jpg",
         "background": "#f5f5f5",
         "object_fit": "cover",
-        "object_position": "center"
+        "object_position": "bottom"
       }
     },
     "image_with_text_pjRwPQ": {
@@ -79,9 +79,9 @@
         "buttons_hEXxe6"
       ],
       "settings": {
-        "image": "shopify://shop_images/footprint.png",
         "object_fit": "contain",
-        "object_position": "center"
+        "object_position": "center",
+        "image_position": "right"
       }
     }
   },
