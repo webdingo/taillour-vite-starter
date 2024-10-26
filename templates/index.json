@@ -127,9 +127,29 @@
     "product_grid_9e9FqV": {
       "type": "product-grid",
       "settings": {
+        "text": "Headline",
+        "size": "h2",
         "collection": "home",
         "limit": 8,
         "products_per_row": 4
+      }
+    },
+    "collection_grid_7w6HWG": {
+      "type": "collection-grid",
+      "settings": {
+        "text": "Headline",
+        "size": "h2",
+        "collections": [
+          "all-terrain-rollators",
+          "attendant-propelled-wheelchairs",
+          "back-care",
+          "bath-accessories",
+          "bath-aids",
+          "bath-boards",
+          "bath-lifts",
+          "bath-seats"
+        ],
+        "collections_per_row": 4
       }
     }
   },
@@ -137,6 +157,7 @@
     "image_banner_6NDtLC",
     "image_with_text_pjRwPQ",
     "image_with_video_NCkDCh",
-    "product_grid_9e9FqV"
+    "product_grid_9e9FqV",
+    "collection_grid_7w6HWG"
   ]
 }

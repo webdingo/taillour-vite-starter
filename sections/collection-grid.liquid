@@ -5,16 +5,15 @@
     </{{ section.settings.size }}>
   {% endunless %}
 
-  {% assign collection_handle = section.settings.collection | default: "home" %}
-
   {% capture styles %}
-  grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
+  grid-template-columns: repeat({{ section.settings.collections_per_row }}, 1fr);
   {% endcapture %}
 
-  <div class="products-grid" style="{{- styles -}}">
+  <div class="collections-grid" style="{{- styles -}}">
     {% liquid
-    for product in collections[collection_handle].products limit: section.settings.limit
-      render 'product-card', product: product
+    for item in section.settings.collections
+      assign collection = collections[item.handle]
+      render 'collection-card', collection: collection
     endfor
     %}
   </div>
@@ -22,15 +21,15 @@
 
 {% schema %}
 {
-  "name": "Products",
+  "name": "Collections",
   "tag": "section",
-  "class": "collection-products-section",
+  "class": "collections-section",
   "disabled_on": {
     "groups": ["header"]
   },
   "presets": [
     {
-      "name": "Products"
+      "name": "Collections"
     }
   ],
   "settings": [
@@ -61,25 +60,15 @@
       "default": "h2"
     },
     {
-      "type": "collection",
-      "id": "collection",
-      "label": "Collection"
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Collections"
     },
     {
       "type": "range",
-      "id": "limit",
-      "label": "Limit",
-      "info": "Limit the number of products displayed.",
-      "min": 2,
-      "max": 24,
-      "step": 1,
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "products_per_row",
-      "label": "Products Per Row",
-      "info": "Number of products per row.",
+      "id": "collections_per_row",
+      "label": "Collections Per Row",
+      "info": "Number of collections per row.",
       "min": 1,
       "max": 4,
       "step": 1,

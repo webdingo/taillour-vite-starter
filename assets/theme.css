@@ -361,13 +361,15 @@ details > div {
 } */
 
 /* Product Grid & Cards */
-.products-grid {
+.products-grid,
+.collections-grid {
   display: grid;
   gap: 2rem;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
-.product-card {
+.product-card,
+.collection-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -377,7 +379,8 @@ details > div {
   background-color: var(--white);
   position: relative;
 }
-.product-card:hover:before {
+.product-card:hover:before,
+.collection-card:hover:before {
   content: "";
   background-image: var(--shading);
   position: absolute;
@@ -388,7 +391,8 @@ details > div {
   z-index: -1;
   opacity: 0.75;
 }
-.product-card img {
+.product-card img,
+.collection-card img {
   width: 100%;
   height: 100%;
   object-fit: contain;
