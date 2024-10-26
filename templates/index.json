@@ -123,11 +123,20 @@
         "video_width": 1020,
         "video_position": "left"
       }
+    },
+    "product_grid_9e9FqV": {
+      "type": "product-grid",
+      "settings": {
+        "collection": "home",
+        "limit": 8,
+        "products_per_row": 4
+      }
     }
   },
   "order": [
     "image_banner_6NDtLC",
     "image_with_text_pjRwPQ",
-    "image_with_video_NCkDCh"
+    "image_with_video_NCkDCh",
+    "product_grid_9e9FqV"
   ]
 }

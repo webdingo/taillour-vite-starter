@@ -174,46 +174,7 @@ input[type="checkbox"]:checked {
   line-height: 0;
 }
 
-/* .package-option {
-  display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.package-option label {
-  font-weight: var(--bold);
-  font-style: normal;
-  padding: 0;
-}
-.package-option label em {
-  border: var(--border);
-  border-radius: 50px;
-  padding: 0 6px;
-  font-size: 0.9rem;
-  margin-left: 4px;
-  cursor: help;
-}
-.package-option p,
-.package-option li {
-  font-size: 1.05rem;
-  font-style: italic;
-  margin-top: 8px;
-  margin-bottom: 0;
-  line-height: 1.5;
-}
-.package-option li {
-  list-style: disc;
-  margin-left: 16px;
-}
-#modal-content summary .js--group-total {
-  background-color: var(--black);
-  color: var(--white);
-  padding: 4px 10px;
-  border-radius: 30px;
-  position: absolute;
-  right: 16px;
-  top: 12px;
-} */
-
+/* Buttons */
 button,
 .button {
   font-family: var(--font-stack);
@@ -259,7 +220,8 @@ h1 {
   margin-bottom: 1rem;
   position: relative;
 }
-h1:after {
+h1:after,
+h2:after {
   content: attr(data-title);
   background-image: var(--shading);
   -webkit-background-clip: text;
@@ -271,16 +233,15 @@ h1:after {
   opacity: 0.75;
   width: 100%;
 }
-
+h2:after {
+  opacity: 0.35;
+}
 h2 {
-  font-size: 2.25rem;
+  font-size: 3rem;
   font-weight: var(--bold);
-  margin: 1rem auto;
+  margin: 1rem auto 1.5rem auto;
+  position: relative;
 }
-h2.align-left {
-  max-width: unset;
-}
-
 h3 {
   font-size: inherit;
   font-weight: var(--bold);
@@ -342,7 +303,6 @@ summary:before {
 details[open] summary:before {
   transform: rotate(90deg);
 }
-
 details summary em {
   display: flex;
   align-items: center;
@@ -393,11 +353,47 @@ details > div {
   max-width: var(--max-width);
   margin: 0 auto;
 }
-.container h1 {
+/* .container h1 {
   margin: 0 0 30px 0;
   font-size: 3em;
   line-height: 1;
   letter-spacing: -1px;
+} */
+
+/* Product Grid & Cards */
+.products-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 2px solid var(--black);
+  padding: 1rem;
+  text-decoration: none;
+  background-color: var(--white);
+  position: relative;
+}
+.product-card:hover:before {
+  content: "";
+  background-image: var(--shading);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: -1;
+  opacity: 0.75;
+}
+.product-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  aspect-ratio: 1/1;
 }
 
 /* Header */
@@ -444,75 +440,6 @@ header nav li.active a {
   text-decoration: underline;
 }
 
-/* Homepage sections */
-/* #intro {
-  padding-bottom: 0;
-}
-#intro .grid-2 {
-  align-items: center;
-  margin-top: -40px;
-}
-.intro-description {
-  margin-top: 50px;
-  margin-bottom: 50px;
-} */
-
-/* #projects {
-  margin-bottom: 16px;
-}
-#projects picture {
-  display: block;
-  border: var(--border);
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-#projects .grid-3 div:nth-child(1) picture {
-  max-height: 500px;
-}
-#projects .grid-3 div:nth-child(2) picture {
-  max-height: 530px;
-}
-#projects .grid-3 div:nth-child(3) picture {
-  max-height: 420px;
-} */
-
-/* #services h2 {
-  max-width: 50%;
-  margin-bottom: 16px;
-}
-#services #order-online {
-  display: block;
-} */
-
-/* #clients figure {
-  display: flex;
-  align-items: center;
-  gap: 100px;
-}
-#clients figure:not(:last-child) {
-  border-bottom: var(--border);
-  margin-bottom: 40px;
-  padding-bottom: 24px;
-}
-#clients figure blockquote {
-  width: 72%;
-  padding-left: 70px;
-}
-#clients figure figcaption {
-  width: 28%;
-  line-height: 1.625rem;
-  margin-bottom: 16px;
-}
-#clients figcaption cite {
-  display: block;
-  font-style: normal;
-  font-weight: var(--bold);
-}
-#clients figure blockquote:before,
-#clients figure blockquote:after {
-  position: absolute;
-} */
-
 blockquote:before {
   content: url("data:image/svg+xml,%0A%3Csvg width='42px' height='27px' viewBox='0 0 42 27' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='UK-Website' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Ecommerce-Web-Designer' transform='translate(-49.000000, -3818.000000)' fill='%23000000' fill-rule='nonzero'%3E%3Cg id='Group' transform='translate(49.726562, 3818.000000)'%3E%3Cpath d='M17.5429688,0 L17.5429688,6.890625 C15.6445312,6.890625 14.2148438,7.16015625 13.2539062,7.69921875 C12.2695312,8.28515625 11.6601562,8.953125 11.4257812,9.703125 C11.1679688,10.453125 11.015625,11.9414062 10.96875,14.1679688 L17.5429688,14.1679688 L17.5429688,27 L0,27 L0,16.0664062 C0,12.1054688 0.140625,9.41015625 0.421875,7.98046875 C0.703125,6.52734375 1.5234375,5.0859375 2.8828125,3.65625 C4.2421875,2.2734375 5.89453125,1.3125 7.83984375,0.7734375 C9.73828125,0.2578125 12.9726562,0 17.5429688,0 Z M41.2734375,0 L41.2734375,6.890625 C39.3984375,6.890625 37.9804688,7.16015625 37.0195312,7.69921875 C36.0117188,8.26171875 35.390625,8.9296875 35.15625,9.703125 C34.8984375,10.4765625 34.7578125,11.9648438 34.734375,14.1679688 L41.2734375,14.1679688 L41.2734375,27 L23.765625,27 L23.765625,16.0664062 C23.765625,12.1054688 23.90625,9.41015625 24.1875,7.98046875 C24.46875,6.52734375 25.2890625,5.0859375 26.6484375,3.65625 C28.0078125,2.2734375 29.6601562,1.3125 31.6054688,0.7734375 C33.5039062,0.2578125 36.7265625,0 41.2734375,0 Z' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   z-index: 1;
@@ -526,9 +453,6 @@ blockquote:after {
 }
 
 /* Footer */
-/* footer section {
-  padding-bottom: 0;
-} */
 footer ul {
   display: flex;
   justify-content: space-evenly;
@@ -541,20 +465,6 @@ footer span {
   height: 30px;
   align-items: flex-end;
 }
-/* footer .illustration {
-  position: relative;
-  bottom: -3px;
-  display: flex;
-  justify-content: center;
-}
-footer .illustration p {
-  position: absolute;
-  right: 0;
-  bottom: 36px;
-  font-size: 1rem;
-  width: 31%;
-  line-height: 1.35rem;
-} */
 footer ul a {
   display: block;
 }

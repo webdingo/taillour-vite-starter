@@ -1,0 +1,12 @@
+<a class="product-card" href="{{ product.url }}">
+  <div>
+    <img src="{{ product.featured_image.src | image_url: width: 400 }}"
+      width=""
+      height=""
+      alt="{{ product.featured_image.alt }}">
+  </div>
+  <div>
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price | money }}</p>
+  </div>
+</a>
