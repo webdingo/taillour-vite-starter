@@ -151,6 +151,63 @@
         ],
         "collections_per_row": 4
       }
+    },
+    "multicolumn_VbBRUF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_zYFacD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/video-game-controller-front.jpg",
+            "text": "Headline",
+            "size": "h3",
+            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+            "button_label": "Button label",
+            "button_link": "#"
+          }
+        },
+        "column_CNfgmM": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/silver-lamp-on-a-white-table-next-to-books.jpg",
+            "text": "Headline",
+            "size": "h3",
+            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+            "button_label": "Go",
+            "button_link": ""
+          }
+        },
+        "column_kbECRk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/hand-pours-a-green-liquid-into-a-glass-of-ice-and-milk.jpg",
+            "text": "Headline",
+            "size": "h3",
+            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "column_iRJgEf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/sliced-pumpkin-pie.jpg",
+            "text": "Headline",
+            "size": "h3",
+            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_zYFacD",
+        "column_CNfgmM",
+        "column_kbECRk",
+        "column_iRJgEf"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -158,6 +215,7 @@
     "image_with_text_pjRwPQ",
     "image_with_video_NCkDCh",
     "product_grid_9e9FqV",
-    "collection_grid_7w6HWG"
+    "collection_grid_7w6HWG",
+    "multicolumn_VbBRUF"
   ]
 }
