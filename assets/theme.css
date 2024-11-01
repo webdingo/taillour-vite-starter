@@ -261,6 +261,7 @@ h2 {
   font-weight: var(--bold);
   margin: 0 auto 1.5rem auto;
   position: relative;
+  z-index: 0;
 }
 h3 {
   font-size: 1.25rem;

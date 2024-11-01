@@ -1,9 +1,10 @@
 <div class="section-wrap"
   style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
   <div class="section center">
-    <{{- section.settings.size }} data-title="{{ section.settings.text }}">
+    <{{- section.settings.size }} data-title="{{ section.settings.heading }}">
       {{ section.settings.heading }}
     </{{- section.settings.size -}}>
+
     {{ section.settings.text }}
 
     {% form 'customer', class: 'form newsletter-signup-form center' %}

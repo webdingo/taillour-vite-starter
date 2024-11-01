@@ -230,6 +230,101 @@
         "background": "#f5f5f5",
         "color": ""
       }
+    },
+    "contact_form_EAWmhp": {
+      "type": "contact-form",
+      "blocks": {
+        "text_LU8zqn": {
+          "type": "text",
+          "settings": {
+            "title": "First Name",
+            "name": "First Name",
+            "maxlength": 128,
+            "required": false,
+            "placeholder": ""
+          }
+        },
+        "text_CgHJ6n": {
+          "type": "text",
+          "settings": {
+            "title": "Last Name",
+            "name": "Last Name",
+            "maxlength": 128,
+            "required": false,
+            "placeholder": ""
+          }
+        },
+        "email_JcEXPP": {
+          "type": "email",
+          "settings": {
+            "title": "Email",
+            "maxlength": 128,
+            "placeholder": ""
+          }
+        },
+        "textarea_XmypF6": {
+          "type": "textarea",
+          "settings": {
+            "title": "Message",
+            "name": "Body",
+            "maxlength": 128,
+            "rows": 5,
+            "required": true,
+            "placeholder": ""
+          }
+        },
+        "paragraph_3RCxUm": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p><strong>How did you hear about us?<br/></strong>Tick all that apply.</p>"
+          }
+        },
+        "checkbox_ceachf": {
+          "type": "checkbox",
+          "settings": {
+            "title": "Google",
+            "name": "Google",
+            "required": false,
+            "placeholder": ""
+          }
+        },
+        "checkbox_HGGwkP": {
+          "type": "checkbox",
+          "settings": {
+            "title": "Facebook",
+            "name": "Facebook",
+            "required": false,
+            "placeholder": ""
+          }
+        },
+        "checkbox_wHnRgw": {
+          "type": "checkbox",
+          "settings": {
+            "title": "TV",
+            "name": "TV",
+            "required": false,
+            "placeholder": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_LU8zqn",
+        "text_CgHJ6n",
+        "email_JcEXPP",
+        "textarea_XmypF6",
+        "paragraph_3RCxUm",
+        "checkbox_ceachf",
+        "checkbox_HGGwkP",
+        "checkbox_wHnRgw"
+      ],
+      "settings": {
+        "heading": "Contact us",
+        "size": "h2",
+        "text": "<p>Complete the form below to send us a message.</p>",
+        "button_label": "Submit",
+        "background": "#ffffff",
+        "color": ""
+      }
     }
   },
   "order": [
@@ -239,6 +334,7 @@
     "product_grid_9e9FqV",
     "collection_grid_7w6HWG",
     "multicolumn_VbBRUF",
-    "newsletter_form_JJALbH"
+    "newsletter_form_JJALbH",
+    "contact_form_EAWmhp"
   ]
 }
