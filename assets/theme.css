@@ -117,6 +117,7 @@ body .hide {
 }
 
 .fill {
+  padding: 0.5rem 0;
   background-color: var(--black);
   color: var(--white);
 }
@@ -427,10 +428,10 @@ header {
   grid-gap: 1rem;
 }
 header #logo {
-  border-right: var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 1rem;
 }
 nav {
   font-size: 1rem;
