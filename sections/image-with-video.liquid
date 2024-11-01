@@ -4,52 +4,54 @@
 }
 {% endstylesheet %}
 
-<div class="section">
-  <div class="grid-2 middle video-text-{{ section.settings.video_position }}">
-    <!-- content -->
-    <div class="video-text-content">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading' -%}
-            <{{- block.settings.size }} data-title="{{ block.settings.text }}">{{ block.settings.text }}</{{- block.settings.size -}}>
-          {%- when 'text' -%}
-            <p>{{ block.settings.text }}</p>
-          {% when 'buttons' %}
-            <p>
-              <a class="button" href="{{ block.settings.button_link | default: '#' }}">
-                {{ block.settings.button_label }}
-              </a>
-            </p>
-        {% endcase %}
-      {%- endfor -%}
-    </div>
-    <div class="video-text-asset">
-      <!-- video -->
-      <div>
-        {% unless section.settings.video == blank %}
-          {% capture video_sizes %}
-          width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
-          {% endcapture %}
+<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }}">
+  <div class="section">
+    <div class="grid-2 middle video-text-{{ section.settings.video_position }}">
+      <!-- content -->
+      <div class="video-text-content">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <{{- block.settings.size }} data-title="{{ block.settings.text }}">{{ block.settings.text }}</{{- block.settings.size -}}>
+            {%- when 'text' -%}
+              <p>{{ block.settings.text }}</p>
+            {% when 'buttons' %}
+              <p>
+                <a class="button" href="{{ block.settings.button_link | default: '#' }}">
+                  {{ block.settings.button_label }}
+                </a>
+              </p>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+      <div class="video-text-asset">
+        <!-- video -->
+        <div>
+          {% unless section.settings.video == blank %}
+            {% capture video_sizes %}
+            width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
+            {% endcapture %}
 
-          {% liquid
-          if section.settings.video.type == 'youtube'
-            assign video_src = section.settings.video.id | prepend: "https://www.youtube.com/embed/"
-            assign video_class = "video-iframe-youtube"
-          else
-            assign video_src = section.settings.video.id | prepend: "https://player.vimeo.com/video/"
-            assign video_class = "video-iframe-vimeo"
-          endif
-          %}
-          <iframe
-            class="{{ video_class }}"
-            style="{{ video_sizes }}"
-            src="{{ video_src }}"
-            width="{{ section.settings.video_width }}"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen></iframe>
-        {% endunless %}
+            {% liquid
+            if section.settings.video.type == 'youtube'
+              assign video_src = section.settings.video.id | prepend: "https://www.youtube.com/embed/"
+              assign video_class = "video-iframe-youtube"
+            else
+              assign video_src = section.settings.video.id | prepend: "https://player.vimeo.com/video/"
+              assign video_class = "video-iframe-vimeo"
+            endif
+            %}
+            <iframe
+              class="{{ video_class }}"
+              style="{{ video_sizes }}"
+              src="{{ video_src }}"
+              width="{{ section.settings.video_width }}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          {% endunless %}
+        </div>
       </div>
     </div>
   </div>
@@ -182,6 +184,16 @@
         }
       ],
       "default": "right"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ffffff"
     }
   ],
   "blocks": [

@@ -17,37 +17,39 @@ assign columns = section.blocks.size
 }
 {% endstylesheet %}
 
-<div class="section column-section" style="grid-template-columns: repeat({{columns}}, 1fr);">
-  {% for block in section.blocks %}
-    {% assign image_height = image_width | times: block.settings.image.aspect_ratio | ceil %}
-    <div>
-      {% unless block.settings.image == blank %}
-        <div>
-          <img src="{{ block.settings.image | image_url: width: image_width }}"
-            width="{{ image_width }}"
-            height="{{ image_height }}"
-            alt="{{ block.settings.image.alt }}">
-        </div>
-      {% endunless %}
-
-      {% unless block.settings.text == blank %}
-        <{{- block.settings.size }} data-title="{{ block.settings.text }}">
-          {{ block.settings.text }}
-        </{{- block.settings.size -}}>
-      {% endunless %}
-
+<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }}">
+  <div class="section column-section" style="grid-template-columns: repeat({{columns}}, 1fr);">
+    {% for block in section.blocks %}
+      {% assign image_height = image_width | times: block.settings.image.aspect_ratio | ceil %}
       <div>
-        {{ block.settings.content }}
-        {% unless block.settings.button_label == blank %}
-          <p>
-            <a class="button" href="{{ block.settings.button_link | default: '#' }}">
-              {{ block.settings.button_label }}
-            </a>
-          </p>
+        {% unless block.settings.image == blank %}
+          <div>
+            <img src="{{ block.settings.image | image_url: width: image_width }}"
+              width="{{ image_width }}"
+              height="{{ image_height }}"
+              alt="{{ block.settings.image.alt }}">
+          </div>
         {% endunless %}
+
+        {% unless block.settings.text == blank %}
+          <{{- block.settings.size }} data-title="{{ block.settings.text }}">
+            {{ block.settings.text }}
+          </{{- block.settings.size -}}>
+        {% endunless %}
+
+        <div>
+          {{ block.settings.content }}
+          {% unless block.settings.button_label == blank %}
+            <p>
+              <a class="button" href="{{ block.settings.button_link | default: '#' }}">
+                {{ block.settings.button_label }}
+              </a>
+            </p>
+          {% endunless %}
+        </div>
       </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
@@ -72,6 +74,16 @@ assign columns = section.blocks.size
     {
       "type": "paragraph",
       "content": "A section made up of a maximum of 4 columns. Each column can have an image, heading, content and button."
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ffffff"
     }
   ],
   "blocks": [

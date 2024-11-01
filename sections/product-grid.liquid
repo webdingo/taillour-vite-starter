@@ -1,22 +1,24 @@
-<div class="section">
-  {% unless section.settings.text == blank %}
-    <{{ section.settings.size }} data-title="{{ section.settings.text }}">
-      {{ section.settings.text }}
-    </{{ section.settings.size }}>
-  {% endunless %}
+<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }}">
+  <div class="section">
+    {% unless section.settings.text == blank %}
+      <{{ section.settings.size }} data-title="{{ section.settings.text }}">
+        {{ section.settings.text }}
+      </{{ section.settings.size }}>
+    {% endunless %}
 
-  {% assign collection_handle = section.settings.collection | default: "home" %}
+    {% assign collection_handle = section.settings.collection | default: "home" %}
 
-  {% capture styles %}
-  grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
-  {% endcapture %}
+    {% capture styles %}
+    grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
+    {% endcapture %}
 
-  <div class="products-grid" style="{{- styles -}}">
-    {% liquid
-    for product in collections[collection_handle].products limit: section.settings.limit
-      render 'product-card', product: product
-    endfor
-    %}
+    <div class="products-grid" style="{{- styles -}}">
+      {% liquid
+      for product in collections[collection_handle].products limit: section.settings.limit
+        render 'product-card', product: product
+      endfor
+      %}
+    </div>
   </div>
 </div>
 
@@ -84,6 +86,16 @@
       "max": 4,
       "step": 1,
       "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#ffffff"
     }
   ]
 }
