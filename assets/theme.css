@@ -68,10 +68,17 @@ footer img {
   display: block;
 }
 
+.section-wrap {
+  padding: 2rem 0;
+}
 .section {
   max-width: var(--max-width);
   margin: 0 auto;
 }
+.section-wrap > * {
+  padding: 0.5rem 1rem;
+}
+
 
 .uppercase {
   text-transform: uppercase;
@@ -104,9 +111,6 @@ s {
 
 body .nomargin {
   margin: 0;
-}
-.shopify-section > * {
-  padding: 0.5rem 1rem;
 }
 
 .fill {
@@ -246,7 +250,7 @@ h2:after {
 h2 {
   font-size: 3rem;
   font-weight: var(--bold);
-  margin: 1rem auto 1.5rem auto;
+  margin: 0 auto 1.5rem auto;
   position: relative;
 }
 h3 {
