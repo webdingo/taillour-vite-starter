@@ -40,8 +40,8 @@ body {
 mark,
 p a {
   background-color: #ffd7003b;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
 }
 
 a {
@@ -112,6 +112,9 @@ s {
 body .nomargin {
   margin: 0;
 }
+body .hide {
+  display: none;
+}
 
 .fill {
   background-color: var(--black);
@@ -119,11 +122,16 @@ body .nomargin {
 }
 
 /* Form & Buttons */
+form {
+  max-width: 400px;
+}
+form.center {
+  margin: 0 auto;
+}
 form .form-row {
-  margin-bottom: 24px;
+  margin-bottom: 1rem;
 }
 form label {
-  font-style: italic;
   display: block;
   padding: 4px 0;
 }

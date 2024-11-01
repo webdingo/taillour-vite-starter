@@ -4,7 +4,7 @@
 }
 {% endstylesheet %}
 
-<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }}">
+<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
   <div class="section">
     <div class="grid-2 middle video-text-{{ section.settings.video_position }}">
       <!-- content -->
@@ -194,6 +194,11 @@
       "id": "background",
       "label": "Background",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text Colour"
     }
   ],
   "blocks": [
