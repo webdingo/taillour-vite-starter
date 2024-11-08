@@ -133,7 +133,7 @@
       "settings": {
         "text": "Headline",
         "size": "h2",
-        "collection": "home",
+        "collection": "products",
         "limit": 8,
         "products_per_row": 4,
         "background": "#ffffff",
@@ -146,14 +146,7 @@
         "text": "Headline",
         "size": "h2",
         "collections": [
-          "all-terrain-rollators",
-          "attendant-propelled-wheelchairs",
-          "back-care",
-          "bath-accessories",
-          "bath-aids",
-          "bath-boards",
-          "bath-lifts",
-          "bath-seats"
+          "products"
         ],
         "collections_per_row": 4,
         "background": "#ffffff",
