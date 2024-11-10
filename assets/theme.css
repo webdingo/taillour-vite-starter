@@ -214,8 +214,7 @@ button:hover,
   font-weight: 600;
 }
 button:before,
-.button:before,
-.input:before {
+.button:before {
   content: "";
   background-image: var(--shading);
   position: absolute;
