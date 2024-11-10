@@ -60,7 +60,6 @@
                     <input type="checkbox"
                     id="{{ block.settings.name | handleize | prepend: 'contact_' }}"
                     name="contact[{{- block.settings.name -}}]"
-                    placeholder="{{ block.settings.placeholder }}"
                     {% if block.settings.required == true %}required{% endif %}>
                     {{ block.settings.title }}
                   </label>
