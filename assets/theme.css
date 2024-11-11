@@ -2,6 +2,7 @@
   --max-width: 1230px;
   --black: #000000;
   --white: #ffffff;
+  --cream: #FFF6D1;
   --font-stack: system-ui, sans-serif;
   --regular: 400;
   --bold: 900;
@@ -39,7 +40,7 @@ body {
 
 mark,
 p a {
-  background-color: #ffd7003b;
+  background-color: var(--cream);
   padding-left: 0.125rem;
   padding-right: 0.125rem;
 }
@@ -196,6 +197,17 @@ input[type="checkbox"]:checked {
   display: inline-block;
   line-height: 0;
 }
+fieldset {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+}
+fieldset legend {
+  display: block;
+  margin-bottom: 1rem;
+  font-family: var(--font-stack);
+  font-size: 1.25rem;
+  font-weight: var(--bold);
+  color: var(--black);
+}
 
 /* Buttons */
 button,
@@ -287,23 +299,38 @@ article h3 {
 }
 
 main p,
-main ul {
+main ul,
+main ol {
   line-height: 2rem;
   margin-bottom: 16px;
 }
 
 hr {
   background: none;
-  border-top: 1px dashed var(--black);
+  border-top: 2px dashed var(--black);
   margin-top: 24px;
   margin-bottom: 32px;
 }
 hr.solid {
   border-top-style: solid;
-  border-top-width: 2px;
 }
 
-/* Tabbed sections */
+.large-text {
+  font-size: 2rem;
+}
+
+.wysiwyg ul,
+.wysiwyg ol {
+  margin-left: 2rem;
+}
+.wysiwyg ul li {
+  list-style: square;
+}
+.wysiwyg ol li {
+  list-style: auto;
+}
+
+/* Accordian sections */
 details {
   position: relative;
   border-top: var(--border);
@@ -384,18 +411,15 @@ details > div {
 .grid-3.middle {
   align-items: center;
 }
+.flex.wrap {
+  flex-wrap: wrap;
+}
 
 /* Standard page content */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
 }
-/* .container h1 {
-  margin: 0 0 30px 0;
-  font-size: 3em;
-  line-height: 1;
-  letter-spacing: -1px;
-} */
 
 /* Product Grid & Cards */
 .products-grid,
@@ -566,43 +590,6 @@ article img {
   section {
     padding: 10px;
   }
-
-  /*
-  header {
-    border-bottom: 0;
-    text-align: center;
-  }
-  header #logo {
-    margin-top: 24px;
-    border: 0;
-  }
-  header #tagline {
-    padding: 8px;
-  }
-  header nav {
-    overflow: hidden;
-    width: calc(100% + 2px);
-  }
-  header nav ul {
-    flex-wrap: wrap;
-  }
-  header nav,
-  header nav li {
-    height: unset;
-    flex: 1 auto;
-    text-align: center;
-    justify-content: center;
-  }
-  header nav li {
-    height: 50px;
-    border-bottom: var(--border);
-  }
-  header nav li:last-child {
-    display: block;
-    width: auto;
-    justify-content: flex-start;
-  }
-  */
 
   /* header, */
   .grid-2,

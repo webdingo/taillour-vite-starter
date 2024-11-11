@@ -1,7 +1,24 @@
 {
   "sections": {
     "product": {
-      "type": "main-product"
+      "type": "main-product",
+      "blocks": {
+        "options_je9wUj": {
+          "type": "options",
+          "settings": {}
+        },
+        "button_bNUm3G": {
+          "type": "button",
+          "settings": {
+            "button_label": "Add to basket"
+          }
+        }
+      },
+      "block_order": [
+        "options_je9wUj",
+        "button_bNUm3G"
+      ],
+      "settings": {}
     }
   },
   "order": [
