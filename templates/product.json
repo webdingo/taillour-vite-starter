@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "product": {
@@ -18,10 +27,24 @@
         "options_je9wUj",
         "button_bNUm3G"
       ],
-      "settings": {}
+      "settings": {
+        "tab_delivery": "<p>Enim vitae cupiditate. Qui tenetur consequatur voluptas sequi. Cumque quas iste necessitatibus ratione optio rem consequuntur. Placeat dicta perspiciatis aut sed ipsum autem. Accusantium natus aut.</p>",
+        "tab_returns": "<p>Enim repudiandae voluptas quaerat animi. Impedit laudantium temporibus ea impedit sint enim cumque fuga. Odit aliquid <a href=\"#\">veniam nesciunt</a> molestias dignissimos. Ea optio eaque et quod. Ducimus minus est neque ipsam.</p><p>Repudiandae recusandae velit corrupti et animi natus nihil placeat. Cumque commodi nihil ipsam. Et quia exercitationem. Fuga eaque excepturi maxime ex dolores. Pariatur necessitatibus quidem mollitia voluptas.</p>"
+      }
+    },
+    "product_recommendations_jRYYgX": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like...",
+        "size": "h2",
+        "limit": 4,
+        "background": "#f5f5f5",
+        "color": ""
+      }
     }
   },
   "order": [
-    "product"
+    "product",
+    "product_recommendations_jRYYgX"
   ]
 }

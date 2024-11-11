@@ -36,7 +36,7 @@ grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
       </div>
       {% render 'collection-filters' %}
     </aside>
-    <div class="section-wrapX">
+    <div>
       {% paginate collection.products by section.settings.limit %}
         <div class="section">
           <p>{{ collection.products_count }} products</p>

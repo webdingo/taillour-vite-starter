@@ -425,6 +425,7 @@ details > div {
 .products-grid,
 .collections-grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
