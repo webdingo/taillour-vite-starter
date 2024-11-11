@@ -110,36 +110,38 @@
               <button type="submit" class="button button-small">Apply</button>
             </p>
           {%- when 'price_range' -%}
-            <p>
-              <label for="Filter-{{ filter.min_value.param_name }}">
-                From {{ cart.currency.symbol }}
-              </label>
-              <input name="{{ filter.min_value.param_name }}"
-                id="Filter-{{ filter.min_value.param_name }}"
-                {% if filter.min_value.value -%}
-                  value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
-                {%- endif %}
-                type="number"
-                placeholder="0"
-                min="0"
-                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-              >
-            </p>
-            <p>
-              <label for="Filter-{{ filter.max_value.param_name }}">
-                To {{ cart.currency.symbol }}
-              </label>
-              <input name="{{ filter.max_value.param_name }}"
-                id="Filter-{{ filter.max_value.param_name }}"
-                {% if filter.max_value.value -%}
-                  value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
-                {%- endif %}
-                type="number"
-                placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-                min="0"
-                max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
-              >
-            </p>
+            <ul>
+              <li>
+                <label for="Filter-{{ filter.min_value.param_name }}">
+                  From {{ cart.currency.symbol }}
+                </label>
+                <input name="{{ filter.min_value.param_name }}"
+                  id="Filter-{{ filter.min_value.param_name }}"
+                  {% if filter.min_value.value -%}
+                    value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                  {%- endif %}
+                  type="number"
+                  placeholder="0"
+                  min="0"
+                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                >
+              </li>
+              <li>
+                <label for="Filter-{{ filter.max_value.param_name }}">
+                  To {{ cart.currency.symbol }}
+                </label>
+                <input name="{{ filter.max_value.param_name }}"
+                  id="Filter-{{ filter.max_value.param_name }}"
+                  {% if filter.max_value.value -%}
+                    value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                  {%- endif %}
+                  type="number"
+                  placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                  min="0"
+                  max="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                >
+              </li>
+            </ul>
             <p>
               <button type="submit" class="button button-small">Apply</button>
             </p>

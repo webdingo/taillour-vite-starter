@@ -3,7 +3,7 @@
     "collection": {
       "type": "main-collection",
       "settings": {
-        "limit": 1,
+        "limit": 8,
         "products_per_row": 4
       }
     }
