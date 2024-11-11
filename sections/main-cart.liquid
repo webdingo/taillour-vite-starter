@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
+
+<form action="{{ routes.cart_url }}" method="post">
+  <div class="section-wrap">
+    <section class="section">
+      <h1>Cart</h1>
+    </section>
+
+    <section class="section">
+      <div class="cart-items-header">
+        <div>Product</div>
+        <div>Quantity</div>
+        <div>Total</div>
+      </div>
+      <div class="cart-items-group">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <div>
+              <div class="flex align-left">
+                <div class="cart-item__image">
+                  <a href="{{ item.url }}">
+                    <img src="{{ item.image | image_url: width: 75 }}" alt="{{ item.image.alt }}">
+                  </a>
+                </div>
+                <div class="cart-item__details">
+                  <script>console.log({{ item | json }});</script>
+                  <h3>
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  </h3>
+                  <div>{{ item.price | money | append: " ea." }}</div>
+                  {% unless item.product.has_only_default_variant == true %}
+                    <div>
+                      <ul>
+                      {% for option in item.options_with_values %}
+                        <li>{{ option.name }}: <strong>{{ option.value }}</strong></li>
+                      {% endfor %}
+                      </ul>
+                    </div>
+                  {% endunless %}
+                </div>
+              </div>
+            </div>
+            <div>
+              <input type="number" name="updates[]" value="{{ item.quantity }}">
+            </div>
+            <div>
+              <strong>{{ item.line_price | money }}</strong>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</form>
