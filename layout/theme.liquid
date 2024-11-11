@@ -30,5 +30,12 @@
   <main>
     {{ content_for_layout }}
   </main>
+
+  {% liquid
+  # Newsletter Popup.
+  if settings.newsletter_popup
+    render 'newsletter-popup'
+  endif
+  %}
 </body>
 </html>

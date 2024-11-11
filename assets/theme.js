@@ -6,22 +6,37 @@ var ready = (callback) => {
 };
 
 /*
-|-----------------------------------------
-| History State
-|-----------------------------------------
-| Check if window.history is supported
-*/
+ * HISTORY STATE
+ * Check if window.history is supported
+ */
 function historyState() {
   return window.history && window.history.replaceState;
 };
 
 /*
-|-----------------------------------------
-| Format Money
-|-----------------------------------------
-| Formats the passed value as money with
-| currency symbol.
-*/
+ * GET URL PARAMETER
+ * Checks for url parameter called `name`.
+ */
+function getParam(name) {
+  if ('URLSearchParams' in window) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name);
+  } else {
+    // Polyfill for IE11
+    var params = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (params == null) {
+      return null;
+    } else {
+      return decodeURI(params[1]) || 0;
+    }
+  }
+}
+
+/*
+ * FORMAT MONEY
+ * Formats the passed value as money with
+ * currency symbol.
+ */
 function moneyWithCurrency(value) {
   if (value != undefined) {
     var $string = value.toLocaleString("en-GB", { style: "currency", currency: "GBP" });
@@ -31,12 +46,10 @@ function moneyWithCurrency(value) {
 
 ready(function() {
   /*
-  |-----------------------------------------
-  | Option Selector
-  |-----------------------------------------
-  | Works the variant option dropdowns used on the
-  | product page template.
-  */
+   * OPTION SELECTOR
+   * Works the variant option dropdowns used on the
+   * product page template.
+   */
   var variant;
   var options = [];
   options[1] = null;
