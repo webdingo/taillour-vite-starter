@@ -1,3 +1,9 @@
+{% liquid
+# Some layout settings here. These aren't added as template settings, as they
+# don't need to be.
+assign thumbnail_width = 150
+%}
+
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
 
 <form action="{{ routes.cart_url }}" method="post">
@@ -13,42 +19,62 @@
         <div>Total</div>
       </div>
       <div class="cart-items-group">
-        {% for item in cart.items %}
-          <div class="cart-item">
-            <div>
-              <div class="flex align-left">
-                <div class="cart-item__image">
-                  <a href="{{ item.url }}">
-                    <img src="{{ item.image | image_url: width: 75 }}" alt="{{ item.image.alt }}">
-                  </a>
-                </div>
-                <div class="cart-item__details">
-                  <script>console.log({{ item | json }});</script>
-                  <h3>
-                    <a href="{{ item.url }}">{{ item.product.title }}</a>
-                  </h3>
-                  <div>{{ item.price | money | append: " ea." }}</div>
-                  {% unless item.product.has_only_default_variant == true %}
-                    <div>
-                      <ul>
-                      {% for option in item.options_with_values %}
-                        <li>{{ option.name }}: <strong>{{ option.value }}</strong></li>
-                      {% endfor %}
-                      </ul>
-                    </div>
-                  {% endunless %}
-                </div>
-              </div>
+        {% liquid
+        for item in cart.items
+          render 'cart-item', item: item, thumbnail_width: thumbnail_width
+        endfor
+        %}
+      </div>
+      <div class="cart-items-footer">
+        <div class="cart-items-footer__total flex middle">
+          <span>{{ section.settings.cart_total_label }}</span>
+          <strong class="large-text">{{ cart.total_price | money }}</strong>
+        </div>
+        <div class="cart-items-footer__note">
+          {{ section.settings.checkout_note }}
+        </div>
+        <div>
+          <button type="submit" name="checkout" class="button">
+            {{ section.settings.checkout_btn_label }}
+          </button>
+          {%- if additional_checkout_buttons -%}
+            <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+              {{ content_for_additional_checkout_buttons }}
             </div>
-            <div>
-              <input type="number" name="updates[]" value="{{ item.quantity }}">
-            </div>
-            <div>
-              <strong>{{ item.line_price | money }}</strong>
-            </div>
-          </div>
-        {% endfor %}
+          {%- endif -%}
+        </div>
       </div>
     </section>
   </div>
 </form>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "class": "cart-section",
+  "disabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "cart_total_label",
+      "label": "Cart total label",
+      "default": "Estimated total"
+    },
+    {
+      "type": "richtext",
+      "id": "checkout_note",
+      "label": "Checkout note",
+      "default": "<p><em>Tax, shipping and discounts are calculated at checkout.</em></p>"
+    },
+    {
+      "type": "text",
+      "id": "checkout_btn_label",
+      "label": "Checkout button label",
+      "default": "Checkout"
+    }
+  ]
+}
+{% endschema %}
