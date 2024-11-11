@@ -44,11 +44,11 @@ var variants = {{ product.variants | json }};
       Pricing.
       {% endcomment %}
       <p class="large-text">
-        <span class="js--variant-compareatprice">
+        <strike class="js--variant-compareatprice">
           {%- if current_variant.compare_at_price > current_variant.price -%}
-            {{- current_variant.compare_at_price | money | prepend: 'Was ' -}}
+            {{- current_variant.compare_at_price | money -}}
           {%- endif -%}
-        </span>
+        </strike>
         <strong class="js--variant-price">
           {{ current_variant.price | money }}
         </strong>

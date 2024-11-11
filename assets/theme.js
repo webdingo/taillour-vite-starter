@@ -39,7 +39,7 @@ function getParam(name) {
  */
 function moneyWithCurrency(value) {
   if (value != undefined) {
-    var $string = value.toLocaleString("en-GB", { style: "currency", currency: "GBP" });
+    let $string = parseFloat(value).toLocaleString("en-GB", { style: "currency", currency: window.Shopify.currency.active });
     return $string;
   }
 }
@@ -71,19 +71,18 @@ ready(function() {
       variants.filter(function(v) {
         if (v.option1 == options[1] && v.option2 == options[2] && v.option3 == options[3]) {
           variant = v;
-          console.log(v);
 
           // Update variant id and prices
           var variantPrice = (v.price / 100).toFixed(2);
           document.querySelector("input#js--variant-id").value = v.id;
           document.querySelectorAll(".js--variant-price").forEach(function(el) {
-            el.innerText = `£${variantPrice}`;
+            el.innerHTML = moneyWithCurrency(variantPrice);
           });
 
           if (v.compare_at_price > v.price) {
             var variantCompareAtPrice = (v.compare_at_price / 100).toFixed(2);
             document.querySelectorAll(".js--variant-compareatprice").forEach(function(el) {
-              el.innerText = `Was £${variantCompareAtPrice}`;
+              el.innerText = moneyWithCurrency(variantCompareAtPrice);
             });
           } else {
             document.querySelectorAll(".js--variant-compareatprice").forEach(function(el) {
