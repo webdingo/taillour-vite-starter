@@ -1,5 +1,10 @@
-<div class="section-wrap"
-  style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
+<style>
+{{ section.id | prepend: '#' }}.section-wrap:before {
+  background-color:{{ section.settings.background | default: '#ffffff' }}
+}
+</style>
+
+<div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
   <div class="section">
     {% unless section.settings.text == blank %}
       <{{ section.settings.size }} data-title="{{ section.settings.text }}">

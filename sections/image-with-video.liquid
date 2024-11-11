@@ -4,7 +4,13 @@
 }
 {% endstylesheet %}
 
-<div class="section-wrap" style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
+<style>
+{{ section.id | prepend: '#' }}.section-wrap:before {
+  background-color:{{ section.settings.background | default: '#ffffff' }}
+}
+</style>
+
+<div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
   <div class="section">
     <div class="grid-2 middle video-text-{{ section.settings.video_position }}">
       <!-- content -->

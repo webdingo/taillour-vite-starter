@@ -17,8 +17,13 @@ assign columns = section.blocks.size
 }
 {% endstylesheet %}
 
-<div class="section-wrap"
-  style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
+<style>
+{{ section.id | prepend: '#' }}.section-wrap:before {
+  background-color:{{ section.settings.background | default: '#ffffff' }}
+}
+</style>
+
+<div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
   <div class="section column-section" style="grid-template-columns: repeat({{columns}}, 1fr);">
     {% for block in section.blocks %}
       {% assign image_height = image_width | times: block.settings.image.aspect_ratio | ceil %}

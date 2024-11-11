@@ -70,6 +70,16 @@ footer img {
 
 .section-wrap {
   padding: 2rem 0;
+  position: relative;
+}
+.section-wrap:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -5;
 }
 .section {
   max-width: var(--max-width);
@@ -78,7 +88,6 @@ footer img {
 .section-wrap > * {
   padding: 0.5rem 1rem;
 }
-
 
 .uppercase {
   text-transform: uppercase;

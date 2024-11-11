@@ -4,7 +4,13 @@
 }
 {% endstylesheet %}
 
-<div class="section-wrap"
+<style>
+{{ section.id | prepend: '#' }}.section-wrap:before {
+  background-color:{{ section.settings.background | default: '#ffffff' }}
+}
+</style>
+
+<div id="{{ section.id }}" class="section-wrap"
   style="background-color:{{ section.settings.background | default: '#ffffff' }};color:{{ section.settings.color | default:'inherit' }};">
   <div class="section">
     <div class="grid-2 middle image-text-{{ section.settings.image_position }}">
