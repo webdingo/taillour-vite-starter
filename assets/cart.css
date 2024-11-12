@@ -64,6 +64,9 @@
   align-items: flex-end;
   gap: 1rem;
 }
+.cart-items-footer__total {
+  align-items: baseline;
+}
 .cart-items-footer .button {
   min-width: 250px;
 }
