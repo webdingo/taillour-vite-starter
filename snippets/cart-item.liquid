@@ -1,4 +1,4 @@
-<div class="cart-item">
+<div class="cart-item js--cart-item">
   <div>
     <div class="flex align-left">
       <div class="cart-item__image">
@@ -30,9 +30,26 @@
     </div>
   </div>
   <div>
-    <input type="number" name="updates[]" value="{{ item.quantity }}">
+    <div class="flex align-left middle">
+      <input type="number"
+        name="updates[]"
+        value="{{ item.quantity }}"
+        min="0"
+        class="js--cart-item-qty"
+        data-key="{{ item.key }}"
+        data-id="{{ item.id }}"
+        oninput="updateLineItemQty(this);">
+      <button type="button"
+        class="button-small"
+        value="0"
+        data-key="{{ item.key }}"
+        data-id="{{ item.id }}"
+        onclick="if(confirm('Are you sure you want to remove this item from your cart?')){ updateLineItemQty(this); }">
+        &times;
+      </button>
+    </div>
   </div>
   <div>
-    <strong>{{ item.line_price | money }}</strong>
+    <strong class="js--cart-item-total">{{ item.line_price | money }}</strong>
   </div>
 </div>

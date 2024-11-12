@@ -28,7 +28,7 @@ assign thumbnail_width = 150
       <div class="cart-items-footer">
         <div class="cart-items-footer__total flex middle">
           <span>{{ section.settings.cart_total_label }}</span>
-          <strong class="large-text">{{ cart.total_price | money }}</strong>
+          <strong class="large-text js--cart-total">{{ cart.total_price | money }}</strong>
         </div>
         <div class="cart-items-footer__note">
           {{ section.settings.checkout_note }}
@@ -47,6 +47,50 @@ assign thumbnail_width = 150
     </section>
   </div>
 </form>
+
+<script>
+/*
+* UPDATE ITEM QUANTITY
+* Update the quantity for a cart line item.
+*/
+function updateLineItemQty(el) {
+  let key = el.dataset.key;
+  let id = el.dataset.id;
+  let quantity = el.value;
+  let row = el.closest('.js--cart-item');
+  let data = {
+    id: key,
+    quantity: quantity
+  };
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => response.json())
+  .then(cart => {
+    if (quantity > 0) {
+      row.querySelectorAll('.js--cart-item-total').forEach(function(el) {
+        // Get details of the updated item.
+        let item = cart.items.filter(function(lineitem){
+          if (lineitem.key === key) {
+            return lineitem;
+          }
+        });
+        el.innerText = moneyWithCurrency((item[0].final_line_price / 100));
+      });
+    } else {
+      row.remove();
+    }
+    // Update the total cart price.
+    document.querySelectorAll('.js--cart-total').forEach(function(el) {
+      el.innerText = moneyWithCurrency(cart.total_price / 100);
+    });
+  });
+};
+</script>
 
 {% schema %}
 {
