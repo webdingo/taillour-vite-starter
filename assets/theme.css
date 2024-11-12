@@ -39,6 +39,7 @@ body {
 }
 
 mark,
+.mark,
 p a {
   background-color: var(--cream);
   padding-left: 0.125rem;

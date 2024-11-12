@@ -16,7 +16,14 @@
         <h3>
           <a href="{{ item.url }}">{{ item.product.title }}</a>
         </h3>
-        <div>{{ item.price | money | append: " ea." }}</div>
+        <div>
+          {% if item.variant.compare_at_price > item.price %}
+            <strike>{{ item.variant.compare_at_price | money }}</strike>
+            <span class="mark">{{ item.price | money | append: " ea." }}</span>
+          {% else %}
+            {{ item.price | money | append: " ea." }}
+          {% endif %}
+        </div>
         {% unless item.product.has_only_default_variant == true %}
           <div>
             <ul>
