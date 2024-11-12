@@ -215,7 +215,7 @@ button,
 .button {
   font-family: var(--font-stack);
   font-size: 1rem;
-  font-weight: var(--regular);
+  font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   display: inline-block;

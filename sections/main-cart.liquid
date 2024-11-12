@@ -6,12 +6,13 @@ assign thumbnail_width = 150
 
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
 
-<form action="{{ routes.cart_url }}" method="post">
-  <div class="section-wrap">
-    <section class="section">
-      <h1 data-title="Cart">Cart</h1>
-    </section>
+<div class="section-wrap">
+  <section class="section">
+    <h1 data-title="Cart">Cart</h1>
+  </section>
 
+{% if cart.items.size > 0 %}
+  <form action="{{ routes.cart_url }}" method="post" class="section-wrap">
     {% render 'cart-spend', section: section %}
 
     <section class="section">
@@ -47,55 +48,63 @@ assign thumbnail_width = 150
         </div>
       </div>
     </section>
-  </div>
-</form>
+  </form>
 
-<script>
-/*
-* UPDATE ITEM QUANTITY
-* Update the quantity for a cart line item.
-*/
-function updateLineItemQty(el) {
-  let key = el.dataset.key;
-  let id = el.dataset.id;
-  let quantity = el.value;
-  let row = el.closest('.js--cart-item');
-  let data = {
-    id: key,
-    quantity: quantity
-  };
-  fetch('/cart/change.js', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-  })
-  .then(response => response.json())
-  .then(cart => {
-    if (quantity > 0) {
-      row.querySelectorAll('.js--cart-item-total').forEach(function(el) {
-        // Get details of the updated item.
-        let item = cart.items.filter(function(lineitem){
-          if (lineitem.key === key) {
-            return lineitem;
-          }
+  <script>
+  /*
+  * UPDATE ITEM QUANTITY
+  * Update the quantity for a cart line item.
+  */
+  function updateLineItemQty(el) {
+    let key = el.dataset.key;
+    let id = el.dataset.id;
+    let quantity = el.value;
+    let row = el.closest('.js--cart-item');
+    let data = {
+      id: key,
+      quantity: quantity
+    };
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(cart => {
+      if (quantity > 0) {
+        row.querySelectorAll('.js--cart-item-total').forEach(function(el) {
+          // Get details of the updated item.
+          let item = cart.items.filter(function(lineitem){
+            if (lineitem.key === key) {
+              return lineitem;
+            }
+          });
+          el.innerText = moneyWithCurrency((item[0].final_line_price / 100));
         });
-        el.innerText = moneyWithCurrency((item[0].final_line_price / 100));
+      } else {
+        row.remove();
+      }
+      // Update the total cart price.
+      document.querySelectorAll('.js--cart-total').forEach(function(el) {
+        el.innerText = moneyWithCurrency(cart.total_price / 100);
       });
-    } else {
-      row.remove();
-    }
-    // Update the total cart price.
-    document.querySelectorAll('.js--cart-total').forEach(function(el) {
-      el.innerText = moneyWithCurrency(cart.total_price / 100);
+      if (typeof window.spendMore === "function") {
+        spendMore(cart);
+      }
     });
-    if (typeof window.spendMore === "function") {
-      spendMore(cart);
-    }
-  });
-};
-</script>
+  };
+  </script>
+{% endif %}
+
+{% if cart.items.size == 0 %}
+  <section class="section">
+    <p>Your basket is empty. <a href="{{ shop.url }}" class="button">Let's go shopping</a></p>
+  </section>
+{% endif %}
+</div>
+
 
 {% schema %}
 {
