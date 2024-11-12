@@ -9,8 +9,10 @@ assign thumbnail_width = 150
 <form action="{{ routes.cart_url }}" method="post">
   <div class="section-wrap">
     <section class="section">
-      <h1>Cart</h1>
+      <h1 data-title="Cart">Cart</h1>
     </section>
+
+    {% render 'cart-spend', section: section %}
 
     <section class="section">
       <div class="cart-items-header">
@@ -88,6 +90,9 @@ function updateLineItemQty(el) {
     document.querySelectorAll('.js--cart-total').forEach(function(el) {
       el.innerText = moneyWithCurrency(cart.total_price / 100);
     });
+    if (typeof window.spendMore === "function") {
+      spendMore(cart);
+    }
   });
 };
 </script>
@@ -101,6 +106,32 @@ function updateLineItemQty(el) {
     "groups": ["header"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Spend more message"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_spend_more",
+      "label": "Enable",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "spend_more_trigger",
+      "label": "Trigger amount"
+    },
+    {
+      "type": "richtext",
+      "id": "spend_more_message",
+      "label": "Message",
+      "info": "Enter SPEND_AMT to insert balance amount.",
+      "default": "<p>Spend <strong>SPEND_AMT</strong> to qualify for <strong>free delivery</strong>.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Cart total"
+    },
     {
       "type": "inline_richtext",
       "id": "cart_total_label",

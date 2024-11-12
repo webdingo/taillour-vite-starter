@@ -1,7 +1,11 @@
 {
   "sections": {
     "cart": {
-      "type": "main-cart"
+      "type": "main-cart",
+      "settings": {
+        "enable_spend_more": true,
+        "spend_more_trigger": 1000
+      }
     }
   },
   "order": [
