@@ -214,6 +214,25 @@ fieldset legend {
   color: var(--black);
 }
 
+/* Table */
+table {
+  width: 100%;
+  border: var(--border);
+}
+table th {
+  background-color: var(--black);
+  color: var(--white);
+}
+table th,
+table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px dashed var(--black);
+}
+table tbody tr:even td {
+  background-color: var(--cream);
+}
+
 /* Buttons */
 button,
 .button {
@@ -471,9 +490,6 @@ details > div {
 .pill {
   display: inline-flex;
   padding: 0.15rem 0.75rem;
-}
-.pill,
-.pill:before {
   border-radius: 50px;
 }
 .product-card:hover:before,
@@ -490,6 +506,11 @@ details > div {
   left: 0.5rem;
   z-index: -1;
   opacity: 0.75;
+}
+.pill:before {
+  border-radius: 50px;
+  top: 0.35rem;
+  left: 0.25rem;
 }
 .product-card img,
 .collection-card img {
