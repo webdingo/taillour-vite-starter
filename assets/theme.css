@@ -153,7 +153,9 @@ form .errors {
 input[type="text"],
 input[type="number"],
 input[type="email"],
+input[type="tel"],
 input[type="password"],
+select,
 textarea {
   background: white;
   width: 100%;
@@ -161,24 +163,32 @@ textarea {
   border-radius: 0;
   border: var(--border);
   padding: 1rem;
-  font-family: var(--font-stack);
+  font-family: monospace;
   font-size: 1rem;
+  font-weight: var(--bold);
   color: var(--black);
 }
-
 select {
+  appearance: none;
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%0A%3Csvg width='41.2211298px' height='24px' viewBox='0 0 41.2211298 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M20.6222492,0 L20.6261197,0 L20.6270797,0 L20.632447,0 L20.650447,0.000388443622 L20.6534063,0.00048334847 L20.6552701,0.000517859595 L20.6606375,0.00070932427 L20.6786406,0.00120590176 C20.9041575,0.00946902809 21.1287498,0.0591020146 21.34011,0.150593796 L21.3415591,0.151265701 L21.3423269,0.151596435 C21.5433677,0.238804938 21.7315995,0.363465046 21.8961901,0.525146427 L21.8983634,0.527402421 L21.9001492,0.529072657 L21.9088148,0.537797307 L21.9175234,0.546445218 L21.9190967,0.548079206 L21.921448,0.550406037 C21.9355072,0.564718265 21.9492865,0.579209253 21.9627856,0.593871881 L21.9707887,0.60276535 L40.7338658,20.918211 C41.4149817,21.6556825 41.3765644,22.8015497 40.652932,23.4919549 L40.630794,23.512736 C39.8858732,24.2007318 38.7242648,24.154585 38.036269,23.4096642 L20.6105274,4.54208849 L3.18486071,23.4096643 C2.50374478,24.1471359 1.3584412,24.199739 0.612807397,23.5331555 L0.590335659,23.5127359 C-0.154585071,22.82474 -0.20073177,21.6631316 0.487264121,20.9182108 L19.2532037,0.599601689 L19.2583465,0.59387004 C19.2785951,0.5718761 19.2994743,0.550268348 19.3209829,0.529070822 L19.3227478,0.527345927 L19.324942,0.525148008 C19.4895327,0.363466643 19.6777645,0.238806555 19.8788052,0.151598071 L19.881021,0.150644268 L19.9075102,0.139373525 C20.1111,0.0550359976 20.3263712,0.00912299498 20.5424916,0.00120418689 L20.5604172,0.00070932427 L20.5658621,0.000519563352 L20.5676484,0.00048334847 L20.5706851,0.000386731527 L20.5886077,0 L20.5940524,0 L20.594935,0 L20.5988829,0 L20.6105274,0 L20.6222492,0 Z' id='Combined-Shape' fill='%23000000' fill-rule='nonzero' transform='translate(20.6106, 12) rotate(-180) translate(-20.6106, -12)'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  background-size: 1rem auto;
+}
+/* select {
   background: white;
+  width: 100%;
+  min-width: 200px;
   display: block;
   border-radius: 0;
   border: var(--border);
-  padding: 4px;
-  margin-right: 10px;
+  padding: 1rem;
   font-family: var(--font-stack);
   font-size: 1rem;
   color: var(--black);
   position: relative;
-  top: -4px;
-}
+} */
 
 input[type="checkbox"] {
   appearance: none;
@@ -218,6 +228,9 @@ fieldset legend {
 table {
   width: 100%;
   border: var(--border);
+  position: relative;
+  background-color: var(--white);
+  margin-bottom: 2rem;
 }
 table th {
   background-color: var(--black);
@@ -229,7 +242,7 @@ table td {
   text-align: left;
   border-bottom: 1px dashed var(--black);
 }
-table tbody tr:even td {
+table tbody tr:nth-child(even) td {
   background-color: var(--cream);
 }
 
@@ -380,6 +393,7 @@ details summary::-webkit-details-marker {
 }
 
 summary {
+  position: relative;
   padding: 16px;
   border-bottom: var(--border);
   font-size: 1.2rem;
@@ -393,7 +407,7 @@ summary:before {
   margin-right: 8px;
   position: absolute;
   left: 16px;
-  top: 18px;
+  top: calc(50% - 9px);
   font-size: 1rem;
 }
 details[open] summary:before {
@@ -496,7 +510,8 @@ details > div {
 .collection-card:hover:before,
 .article-card:hover:before,
 .box:before,
-.pill:before {
+.pill:before,
+table:before {
   content: "";
   background-image: var(--shading);
   position: absolute;
