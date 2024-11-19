@@ -318,6 +318,18 @@
         "background": "#ffffff",
         "color": ""
       }
+    },
+    "articles_grid_XrKUxx": {
+      "type": "articles-grid",
+      "settings": {
+        "text": "Headline",
+        "size": "h2",
+        "blog": "main",
+        "limit": 3,
+        "articles_per_row": 3,
+        "background": "#f5f5f5",
+        "color": ""
+      }
     }
   },
   "order": [
@@ -328,6 +340,7 @@
     "collection_grid_7w6HWG",
     "multicolumn_VbBRUF",
     "newsletter_form_JJALbH",
-    "contact_form_EAWmhp"
+    "contact_form_EAWmhp",
+    "articles_grid_XrKUxx"
   ]
 }
