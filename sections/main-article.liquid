@@ -11,6 +11,16 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
 </style>
 {% endunless %}
 
+<style>
+.comments-list li {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.comments-list li:not(:last-child) {
+  border-bottom: 1px dashed rgba(0,0,0,0.35);
+}
+</style>
+
 <section id="{{ section.id }}" class="section-wrap">
   <div class="section">
     <h1 data-title="{{ article.title }}">{{ article.title }}</h1>
@@ -35,6 +45,75 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
       {{ article.content }}
     </div>
   </div>
+
+  {% if article.comments_enabled? %}
+    {% capture comments_heading %}
+      {% if article.comments_count > 0 %}
+        {{ article.comments_count }}
+      {% endif %}
+      Comments
+    {% endcapture %}
+    <div id="comments" class="section">
+      <hr>
+      <h2 data-title="{{ comments_heading }}">{{ comments_heading }}</h2>
+
+      {% paginate article.comments by 25 %}
+        <ol class="comments-list">
+          {% for comment in article.comments %}
+            <li>
+              <p>
+                <strong class="pill">{{ comment.author }}</strong><br>
+                <span class="small-text">{{ comment.created_at | date: format: 'date_at_time'}}</span>
+              </p>
+              <blockquote>
+                <p>{{ comment.content }}</p>
+              </blockquote>
+            </li>
+          {% endfor %}
+        </ol>
+
+        <ul class="paginate-section flex align-center">
+          {% if paginate.previous.is_link %}
+            <li><a href="{{ paginate.previous.url }}" rel="Prev">Previous</a></li>
+          {% endif %}
+
+          {% for page in paginate.parts %}
+            {% if paginate.current_page == page.title %}
+              <li><strong>{{ page.title }}</strong></li>
+            {% else %}
+              <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+              {% endif %}
+          {% endfor %}
+
+          {% if paginate.next.is_link %}
+            <li><a href="{{ paginate.next.url }}" rel="Next">Next</a></li>
+          {% endif %}
+        </ul>
+      {% endpaginate %}
+
+      <hr>
+
+      <h2 data-title="Have your say...">Have your say...</h2>
+      {% form 'new_comment', article %}
+        {{ form.errors | default_errors }}
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" name="comment[author]" value="{{ form.author }}" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email (not published)</label>
+          <input type="email" name="comment[email]" value="{{ form.email }}" required>
+        </div>
+        <div class="form-row">
+          <label for="comment">Comment</label>
+          <textarea name="comment[body]" required>{{ form.body }}</textarea>
+        </div>
+        <div class="form-row">
+          <button type="submit" class="button">Post comment</button>
+        </div>
+      {% endform %}
+    </div>
+  {% endif %}
 </section>
 
 {% schema %}
