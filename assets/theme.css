@@ -471,14 +471,16 @@ details > div {
 /* Header */
 header {
   display: grid;
-  grid-template-columns: 170px 1fr;
+  grid-template-columns: .25fr 0.5fr .25fr;
   grid-gap: 1rem;
 }
 header #logo {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin: 1rem;
+}
+header form {
+  flex: 1 auto;
 }
 nav {
   font-size: 1rem;
