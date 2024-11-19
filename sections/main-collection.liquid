@@ -36,43 +36,44 @@ grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
       </div>
       {% render 'collection-filters' %}
     </aside>
+
+    {% paginate collection.products by section.settings.limit %}
     <div>
-      {% paginate collection.products by section.settings.limit %}
-        <div class="section">
-          <p>{{ collection.products_count }} products</p>
+      <div class="section">
+        <p>{{ collection.products_count }} products</p>
 
-          <div class="products-grid" style="{{ styles }}">
-            {% liquid
-            for product in collection.products
-              render 'product-card', product: product
-            endfor
-            %}
-          </div>
+        <div class="products-grid" style="{{ styles }}">
+          {% liquid
+          for product in collection.products
+            render 'product-card', product: product
+          endfor
+          %}
         </div>
+      </div>
 
-        <div class="section">
-          <div>
-            <ul class="paginate-section flex align-center">
-              {% if paginate.previous.is_link %}
-                <li><a href="{{ paginate.previous.url }}" rel="Prev">Previous</a></li>
-              {% endif %}
+      <div class="section">
+        <div>
+          <ul class="paginate-section flex align-center">
+            {% if paginate.previous.is_link %}
+              <li><a href="{{ paginate.previous.url }}" rel="Prev">Previous</a></li>
+            {% endif %}
 
-              {% for page in paginate.parts %}
-                {% if paginate.current_page == page.title %}
-                  <li><strong>{{ page.title }}</strong></li>
-                {% else %}
-                  <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-                  {% endif %}
-              {% endfor %}
+            {% for page in paginate.parts %}
+              {% if paginate.current_page == page.title %}
+                <li><strong>{{ page.title }}</strong></li>
+              {% else %}
+                <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                {% endif %}
+            {% endfor %}
 
-              {% if paginate.next.is_link %}
-                <li><a href="{{ paginate.next.url }}" rel="Next">Next</a></li>
-              {% endif %}
-            </ul>
-          </div>
+            {% if paginate.next.is_link %}
+              <li><a href="{{ paginate.next.url }}" rel="Next">Next</a></li>
+            {% endif %}
+          </ul>
         </div>
-      {% endpaginate %}
+      </div>
     </div>
+    {% endpaginate %}
   </div>
 
 

@@ -225,7 +225,6 @@ button,
   color: var(--white);
   padding: 14px 16px;
   position: relative;
-  margin-bottom: 8px;
   border-radius: 5px;
 }
 button:hover,
