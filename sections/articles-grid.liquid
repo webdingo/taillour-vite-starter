@@ -12,14 +12,14 @@
       </{{ section.settings.size }}>
     {% endunless %}
 
-    {% assign blog_handle = section.settings.blog | default: "main" %}
+    {% assign blog_handle = section.settings.blog | default: "news" %}
 
     {% capture styles %}
-    grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
+    grid-template-columns: repeat({{ section.settings.articles_per_row }}, 1fr);
     {% endcapture %}
     <div class="articles-grid" style="{{- styles -}}">
       {% liquid
-      for article in blogs[blog_handle].articles
+      for article in blogs[blog_handle].articles limit: section.settings.limit
         render 'article-card', article: article
       endfor
       %}
