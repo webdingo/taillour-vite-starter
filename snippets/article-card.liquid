@@ -1,0 +1,21 @@
+{% liquid
+assign image_width = 400
+assign image_height = 400 | times: article.image.aspect_ratio | ceil
+%}
+<a class="article-card" href="{{ article.url }}">
+  <div>
+    <img src="{{ article.image.src | image_url: width: image_width }}"
+      width="{{ image_width }}"
+      height="{{ image_height }}"
+      alt="{{ article.featured_image.alt }}">
+  </div>
+  <div>
+    <h2 data-title="{{ article.title }}">{{ article.title }}</h2>
+    <p>
+      {{ article.excerpt_or_content | strip_html }}
+    </p>
+    <p class="small-text">
+      Published on {{ article.published_at | date: '%b %d, %Y' }}
+    </p>
+  </div>
+</a>

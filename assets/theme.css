@@ -324,6 +324,9 @@ hr.solid {
 .large-text {
   font-size: 2rem;
 }
+.small-text {
+  font-size: 0.925rem;
+}
 
 .wysiwyg ul,
 .wysiwyg ol {
@@ -436,8 +439,16 @@ details > div {
   margin-top: 1.5rem;
   margin-bottom: 2rem;
 }
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
 .product-card,
-.collection-card {
+.collection-card,
+.article-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -448,7 +459,8 @@ details > div {
   position: relative;
 }
 .product-card:hover:before,
-.collection-card:hover:before {
+.collection-card:hover:before,
+.article-card:hover:before {
   content: "";
   background-image: var(--shading);
   position: absolute;
@@ -464,6 +476,13 @@ details > div {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  object-position: center;
+  aspect-ratio: 1/1;
+}
+.article-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
   aspect-ratio: 1/1;
 }
