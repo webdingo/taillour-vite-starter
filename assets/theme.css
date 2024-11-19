@@ -448,7 +448,8 @@ details > div {
 }
 .product-card,
 .collection-card,
-.article-card {
+.article-card,
+.box {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -458,9 +459,14 @@ details > div {
   background-color: var(--white);
   position: relative;
 }
+.box {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
 .product-card:hover:before,
 .collection-card:hover:before,
-.article-card:hover:before {
+.article-card:hover:before,
+.box:before {
   content: "";
   background-image: var(--shading);
   position: absolute;

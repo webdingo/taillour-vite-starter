@@ -1,0 +1,53 @@
+{% liquid
+assign image_width = 800
+assign image_height = image_width | times: product.featured_image.aspect_ratio | ceil
+%}
+
+{% unless section.settings.max_width == blank %}
+<style>
+{{ section.id | prepend: '#' }} .section {
+  max-width: {{ section.settings.max_width | append: 'px' }};
+}
+</style>
+{% endunless %}
+
+<section id="{{ section.id }}" class="section-wrap">
+  <div class="section">
+    <h1 data-title="{{ article.title }}">{{ article.title }}</h1>
+    <p class="small-text">
+      Published on {{ article.published_at | date: '%b %d, %Y' }}
+      by {{ article.user.name }}
+      {% unless article.tags.size == 0 %}
+        &bullet; Tagged with
+        {% for tag in article.tags %}
+          <a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag }}</a>
+        {% endfor %}
+      {% endunless %}
+    </p>
+    <hr>
+    <div class="wysiwyg">
+      <div class="article-image box">
+        <img src="{{ article.image.src | image_url: width: image_width }}"
+        width="{{ image_width }}"
+        height="{{ image_height }}"
+        alt="{{ article.image.alt }}">
+      </div>
+      {{ article.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": [
+    {
+      "type":"number",
+      "id": "max_width",
+      "label": "Max page width (px)",
+      "info": "Leave blank for default.",
+      "default": 768
+    }
+  ]
+}
+{% endschema %}
