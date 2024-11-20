@@ -551,11 +551,12 @@ header {
   display: grid;
   grid-template-columns: .25fr 0.5fr .25fr;
   grid-gap: 1rem;
+  padding: 0 1rem;
 }
 header #logo {
   display: flex;
   align-items: center;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 header form {
   flex: 1 auto;
