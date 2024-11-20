@@ -13,13 +13,7 @@
   </div>
 
   <div id="account" class="section">
-    <aside>
-      <ul>
-        <li><a href="{{ routes.account_url }}">Orders</a></li>
-        <li><a href="{{ routes.account_addresses_url }}">Manage Addresses</li>
-        <li><a href="{{ routes.account_logout_url }}">Logout</a></li>
-      </ul>
-    </aside>
+    {% render 'account-menu' %}
 
     <div>
       <h2>Orders</h2>

@@ -52,6 +52,10 @@ a {
   text-decoration-thickness: 2px;
 }
 
+.bold {
+  font-weight: var(--bold);
+}
+
 sup {
   position: absolute;
   top: -4px;
