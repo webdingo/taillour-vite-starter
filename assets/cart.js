@@ -32,6 +32,7 @@ function updateLineItemQty(el) {
         });
       } else {
         row.remove();
+        removeGiftWrap(key);
       }
       // Update the total cart price.
       document.querySelectorAll('.js--cart-total').forEach(function(el) {
