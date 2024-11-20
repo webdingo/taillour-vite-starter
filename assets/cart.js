@@ -20,6 +20,7 @@ function updateLineItemQty(el) {
     })
     .then(response => response.json())
     .then(cart => {
+      console.log(cart);
       if (quantity > 0) {
         row.querySelectorAll('.js--cart-item-total').forEach(function(el) {
           // Get details of the updated item.
@@ -41,6 +42,8 @@ function updateLineItemQty(el) {
       if (typeof window.spendMore === "function") {
         spendMore(cart);
       }
+      // Update cart item count.
+      updateCartCounter(cart);
     });
 };
 
@@ -92,6 +95,8 @@ function addGiftWrap(lineItemTitle, lineItemKey) {
           document.querySelectorAll(".js--cart-total").forEach(function(el) {
             el.textContent = moneyWithCurrency(cart.total_price / 100);
           });
+          updateCartCounter(cart);
+          spendMore(cart);
         });
     });
 }
@@ -124,9 +129,20 @@ function removeGiftWrap(lineItemKey) {
                 document.querySelectorAll(".js--cart-total").forEach(function(el) {
                   el.textContent = moneyWithCurrency(cart.total_price / 100);
                 });
+                updateCartCounter(cart);
+                spendMore(cart);
               });
           }
         }
       });
     });
+}
+
+/*
+ * Update cart item count.
+ */
+function updateCartCounter(cart) {
+  document.querySelectorAll('.js--cart-counter').forEach(function(el) {
+    el.innerText = cart.item_count;
+  });
 }
