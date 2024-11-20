@@ -53,6 +53,7 @@
 .cart-item ul {
   font-size: 1rem;
   line-height: 1.5;
+  margin-bottom: 0;
 }
 
 /* Cart items footer. */
@@ -82,4 +83,15 @@
 .spend-more-content p {
   margin: 0;
   text-align: center;
+}
+
+/* Gift wrap option */
+.gift-wrap-option {
+  border-top: 1px dashed rgba(0, 0, 0, 0.15);
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+}
+select.js--gift-wrap-type {
+  width: auto;
+  padding: 0.5rem 2rem 0.5rem 0.5rem;
 }
