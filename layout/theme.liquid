@@ -31,6 +31,8 @@
     {{ content_for_layout }}
   </main>
 
+  {% section 'footer' %}
+
   {% liquid
   # Newsletter Popup.
   if settings.newsletter_popup

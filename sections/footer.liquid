@@ -1,0 +1,33 @@
+<footer class="section-wrap">
+  <div class="container">
+    <ul>
+      {% assign menu_handle = section.settings.menu %}
+      {% for link in linklists[menu_handle].links %}
+        <li>
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    <hr>
+    <p class="small-text center">
+      Copyright&copy;{{ "now" | date: "%Y" }}, Ketan Mistry.
+      [Link to whichever licence here]
+    </p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "footer"
+    }
+  ]
+}
+{% endschema %}

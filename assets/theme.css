@@ -61,8 +61,7 @@ sup {
   top: -4px;
 }
 
-header,
-footer {
+header {
   margin: 0 auto;
   max-width: var(--max-width);
 }
@@ -613,20 +612,22 @@ blockquote:after {
 }
 
 /* Footer */
+footer.section-wrap {
+  padding: 1rem 0;
+  background-color: var(--black);
+  color: white;
+}
+footer hr {
+  border-color: var(--white);
+  border-width: 1px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
 footer ul {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
   text-align: center;
-  margin-bottom: 36px;
-}
-footer span {
-  display: flex;
-  height: 30px;
-  align-items: flex-end;
-}
-footer ul a {
-  display: block;
 }
 
 /* Modal */
