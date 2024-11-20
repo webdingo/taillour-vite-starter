@@ -28,7 +28,7 @@
           {% comment %}
           Add new address form.
           {% endcomment %}
-          <details open>
+          <details>
             <summary >Add New Address</summary>
             <div>
               {%- form 'customer_address', customer.new_address, aria-labelledBy: 'AddressNewHeading' -%}
@@ -91,12 +91,13 @@
                       id="AddressCountryNew"
                       name="address[country]"
                       data-default="{{ form.country }}"
+                      data-target="#AddressProvinceNew"
                       autocomplete="country"
-                      onchange="provinces('#AddressProvinceNew');">
+                      onchange="provinces();">
                       {{ all_country_option_tags }}
                     </select>
                 </div>
-                <div class="form-row" style="displayX: none">
+                <div class="form-row" style="display: none">
                   <label for="AddressProvinceNew">Province</label>
                   <select
                     id="AddressProvinceNew"
@@ -128,7 +129,7 @@
                   </label>
                 </div>
                 <div class="form-row">
-                  <button>Add</button>
+                  <button>Save Address</button>
                 </div>
               {%- endform -%}
             </div>
@@ -146,7 +147,7 @@
                 {%- endif -%}
               </summary>
               <div id="EditAddress_{{ address.id }}">
-                <h2>Edit Address</h2>
+                <h3>Edit Address</h3>
                 {%- form 'customer_address', address -%}
                   <div class="form-row">
                     <label for="AddressFirstName_{{ form.id }}">First Name</label>
@@ -203,21 +204,34 @@
                   <div class="form-row">
                     <label for="AddressCountry_{{ form.id }}">Country</label>
                       <select
+                        class="js--country-selector"
                         id="AddressCountry_{{ form.id }}"
                         name="address[country]"
                         data-address-country-select
                         data-default="{{ form.country }}"
                         data-form-id="{{ form.id }}"
-                        onchange="provinces('#AddressProvince_{{ form.id }}');"
+                        data-target="#AddressProvince_{{ form.id }}"
+                        onchange="provinces();"
                         >
-                        {{ all_country_option_tags }}
+                        {% comment %}
+                        Instead of using javascript to do the simple task of setting
+                        the selected country, let's do it manually using simple
+                        string replacement.
+                        {% endcomment %}
+                        {% capture country_value %}value="{{ form.country }}"{% endcapture %}
+                        {% capture selected_country %}value="{{ form.country }}" selected="selected"{% endcapture %}
+                        {{ all_country_option_tags | replace: country_value, selected_country }}
                       </select>
                   </div>
-                  <div class="form-row" id="AddressProvinceContainer_{{ form.id }}">
+                  <div class="form-row"
+                    id="AddressProvinceContainer_{{ form.id }}"
+                    style="display:none;"
+                    >
                     <label for="AddressProvince_{{ form.id }}">
                       Province
                     </label>
                     <select
+                      class="js--province-selector"
                       id="AddressProvince_{{ form.id }}"
                       name="address[province]"
                       data-default="{{ form.province }}"
@@ -248,14 +262,16 @@
                     </label>
                   </div>
                   <div class="form-row">
-                    <button type="submit">Save Changes</button>
+                    <button type="submit">Update Address</button>
                   </div>
                 {%- endform -%}
                 <form class="address-delete-form"
                     method="post"
                     action="/account/addresses/{{ address.id }}">
                   <input type="hidden" name="_method" value="delete">
-                  <button type="submit" onclick="return confirm('Are you sure you want to delete this address?');">Delete</button>
+                  <button type="submit"
+                    class="button-white"
+                    onclick="return confirm('Are you sure you want to delete this address?');">Delete Address</button>
                 </form>
               </div>
             </details>
@@ -270,8 +286,14 @@
 </section>
 
 <script>
-function provinces(targetEl) {
+/*
+* Populates the province dropdowns.
+* This just needs applying on the country select: onchange="provinces();" with
+* the accompanying data attribute `data-target="#id_of_province_select"`.
+*/
+function provinces() {
   let el = this.event.target;
+  let targetEl = el.dataset.target;
   let dataset = el.options[el.selectedIndex].dataset.provinces;
   let provinces = JSON.parse(dataset);
   let provinceSelect = document.querySelector(targetEl);
@@ -290,4 +312,24 @@ function provinces(targetEl) {
     provinceSelect.options.add(newOption);
   });
 }
+
+/*
+* Triggers onchange event on country drowpdowns on page load,
+* so the province dropdown is displayed if applicable.
+*/
+const countrySelectors = document.querySelectorAll('.js--country-selector');
+let onChange = new Event('change');
+countrySelectors.forEach(function(el){
+  el.dispatchEvent(onChange);
+});
+
+/*
+* Selects the address province in the dropdown on page load.
+*/
+const provinceSelectors = document.querySelectorAll('.js--province-selector');
+provinceSelectors.forEach(function(el){
+  if (el.dataset.default != "") {
+    el.value = el.dataset.default;
+  }
+});
 </script>
