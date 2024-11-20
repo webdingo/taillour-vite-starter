@@ -27,7 +27,11 @@
 <body>
   {% sections 'header-group' %}
 
-  {% render 'breadcrumb' %}
+  {% liquid
+  unless template == "index"
+    render 'breadcrumb'
+  endunless
+  %}
 
   <main>
     {{ content_for_layout }}
