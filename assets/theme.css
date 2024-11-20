@@ -633,7 +633,7 @@ footer ul {
 
 /* Breadcrumb */
 #breadcrumb {
-  padding: 0;
+  padding: 0.5rem 0 0 0;
 }
 #breadcrumb ol.flex {
   gap: 0.5rem;
