@@ -133,7 +133,7 @@
       "settings": {
         "text": "Headline",
         "size": "h2",
-        "collection": "products",
+        "collection": "vat-exempt-products",
         "limit": 8,
         "products_per_row": 4,
         "background": "#ffffff",
@@ -146,7 +146,8 @@
         "text": "Headline",
         "size": "h2",
         "collections": [
-          "products"
+          "snowboards",
+          "vat-exempt-products"
         ],
         "collections_per_row": 4,
         "background": "#ffffff",
