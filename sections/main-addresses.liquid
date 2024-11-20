@@ -139,8 +139,8 @@
           Manage existing addresses.
           {% endcomment %}
           {%- for address in customer.addresses -%}
-            <details open>
-              <summary>
+            <details>
+              <summary class="flex middle">
                 {{ address.address1 }}, {{ address.province }}
                 {%- if address == customer.default_address -%}
                   <span class="pill">Default</span>
