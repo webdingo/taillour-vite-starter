@@ -66,11 +66,11 @@ This version checks against the linklist path to return a true breadcrumb.
             {% endunless %}
 
             {% if trail_found %}
-              <li aria-current="page">{{ product.title }}</li>
               {% break %}
             {% endif %}
           {% endfor %}
         {% endfor %}
+        <li aria-current="page">{{ product.title }}</li>
 
       {% comment %}
       If this is a collection, loop through the categories

@@ -635,6 +635,14 @@ footer ul {
 #breadcrumb {
   padding: 0;
 }
+#breadcrumb ol.flex {
+  gap: 0.5rem;
+}
+#breadcrumb li:not(:last-child):after {
+  content: "//";
+  margin-left: 0.5rem;
+  opacity: 0.25;
+}
 
 /* Modal */
 dialog {
