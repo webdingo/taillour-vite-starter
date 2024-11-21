@@ -1,5 +1,3 @@
-# [Project Name]
+# Tailored Shopify Theme
 
-Shopify 2.0 theme for [Project Name]
-
-Version 1.0
+A simple Shopify theme to build custom designed Shopify stores with, fast-loading, no dependencies and a joy rather than a pain.

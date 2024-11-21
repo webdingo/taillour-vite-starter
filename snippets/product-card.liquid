@@ -1,0 +1,16 @@
+{% liquid
+assign image_width = 400
+assign image_height = image_width | times: product.featured_image.aspect_ratio | ceil
+%}
+<a class="product-card" href="{{ product.url }}">
+  <div>
+    <img src="{{ product.featured_image.src | image_url: width: image_width }}"
+      width="{{ image_width }}"
+      height="{{ image_height }}"
+      alt="{{ product.featured_image.alt }}">
+  </div>
+  <div>
+    <h3>{{ product.title }}</h3>
+    <p>{{ product.price | money }}</p>
+  </div>
+</a>

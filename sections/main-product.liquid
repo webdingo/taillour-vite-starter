@@ -1,0 +1,301 @@
+{% comment %}
+Get the first available variant
+{% endcomment %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+
+<script>
+var current_variant = {{ current_variant | json }};
+var variants = {{ product.variants | json }};
+</script>
+
+<link rel="stylesheet" href="{{ 'product.css' | asset_url }}">
+
+<div class="section-wrap">
+  <div id="product" class="section">
+    {% comment %}
+    Product gallery.
+    {% endcomment %}
+    <section>
+      <div id="product-photos">
+        <div class="product-images-component">
+          <div class="product-images-slider" data-images="{{ product.images.size }}">
+            <div class="product-images-track">
+              <div class="product-images" style="grid-template-columns: repeat({{ product.images.size }}, minmax(100%, 1fr));">
+                {% for image in product.images %}
+                  <div class="product-image-item" data-imageid="{{ image.id }}">
+                    <img src="{{ image.src | image_url: width:600 }}"
+                      width="600"
+                      height="600"
+                      alt="{{ image.alt }}"
+                      class="w100">
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="product-details">
+      <h1 data-title="{{ product.title }}">{{ product.title }}</h1>
+
+      {% comment %}
+      Pricing.
+      {% endcomment %}
+      <p class="large-text">
+        <strike class="js--variant-compareatprice">
+          {%- if current_variant.compare_at_price > current_variant.price -%}
+            {{- current_variant.compare_at_price | money -}}
+          {%- endif -%}
+        </strike>
+        <strong class="js--variant-price">
+          {{ current_variant.price | money }}
+        </strong>
+      </p>
+
+      <p>
+        Product Code:
+        <span class="js--variant-sku">{{ current_variant.sku }}</span>
+      </p>
+
+      <hr>
+
+      {% comment %}
+      Variant selector.
+      {% endcomment %}
+      <div>
+        <form action="/cart/add" method="post">
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {%- when '@app' -%}
+                {% render block %}
+
+              {%- when 'options' %}
+                {% unless product.has_only_default_variant %}
+                  {% for option_group in product.options_with_values %}
+                    {% assign option_field = option_group.position | prepend: 'option' %}
+                    <div class="form-row">
+                      <fieldset class="variant-options flex align-left wrap">
+                        <legend>{{ option_group.name | prepend: 'Select ' }}</legend>
+                        {% for value in option_group.values %}
+                          {% capture option_id %}{{ option_group.name }}_{{ value }}{% endcapture %}
+                          <div class="variant-option">
+                            <input type="radio"
+                              id="{{ option_id | handleize }}"
+                              class="js--variant-option"
+                              name="{{ option_group.position | prepend: 'option'}}"
+                              value="{{ value }}"
+                              {% if current_variant[option_field] == value %}checked{% endif %}>
+                              <label for="{{ option_id | handleize }}">{{ value }}</label>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </fieldset>
+                  {% endfor %}
+                {% endunless %}
+
+              {%- when 'button' -%}
+                <div class="form-row flex middle">
+                  <input type="hidden" id="js--variant-id" name="id" value="{{ current_variant.id }}">
+                  {% if current_variant.available == true %}
+                    <button type="submit" id="js--addtocart" class="button">
+                      {{ block.settings.button_label }}
+                    </button>
+                  {% else %}
+                    <button type="submit" id="js--addtocart" class="button" disabled>Unavailable</button>
+                  {% endif %}
+                </div>
+
+              {%- when 'text' %}
+                {% unless block.settings.content == blank or block.settings.content == '<p></p>' %}
+                  <div class="wysiwyg" style="margin-top:2rem;">
+                    {{ block.settings.content }}
+                  </div>
+                {% endunless %}
+
+            {%- endcase -%}
+          {%- endfor -%}
+        </form>
+      </div>
+
+      <hr>
+
+      <details open>
+        <summary>
+          <span>Product Description</span>
+        </summary>
+        <div class="wysiwyg">
+          {{ product.content }}
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Delivery</span>
+        </summary>
+        <div class="wysiwyg">
+          {{ section.settings.tab_delivery }}
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <span>Returns</span>
+        </summary>
+        <div class="wysiwyg">
+          {{ section.settings.tab_returns }}
+        </div>
+      </details>
+
+    </section>
+  </div>
+</div>
+
+
+<script>
+// Product images slider
+const totalImages = {{ product.images.size }};
+const sliderComponents = document.querySelectorAll('.product-images-component');
+
+sliderComponents.forEach(function(sliderComponent) {
+  let sliderContainer = sliderComponent.querySelector('.product-images-slider');
+  let slider = sliderComponent.querySelector(".product-images-track");
+
+  // Loop through the slides and create the pagination,
+  // setting data-index attributes on the grid-items and
+  // the pagination options.
+  let sliderItems = slider.querySelector(".product-images");
+  let pagination = "";
+  if (sliderItems != null) {
+    sliderItems.querySelectorAll(".product-image-item").forEach(function(item, index) {
+      let activeClass = "";
+      let imgSrc = item.querySelector('img').src;
+      item.setAttribute("data-index", index);
+      if (index == 0) {
+        activeClass = ' class="active"';
+      }
+      pagination += `
+        <button type="button" ${activeClass} data-index="${index}" onclick="goToImage(${index});">
+          <img src="${imgSrc}" width="75" height="75" alt="Image ${index}">
+          <span>${index}</span>
+        </button>`;
+    });
+  }
+
+  // Dots, previous and next buttons
+  if (totalImages > 1) {
+    sliderComponent.insertAdjacentHTML("beforeend", `
+      <div class="product-slider-controls">
+        <div class="product-images-dots">${pagination}</div>
+      </div>
+  `);
+    sliderContainer.insertAdjacentHTML("beforeend", `
+      <div class="product-image-controls">
+        <button type="button" onclick="goToImage('prev');" class="image-prev">&larr;</button>
+        <button type="button" onclick="goToImage('next');" class="image-next">&rarr;</button>
+      </div>
+  `);
+  }
+
+  // Loop through all the slides and see which
+  // one is visible in the viewport. If visible,
+  // update the pagination.
+  slider.addEventListener("scroll", function(event) {
+    let $this = event.target;
+    let sliderItems = $this.querySelector(".product-images");
+    let sliderPos = slider.scrollLeft;
+    let pagination = sliderComponent.querySelector(".product-images-dots");
+    sliderItems.querySelectorAll(".product-image-item").forEach(function(el, index) {
+      if (sliderPos == el.offsetLeft) {
+        let slideIndex = el.getAttribute("data-index");
+        pagination.querySelectorAll("button").forEach(function(button) {
+          button.classList.remove("active");
+        });
+        pagination.querySelector('button[data-index="' + slideIndex + '"]').classList.add("active");
+      }
+    });
+  });
+});
+
+// Function to jump to image.
+function goToImage(index, container=false) {
+  let sliderComponent = container || event.target.closest('.product-images-component');
+  if (index == "next" || index == "prev") {
+    let pagination = sliderComponent.querySelector(".product-images-dots");
+    let current = pagination.querySelector('button.active');
+    if (index == "next") {
+      if (current.nextElementSibling != null) {
+        current.nextElementSibling.click();
+      }
+    } else {
+      if (current.previousElementSibling != null) {
+        current.previousElementSibling.click();
+      }
+    }
+  } else {
+    sliderComponent.querySelector('.product-image-item[data-index="' + index + '"]').scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'end'
+    });
+  }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tab Content"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_delivery",
+      "label": "Delivery",
+      "default": "<p>Enim vitae cupiditate. Qui tenetur consequatur voluptas sequi. Cumque quas iste necessitatibus ratione optio rem consequuntur. Placeat dicta perspiciatis aut sed ipsum autem. Accusantium natus aut.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_returns",
+      "label": "Returns",
+      "default": "<p>Enim repudiandae voluptas quaerat animi. Impedit laudantium temporibus ea impedit sint enim cumque fuga. Odit aliquid <a href=\"#\">veniam nesciunt</a> molestias dignissimos. Ea optio eaque et quod. Ducimus minus est neque ipsam.</p><p>Repudiandae recusandae velit corrupti et animi natus nihil placeat. Cumque commodi nihil ipsam. Et quia exercitationem. Fuga eaque excepturi maxime ex dolores. Pariatur necessitatibus quidem mollitia voluptas.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type":"@app"
+    },
+    {
+      "type": "options",
+      "name": "Product Options",
+      "settings":[]
+    },
+    {
+      "type": "button",
+      "name": "Add to cart",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Add to basket"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
