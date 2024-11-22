@@ -1,7 +1,7 @@
 <footer class="section-wrap">
   <div class="container">
     <ul>
-      {% assign menu_handle = section.settings.menu %}
+      {% assign menu_handle = section.settings.menu | default: "footer" %}
       {% for link in linklists[menu_handle].links %}
         <li>
           <a href="{{ link.url }}">
