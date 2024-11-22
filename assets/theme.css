@@ -94,6 +94,10 @@ footer img {
   padding: 0.5rem 1rem;
 }
 
+.button-section {
+  margin-bottom: 3rem;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
