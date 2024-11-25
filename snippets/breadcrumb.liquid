@@ -34,7 +34,7 @@ This version checks against the linklist path to return a true breadcrumb.
         {% for parent in linklists[menu_handle].links %}
           {% assign this_url = parent.url | remove: shop.url | remove: '/collections/' %}
           {% if collection_list contains this_url %}
-            <li><a href="{{ parent_url }}">{{ parent.title }}</a></li>
+            <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
           {% endif %}
           {% for child in parent.links %}
             {% unless trail_found %}
