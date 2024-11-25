@@ -21,11 +21,13 @@ var variants = {{ product.variants | json }};
           <div class="product-images-slider" data-images="{{ product.images.size }}">
             <div class="product-images-track">
               <div class="product-images" style="grid-template-columns: repeat({{ product.images.size }}, minmax(100%, 1fr));">
+                {% assign image_width = 1024 %}
                 {% for image in product.images %}
+                  {% assign image_height = image_width | times: image.aspect_ratio | ceil %}
                   <div class="product-image-item" data-imageid="{{ image.id }}">
-                    <img src="{{ image.src | image_url: width:600 }}"
-                      width="600"
-                      height="600"
+                    <img src="{{ image.src | image_url: width: image_width }}"
+                      width="{{ image_width }}"
+                      height="{{ image_height }}"
                       alt="{{ image.alt }}"
                       class="w100">
                   </div>
