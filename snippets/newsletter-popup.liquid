@@ -91,7 +91,9 @@
   document.addEventListener("DOMContentLoaded", function() {
     if (cookieValue == false && formSuccess != 'true') {
       setTimeout(function(){
-        dialog.showModal();
+        if (Shopify.designMode == undefined) {
+          dialog.showModal();
+        }
       }, durationInSecs * 1000);
     }
   });
