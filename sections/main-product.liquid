@@ -156,11 +156,10 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
 
 <script>
 // Product images slider
-const totalImages = {{ product.images.size }};
 const sliderComponents = document.querySelectorAll('.product-images-component');
-
 sliderComponents.forEach(function(sliderComponent) {
   let sliderContainer = sliderComponent.querySelector('.product-images-slider');
+  let totalImages = sliderContainer.dataset.images;
   let slider = sliderComponent.querySelector(".product-images-track");
 
   // Loop through the slides and create the pagination,
