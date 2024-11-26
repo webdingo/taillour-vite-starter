@@ -6,6 +6,7 @@ Get the first available variant
 <script>
 var current_variant = {{ current_variant | json }};
 var variants = {{ product.variants | json }};
+var default_image = {{ product.featured_image.id | default: 'null' }};
 </script>
 
 <link rel="stylesheet" href="{{ 'product.css' | asset_url }}">
