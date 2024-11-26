@@ -42,20 +42,6 @@ var variants = {{ product.variants | json }};
     <section id="product-details">
       <h1 data-title="{{ product.title }}">{{ product.title }}</h1>
 
-      {% comment %}
-      Pricing.
-      {% endcomment %}
-      <p class="large-text">
-        <strike class="js--variant-compareatprice">
-          {%- if current_variant.compare_at_price > current_variant.price -%}
-            {{- current_variant.compare_at_price | money -}}
-          {%- endif -%}
-        </strike>
-        <strong class="js--variant-price">
-          {{ current_variant.price | money }}
-        </strong>
-      </p>
-
       <p>
         Product Code:
         <span class="js--variant-sku">{{ current_variant.sku }}</span>
@@ -72,6 +58,18 @@ var variants = {{ product.variants | json }};
             {% case block.type %}
               {%- when '@app' -%}
                 {% render block %}
+
+              {%- when 'prices' -%}
+                <p class="large-text">
+                  <strike class="js--variant-compareatprice">
+                    {%- if current_variant.compare_at_price > current_variant.price -%}
+                      {{- current_variant.compare_at_price | money -}}
+                    {%- endif -%}
+                  </strike>
+                  <strong class="js--variant-price">
+                    {{ current_variant.price | money }}
+                  </strong>
+                </p>
 
               {%- when 'options' %}
                 {% unless product.has_only_default_variant %}
@@ -273,6 +271,11 @@ function goToImage(index, container=false) {
     {
       "type": "options",
       "name": "Product Options",
+      "settings":[]
+    },
+    {
+      "type": "prices",
+      "name": "Prices",
       "settings":[]
     },
     {
