@@ -4,7 +4,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="" type="image/png">
+  {%- unless settings.favicon == blank -%}
+    <link rel="shortcut icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endunless -%}
 
   <title>{{ page_title }}
     {% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
