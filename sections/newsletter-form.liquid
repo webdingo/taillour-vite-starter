@@ -10,7 +10,9 @@
       {{ section.settings.heading }}
     </{{- section.settings.size -}}>
 
-    {{ section.settings.text }}
+    <div class="rte">
+      {{ section.settings.text }}
+    </div>
 
     {% form 'customer', class: 'form newsletter-signup-form center' %}
       <div class="form-row">

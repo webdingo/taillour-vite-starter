@@ -11,7 +11,9 @@
         {{ section.settings.heading }}
       </{{- section.settings.size -}}>
 
-      {{ section.settings.text }}
+      <div class="rte">
+        {{ section.settings.text }}
+      </div>
 
       {% form 'customer', class: 'form contact-form center align-left' %}
         {%- for block in section.blocks -%}

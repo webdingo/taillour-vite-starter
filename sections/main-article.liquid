@@ -35,7 +35,7 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
       {% endunless %}
     </p>
     <hr>
-    <div class="wysiwyg">
+    <div class="rte">
       <div class="article-image box">
         <img src="{{ article.image.src | image_url: width: image_width }}"
         width="{{ image_width }}"
@@ -56,6 +56,10 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
     <div id="comments" class="section">
       <hr>
       <h2 data-title="{{ comments_heading }}">{{ comments_heading }}</h2>
+
+      {% if article.comments.size == 0 %}
+        <p>No comments yet.</p>
+      {% endif %}
 
       {% paginate article.comments by 25 %}
         <ol class="comments-list">

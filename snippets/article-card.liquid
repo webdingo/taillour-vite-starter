@@ -11,9 +11,11 @@ assign image_height = image_width | times: article.image.aspect_ratio | ceil
   </div>
   <div>
     <h2 data-title="{{ article.title }}">{{ article.title }}</h2>
-    <p>
-      {{ article.excerpt_or_content | strip_html }}
-    </p>
+    <div class="rte">
+      <p>
+        {{ article.excerpt_or_content | strip_html }}
+      </p>
+    </div>
     <p class="small-text">
       Published on {{ article.published_at | date: '%b %d, %Y' }}
     </p>

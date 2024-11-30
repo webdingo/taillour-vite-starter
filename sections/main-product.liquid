@@ -110,7 +110,7 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
 
               {%- when 'text' %}
                 {% unless block.settings.content == blank or block.settings.content == '<p></p>' %}
-                  <div class="wysiwyg" style="margin-top:2rem;">
+                  <div class="rte" style="margin-top:2rem;">
                     {{ block.settings.content }}
                   </div>
                 {% endunless %}
@@ -126,7 +126,7 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
         <summary>
           <span>Product Description</span>
         </summary>
-        <div class="wysiwyg">
+        <div class="rte">
           {{ product.content }}
         </div>
       </details>
@@ -135,7 +135,7 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
         <summary>
           <span>Delivery</span>
         </summary>
-        <div class="wysiwyg">
+        <div class="rte">
           {{ section.settings.tab_delivery }}
         </div>
       </details>
@@ -144,7 +144,7 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
         <summary>
           <span>Returns</span>
         </summary>
-        <div class="wysiwyg">
+        <div class="rte">
           {{ section.settings.tab_returns }}
         </div>
       </details>

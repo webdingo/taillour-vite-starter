@@ -371,14 +371,14 @@ hr.solid {
   font-size: 0.925rem;
 }
 
-.wysiwyg ul,
-.wysiwyg ol {
+.rte ul,
+.rte ol {
   margin-left: 2rem;
 }
-.wysiwyg ul li {
+.rte ul li {
   list-style: square;
 }
-.wysiwyg ol li {
+.rte ol li {
   list-style: auto;
 }
 

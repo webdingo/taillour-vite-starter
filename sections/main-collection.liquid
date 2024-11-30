@@ -21,7 +21,9 @@ grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
 <div class="section-wrap">
   <div class="section">
     <h1 data-title="{{ collection.title }}">{{ collection.title }}</h1>
-    {{ collection.description }}
+    <div class="rte">
+      {{ collection.description }}
+    </div>
   </div>
 </div>
 

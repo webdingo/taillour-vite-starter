@@ -20,7 +20,9 @@
             {%- when 'heading' -%}
               <{{- block.settings.size }} data-title="{{ block.settings.text }}">{{ block.settings.text }}</{{- block.settings.size -}}>
             {%- when 'text' -%}
-              <p>{{ block.settings.text }}</p>
+              <div class="rte">
+                {{ block.settings.text }}
+              </div>
             {% when 'buttons' %}
               <p>
                 <a class="button" href="{{ block.settings.button_link | default: '#' }}">

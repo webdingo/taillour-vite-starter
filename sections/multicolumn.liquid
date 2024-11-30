@@ -43,8 +43,11 @@ assign columns = section.blocks.size
           </{{- block.settings.size -}}>
         {% endunless %}
 
-        <div>
+        <div class="rte">
           {{ block.settings.content }}
+        </div>
+
+        <div>
           {% unless block.settings.button_label == blank %}
             <p>
               <a class="button" href="{{ block.settings.button_link | default: '#' }}">
