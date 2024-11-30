@@ -144,7 +144,7 @@
       "type": "button-row",
       "settings": {
         "text": "Go Shopping",
-        "link": ""
+        "link": "shopify://collections"
       }
     },
     "collection_grid_7w6HWG": {
