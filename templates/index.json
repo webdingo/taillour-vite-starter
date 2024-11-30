@@ -140,6 +140,13 @@
         "color": ""
       }
     },
+    "button_row_NkV6Bn": {
+      "type": "button-row",
+      "settings": {
+        "text": "Go Shopping",
+        "link": ""
+      }
+    },
     "collection_grid_7w6HWG": {
       "type": "collection-grid",
       "settings": {
@@ -338,6 +345,7 @@
     "image_with_text_pjRwPQ",
     "image_with_video_NCkDCh",
     "product_grid_9e9FqV",
+    "button_row_NkV6Bn",
     "collection_grid_7w6HWG",
     "multicolumn_VbBRUF",
     "newsletter_form_JJALbH",
