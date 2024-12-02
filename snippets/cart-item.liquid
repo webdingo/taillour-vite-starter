@@ -45,7 +45,8 @@ END GIFT WRAP
           <img src="{{ item.image | image_url: width: thumbnail_width }}"
             width="{{ thumbnail_width }}"
             height="{{ thumbnail_height }}"
-            alt="{{ item.image.alt }}">
+            alt="{{ item.image.alt }}"
+            loading="lazy">
         </a>
       </div>
       <div class="cart-item__details">

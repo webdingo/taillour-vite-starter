@@ -7,7 +7,8 @@ assign image_height = image_width | times: article.image.aspect_ratio | ceil
     <img src="{{ article.image.src | image_url: width: image_width }}"
       width="{{ image_width }}"
       height="{{ image_height }}"
-      alt="{{ article.image.alt }}">
+      alt="{{ article.image.alt }}"
+      loading="lazy">
   </div>
   <div>
     <h2 data-title="{{ article.title }}">{{ article.title }}</h2>

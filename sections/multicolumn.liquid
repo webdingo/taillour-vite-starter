@@ -33,7 +33,8 @@ assign columns = section.blocks.size
             <img src="{{ block.settings.image | image_url: width: image_width }}"
               width="{{ image_width }}"
               height="{{ image_height }}"
-              alt="{{ block.settings.image.alt }}">
+              alt="{{ block.settings.image.alt }}"
+              loading="lazy">
           </div>
         {% endunless %}
 

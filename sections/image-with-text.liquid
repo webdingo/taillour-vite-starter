@@ -45,7 +45,8 @@
             <img src="{{image | image_url: width: 1024 }}"
               width="{{ image.width }}" height="{{ image.height }}"
               alt="{{ image.alt }}"
-              style="{{- image_sizes -}}">
+              style="{{- image_sizes -}}"
+              loading="lazy">
           {% endunless %}
         </div>
       </div>

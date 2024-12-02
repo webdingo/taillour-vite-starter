@@ -40,7 +40,8 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
         <img src="{{ article.image.src | image_url: width: image_width }}"
         width="{{ image_width }}"
         height="{{ image_height }}"
-        alt="{{ article.image.alt }}">
+        alt="{{ article.image.alt }}"
+        loading="lazy">
       </div>
       {{ article.content }}
     </div>

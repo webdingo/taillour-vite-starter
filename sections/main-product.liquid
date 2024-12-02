@@ -30,7 +30,7 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
                       width="{{ image_width }}"
                       height="{{ image_height }}"
                       alt="{{ image.alt }}"
-                      class="w100">
+                      loading="lazy">
                   </div>
                 {% endfor %}
               </div>
@@ -95,7 +95,8 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
                                     <img src="{{ this_variant.featured_image | image_url: width: 75, height: 75 }}"
                                     width="50"
                                     height="50"
-                                    data-index="{{- this_variant.featured_image.id -}}">
+                                    data-index="{{- this_variant.featured_image.id -}}"
+                                    loading="lazy">
                                     {% endunless %}
                                 {% endunless %}
                                 {{- value -}}
@@ -198,7 +199,7 @@ sliderComponents.forEach(function(sliderComponent) {
       }
       pagination += `
         <button type="button" ${activeClass} data-index="${index}" onclick="goToImage(${index});">
-          <img src="${imgSrc}" width="75" height="75" alt="Image ${index}">
+          <img src="${imgSrc}" width="75" height="75" alt="Image ${index}" loading="lazy">
           <span>${index}</span>
         </button>`;
     });

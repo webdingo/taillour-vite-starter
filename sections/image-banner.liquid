@@ -36,7 +36,8 @@
       <img src="{{image | image_url: width: image.width }}"
       width="{{ image.width }}" height="{{ image.height }}"
       alt="{{ image.alt }}"
-      style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};">
+      style="object-fit:{{ section.settings.object_fit }}; object-position:{{ section.settings.object_position }};"
+      loading="lazy">
     </div>
   {% endunless %}
 
