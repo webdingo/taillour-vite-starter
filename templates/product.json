@@ -25,17 +25,44 @@
           "settings": {
             "button_label": "Add to basket"
           }
+        },
+        "rule_VKccTF": {
+          "type": "rule",
+          "settings": {}
+        },
+        "text_VgqAwb": {
+          "type": "text",
+          "settings": {
+            "content": "<p>{{ product.description }}</p>"
+          }
+        },
+        "detail_gzcnpK": {
+          "type": "detail",
+          "settings": {
+            "title": "Delivery",
+            "content": "<p>Voluptatem sint inventore labore sapiente eaque minus occaecati illo maxime fugiat enim aut sit libero odio qui incidunt eum voluptate totam incidunt soluta.</p>",
+            "open": false
+          }
+        },
+        "detail_NhMUn6": {
+          "type": "detail",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>Consequuntur sint nam voluptatem animi nam aut ad ratione aliquam nesciunt autem maxime cumque at molestiae quis quos autem fuga voluptatibus. </p><p>Et modi voluptatem in rem quam corrupti autem excepturi molestiae tempora ipsam aspernatur voluptatem error est tempora recusandae aut ratione qui ut corrupti quas libero.</p>",
+            "open": false
+          }
         }
       },
       "block_order": [
         "options_je9wUj",
         "prices_zbB86G",
-        "button_bNUm3G"
+        "button_bNUm3G",
+        "rule_VKccTF",
+        "text_VgqAwb",
+        "detail_gzcnpK",
+        "detail_NhMUn6"
       ],
-      "settings": {
-        "tab_delivery": "<p>Enim vitae cupiditate. Qui tenetur consequatur voluptas sequi. Cumque quas iste necessitatibus ratione optio rem consequuntur. Placeat dicta perspiciatis aut sed ipsum autem. Accusantium natus aut.</p>",
-        "tab_returns": "<p>Enim repudiandae voluptas quaerat animi. Impedit laudantium temporibus ea impedit sint enim cumque fuga. Odit aliquid <a href=\"#\">veniam nesciunt</a> molestias dignissimos. Ea optio eaque et quod. Ducimus minus est neque ipsam.</p><p>Repudiandae recusandae velit corrupti et animi natus nihil placeat. Cumque commodi nihil ipsam. Et quia exercitationem. Fuga eaque excepturi maxime ex dolores. Pariatur necessitatibus quidem mollitia voluptas.</p>"
-      }
+      "settings": {}
     },
     "product_recommendations_jRYYgX": {
       "type": "product-recommendations",
