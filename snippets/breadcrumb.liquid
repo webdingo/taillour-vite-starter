@@ -35,6 +35,7 @@ This version checks against the linklist path to return a true breadcrumb.
           {% assign this_url = parent.url | remove: shop.url | remove: '/collections/' %}
           {% if collection_list contains this_url %}
             <li><a href="{{ parent.url }}">{{ parent.title }}</a></li>
+            {% break %}
           {% endif %}
           {% for child in parent.links %}
             {% unless trail_found %}
@@ -81,6 +82,7 @@ This version checks against the linklist path to return a true breadcrumb.
           {% assign this_parent_url = parent.url | remove: shop.url | remove: '/collections/' %}
           {% if this_parent_url == collection.handle %}
             <li>{{ parent.title }}</li>
+            {% break %}
           {% endif %}
           {% for child in parent.links %}
             {% assign this_url = child.url | remove: shop.url | remove: '/collections/' %}
