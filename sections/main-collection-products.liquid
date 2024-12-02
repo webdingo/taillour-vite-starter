@@ -1,3 +1,4 @@
+{% if collection.products_count > 0 %}
 <style>
 #collection {
   display: grid;
@@ -18,16 +19,7 @@
 grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
 {% endcapture %}
 
-<div class="section-wrap">
-  <div class="section">
-    <h1 data-title="{{ collection.title }}">{{ collection.title }}</h1>
-    <div class="rte">
-      {{ collection.description }}
-    </div>
-  </div>
-</div>
-
-<div class="section-wrap">
+<div id="{{ section.id }}" class="section-wrap">
   <div id="collection" class="section">
     <aside>
       <div class="flex middle">
@@ -61,18 +53,15 @@ grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
     </div>
     {% endpaginate %}
   </div>
-
-
 </div>
+{% endif %}
 
 {% schema %}
 {
-  "name": "Collection",
+  "name": "Products",
   "tag": "section",
   "class": "collection-products-section",
-  "disabled_on": {
-    "groups": ["header"]
-  },
+  "templates": ["collection"],
   "settings": [
     {
       "type": "range",
