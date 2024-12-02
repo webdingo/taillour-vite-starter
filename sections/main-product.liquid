@@ -130,46 +130,30 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
                   {% endif %}
                 </div>
 
-              {%- when 'text' %}
+              {%- when 'text' -%}
                 {% unless block.settings.content == blank or block.settings.content == '<p></p>' %}
                   <div class="rte" style="margin-top:2rem;">
                     {{ block.settings.content }}
                   </div>
                 {% endunless %}
 
+              {%- when 'rule' -%}
+                <hr>
+
+              {%- when 'detail' -%}
+                <details{% if block.settings.open == true %} open{%- endif -%}>
+                  <summary>
+                    <span>{{ block.settings.title }}</span>
+                  </summary>
+                  <div class="rte">
+                    {{ block.settings.content }}
+                  </div>
+                </details>
+
             {%- endcase -%}
           {%- endfor -%}
         </form>
       </div>
-
-      <hr>
-
-      <details open>
-        <summary>
-          <span>Product Description</span>
-        </summary>
-        <div class="rte">
-          {{ product.content }}
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          <span>Delivery</span>
-        </summary>
-        <div class="rte">
-          {{ section.settings.tab_delivery }}
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          <span>Returns</span>
-        </summary>
-        <div class="rte">
-          {{ section.settings.tab_returns }}
-        </div>
-      </details>
 
     </section>
   </div>
@@ -268,31 +252,14 @@ function goToImage(index, container=false) {
 {% schema %}
 {
   "name": "Product Page",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Tab Content"
-    },
-    {
-      "type": "richtext",
-      "id": "tab_delivery",
-      "label": "Delivery",
-      "default": "<p>Enim vitae cupiditate. Qui tenetur consequatur voluptas sequi. Cumque quas iste necessitatibus ratione optio rem consequuntur. Placeat dicta perspiciatis aut sed ipsum autem. Accusantium natus aut.</p>"
-    },
-    {
-      "type": "richtext",
-      "id": "tab_returns",
-      "label": "Returns",
-      "default": "<p>Enim repudiandae voluptas quaerat animi. Impedit laudantium temporibus ea impedit sint enim cumque fuga. Odit aliquid <a href=\"#\">veniam nesciunt</a> molestias dignissimos. Ea optio eaque et quod. Ducimus minus est neque ipsam.</p><p>Repudiandae recusandae velit corrupti et animi natus nihil placeat. Cumque commodi nihil ipsam. Et quia exercitationem. Fuga eaque excepturi maxime ex dolores. Pariatur necessitatibus quidem mollitia voluptas.</p>"
-    }
-  ],
+  "settings": [],
   "blocks": [
     {
       "type":"@app"
     },
     {
       "type": "options",
-      "name": "Product Options",
+      "name": "Product options",
       "settings":[]
     },
     {
@@ -320,6 +287,33 @@ function goToImage(index, container=false) {
           "type": "richtext",
           "id": "content",
           "label": "Content"
+        }
+      ]
+    },
+    {
+      "type": "rule",
+      "name": "Horizontal rule",
+      "settings": []
+    },
+    {
+      "type": "detail",
+      "name": "Expandable content",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
         }
       ]
     }
