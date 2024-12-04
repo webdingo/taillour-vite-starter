@@ -13,11 +13,10 @@
 #collection aside > div {
   margin-bottom: 1.5rem;
 }
+{{ section.id | prepend: '#' }} .products-grid {
+  grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
+}
 </style>
-
-{% capture styles %}
-grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
-{% endcapture %}
 
 <div id="{{ section.id }}" class="section-wrap">
   <div id="collection" class="section">
@@ -36,7 +35,7 @@ grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
       <div class="section">
         <p>{{ collection.products_count }} products</p>
 
-        <div class="products-grid" style="{{ styles }}">
+        <div class="products-grid">
           {% liquid
           for product in collection.products
             render 'product-card', product: product
