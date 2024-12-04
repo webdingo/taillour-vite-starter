@@ -153,6 +153,11 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
                   </div>
                 </details>
 
+              {%- when 'liquid' -%}
+                <div class="raw-html-content">
+                  {{ block.settings.html }}
+                </div>
+
             {%- endcase -%}
           {%- endfor -%}
         </form>
@@ -317,6 +322,18 @@ function goToImage(index, container=false) {
           "id": "open",
           "label": "Open by default",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "html",
+          "label": "HTML/Liquid",
+          "info": "You can add HTML, CSS and limited Liquid markup."
         }
       ]
     }
