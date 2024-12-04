@@ -67,6 +67,7 @@ header {
 }
 
 main img,
+main svg,
 footer img {
   max-width: 100%;
   height: auto;
@@ -141,6 +142,10 @@ body .hide {
   padding: 0.5rem 0;
   background-color: var(--black);
   color: var(--white);
+}
+
+.placeholder {
+  background-color: #f7f7f7;
 }
 
 /* Form & Buttons */

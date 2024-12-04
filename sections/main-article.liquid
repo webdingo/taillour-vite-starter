@@ -1,6 +1,6 @@
 {% liquid
 assign image_width = 800
-assign image_height = image_width | times: product.featured_image.aspect_ratio | ceil
+assign image_height = image_width | divided_by: article.image.aspect_ratio | ceil
 %}
 
 {% unless section.settings.max_width == blank or section.settings.max_width == 0 %}
@@ -36,13 +36,15 @@ assign image_height = image_width | times: product.featured_image.aspect_ratio |
     </p>
     <hr>
     <div class="rte">
-      <div class="article-image box">
-        <img src="{{ article.image.src | image_url: width: image_width }}"
-        width="{{ image_width }}"
-        height="{{ image_height }}"
-        alt="{{ article.image.alt }}"
-        loading="lazy">
-      </div>
+      {% unless article.image.src == blank %}
+        <div class="article-image box">
+          <img src="{{ article.image.src | image_url: width: image_width }}"
+          width="{{ image_width }}"
+          height="{{ image_height }}"
+          alt="{{ article.image.alt }}"
+          loading="lazy">
+        </div>
+      {% endunless %}
       {{ article.content }}
     </div>
   </div>

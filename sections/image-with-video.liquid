@@ -35,7 +35,9 @@
       <div class="video-text-asset">
         <!-- video -->
         <div>
-          {% unless section.settings.video == blank %}
+          {% if section.settings.video == blank %}
+            {{ 'collection-4' | placeholder_svg_tag: "placeholder" }}
+          {% else %}
             {% capture video_sizes %}
             width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
             {% endcapture %}
@@ -58,7 +60,7 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen></iframe>
-          {% endunless %}
+          {% endif %}
         </div>
       </div>
     </div>

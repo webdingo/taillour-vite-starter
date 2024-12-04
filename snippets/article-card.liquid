@@ -1,14 +1,18 @@
 {% liquid
 assign image_width = 400
-assign image_height = image_width | times: article.image.aspect_ratio | ceil
+assign image_height = image_width | divided_by: article.image.aspect_ratio | ceil
 %}
 <a class="article-card" href="{{ article.url }}">
   <div>
-    <img src="{{ article.image.src | image_url: width: image_width }}"
-      width="{{ image_width }}"
-      height="{{ image_height }}"
-      alt="{{ article.image.alt }}"
-      loading="lazy">
+    {% if article.image == blank %}
+      {{ 'collection-6' | placeholder_svg_tag: 'placeholder' }}
+    {% else %}
+      <img src="{{ article.image.src | image_url: width: image_width }}"
+        width="{{ image_width }}"
+        height="{{ image_height }}"
+        alt="{{ article.image.alt }}"
+        loading="lazy">
+    {% endif %}
   </div>
   <div>
     <h2 data-title="{{ article.title }}">{{ article.title }}</h2>

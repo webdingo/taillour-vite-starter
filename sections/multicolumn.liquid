@@ -26,9 +26,11 @@ assign columns = section.blocks.size
 <div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
   <div class="section column-section" style="grid-template-columns: repeat({{columns}}, 1fr);">
     {% for block in section.blocks %}
-      {% assign image_height = image_width | times: block.settings.image.aspect_ratio | ceil %}
+      {% assign image_height = image_width | divided_by: block.settings.image.aspect_ratio | ceil %}
       <div>
-        {% unless block.settings.image == blank %}
+        {% if block.settings.image == blank %}
+          {{ 'collection-1' | placeholder_svg_tag: "placeholder" }}
+        {% else %}
           <div>
             <img src="{{ block.settings.image | image_url: width: image_width }}"
               width="{{ image_width }}"
@@ -36,7 +38,7 @@ assign columns = section.blocks.size
               alt="{{ block.settings.image.alt }}"
               loading="lazy">
           </div>
-        {% endunless %}
+        {% endif %}
 
         {% unless block.settings.text == blank %}
           <{{- block.settings.size }} data-title="{{ block.settings.text }}">

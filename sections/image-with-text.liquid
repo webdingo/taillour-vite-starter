@@ -14,7 +14,6 @@
   style="color:{{ section.settings.color | default:'inherit' }};">
   <div class="section">
     <div class="grid-2 middle image-text-{{ section.settings.image_position }}">
-      <!-- content -->
       <div class="image-text-content">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
@@ -33,21 +32,22 @@
           {% endcase %}
         {%- endfor -%}
       </div>
+
       <div class="image-text-asset">
-        <!-- image -->
         <div>
-          {% unless section.settings.image == blank %}
+          {% if section.settings.image == blank %}
+            {{ 'collection-4' | placeholder_svg_tag: "placeholder" }}
+          {% else %}
             {% capture image_sizes %}
             width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
             {% endcapture %}
-
             {% assign image = section.settings.image %}
             <img src="{{image | image_url: width: 1024 }}"
               width="{{ image.width }}" height="{{ image.height }}"
               alt="{{ image.alt }}"
               style="{{- image_sizes -}}"
               loading="lazy">
-          {% endunless %}
+          {% endif %}
         </div>
       </div>
     </div>

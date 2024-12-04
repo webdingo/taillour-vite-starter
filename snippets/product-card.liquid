@@ -1,14 +1,18 @@
 {% liquid
 assign image_width = 400
-assign image_height = image_width | times: product.featured_image.aspect_ratio | ceil
+assign image_height = image_width | divided_by: product.featured_image.aspect_ratio | ceil
 %}
 <a class="product-card" href="{{ product.url }}">
   <div>
+    {% if product.featured_image == blank %}
+      {{ 'product-1' | placeholder_svg_tag: "placeholder" }}
+    {% else %}
     <img src="{{ product.featured_image.src | image_url: width: image_width }}"
       width="{{ image_width }}"
       height="{{ image_height }}"
       alt="{{ product.featured_image.alt }}"
       loading="lazy">
+      {% endif %}
   </div>
   <div>
     <h3>{{ product.title }}</h3>

@@ -23,8 +23,11 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
             <div class="product-images-track">
               <div class="product-images" style="grid-template-columns: repeat({{ product.images.size }}, minmax(100%, 1fr));">
                 {% assign image_width = 1024 %}
+                {% if product.images.size == 0 %}
+                  {{ 'collection-4' | placeholder_svg_tag: 'placeholder' }}
+                {% endif %}
                 {% for image in product.images %}
-                  {% assign image_height = image_width | times: image.aspect_ratio | ceil %}
+                  {% assign image_height = image_width | divided_by: image.aspect_ratio | ceil %}
                   <div class="product-image-item" data-imageid="{{ image.id }}">
                     <img src="{{ image.src | image_url: width: image_width }}"
                       width="{{ image_width }}"

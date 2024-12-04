@@ -42,11 +42,15 @@ END GIFT WRAP
           {% liquid
           assign thumbnail_height = thumbnail_width | divided_by: item.image.aspect_ratio | ceil
           %}
-          <img src="{{ item.image | image_url: width: thumbnail_width }}"
-            width="{{ thumbnail_width }}"
-            height="{{ thumbnail_height }}"
-            alt="{{ item.image.alt }}"
-            loading="lazy">
+          {% if item.image == blank %}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder' }}
+          {% else %}
+            <img src="{{ item.image | image_url: width: thumbnail_width }}"
+              width="{{ thumbnail_width }}"
+              height="{{ thumbnail_height }}"
+              alt="{{ item.image.alt }}"
+              loading="lazy">
+          {% endif %}
         </a>
       </div>
       <div class="cart-item__details">
