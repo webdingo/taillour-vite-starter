@@ -64,6 +64,37 @@
       ],
       "settings": {}
     },
+    "faqs_M7fRxe": {
+      "type": "faqs",
+      "blocks": {
+        "text_DYzPwt": {
+          "type": "text",
+          "settings": {
+            "title": "Vitae aut laudantium perspiciatis repellendus?",
+            "content": "<p>Et vel id. Eos numquam sequi placeat et quasi corrupti assumenda. Officia numquam rerum. Excepturi velit tempora. Officiis illo distinctio quisquam minus. Enim iusto adipisci iure impedit. Accusamus doloribus soluta omnis fuga qui eius et.</p>",
+            "open": false
+          }
+        },
+        "text_M6ENnC": {
+          "type": "text",
+          "settings": {
+            "title": "Ut quia ut quae officiis iste iure tempore sed et?",
+            "content": "<p>The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design.</p>",
+            "open": true
+          }
+        }
+      },
+      "block_order": [
+        "text_DYzPwt",
+        "text_M6ENnC"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "color": "",
+        "heading": "Frequently Asked Questions",
+        "size": "h2"
+      }
+    },
     "product_recommendations_jRYYgX": {
       "type": "product-recommendations",
       "settings": {
@@ -77,6 +108,7 @@
   },
   "order": [
     "product",
+    "faqs_M7fRxe",
     "product_recommendations_jRYYgX"
   ]
 }
