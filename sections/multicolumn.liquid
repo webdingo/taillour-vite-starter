@@ -28,16 +28,18 @@ assign columns = section.blocks.size
     {% for block in section.blocks %}
       {% assign image_height = image_width | divided_by: block.settings.image.aspect_ratio | ceil %}
       <div>
-        {% if block.settings.image == blank %}
-          {{ 'collection-1' | placeholder_svg_tag: "placeholder" }}
-        {% else %}
-          <div>
-            <img src="{{ block.settings.image | image_url: width: image_width }}"
-              width="{{ image_width }}"
-              height="{{ image_height }}"
-              alt="{{ block.settings.image.alt }}"
-              loading="lazy">
-          </div>
+        {% if block.settings.show_image == true %}
+          {% if block.settings.image == blank %}
+            {{ 'collection-1' | placeholder_svg_tag: "placeholder" }}
+          {% else %}
+            <div>
+              <img src="{{ block.settings.image | image_url: width: image_width }}"
+                width="{{ image_width }}"
+                height="{{ image_height }}"
+                alt="{{ block.settings.image.alt }}"
+                loading="lazy">
+            </div>
+          {% endif %}
         {% endif %}
 
         {% unless block.settings.text == blank %}
@@ -46,19 +48,21 @@ assign columns = section.blocks.size
           </{{- block.settings.size -}}>
         {% endunless %}
 
-        <div class="rte">
-          {{ block.settings.content }}
-        </div>
+        {% unless block.settings.content == blank %}
+          <div class="rte">
+            {{- block.settings.content -}}
+          </div>
+        {% endunless %}
 
-        <div>
-          {% unless block.settings.button_label == blank %}
+        {% unless block.settings.button_label == blank %}
+          <div>
             <p>
               <a class="button" href="{{ block.settings.button_link | default: '#' }}">
                 {{ block.settings.button_label }}
               </a>
             </p>
-          {% endunless %}
-        </div>
+          </div>
+        {% endunless %}
       </div>
     {% endfor %}
   </div>
@@ -112,14 +116,20 @@ assign columns = section.blocks.size
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Image",
-          "info": "Optional: Add an image for the column."
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image",
+          "label": "Show image",
+          "default": true
         },
         {
           "type": "inline_richtext",
           "id": "text",
           "label": "Text",
           "default": "Headline",
+          "info": "Leave blank to hide."
         },
         {
           "type": "select",
@@ -146,13 +156,14 @@ assign columns = section.blocks.size
           "id": "content",
           "label": "Content",
           "default": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+          "info": "Leave blank to hide."
         },
         {
           "type": "text",
           "id": "button_label",
           "default": "Button label",
           "label": "Button Label",
-          "info": "Leave blank to hide button."
+          "info": "Leave blank to hide."
         },
         {
           "type": "url",
