@@ -8,6 +8,53 @@
 </style>
 
 <form>
+  <details class="filter-group"{% unless collection.sort_by == blank %} open{% endunless %}>
+    <summary>Sort by</summary>
+    <div>
+      <ul>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="manual"{% if collection.sort_by == "manual" or collection.sort_by == blank %} checked{% endif %}>
+            <span>Featured</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="best-selling"{% if collection.sort_by == "best-selling" %} checked{% endif %}>
+            <span>Best selling</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="price-ascending"{% if collection.sort_by == "price-ascending" %} checked{% endif %}>
+            <span>Price low to high</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="price-descending"{% if collection.sort_by == "price-descending" %} checked{% endif %}>
+            <span>Price high to low</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="created-descending"{% if collection.sort_by == "created-descending" %} checked{% endif %}>
+            <span>Newly added</span>
+          </label>
+        </li>
+        <li>
+          <label class="flex middle align-left">
+            <input type="radio" name="sort_by" value="created-ascending"{% if collection.sort_by == "created-ascending" %} checked{% endif %}>
+            <span>Oldest first</span>
+          </label>
+        </li>
+      </ul>
+      <div>
+        <button type="submit" class="button button-small">Apply</button>
+      </div>
+    </div>
+  </details>
+
   {%- for filter in collection.filters -%}
     <details class="filter-group">
       <summary>
@@ -99,8 +146,8 @@
                             | image_tag: alt: filter_value.display.value.alt
                           }}
                       {%- endcase -%}
+                      {{ filter_value.label }}
                     </span>
-                    {{ filter_value.label }}
                   </label>
                 </li>
               {%- endfor -%}
