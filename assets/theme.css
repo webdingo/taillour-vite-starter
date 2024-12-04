@@ -392,6 +392,7 @@ details {
   border-left: var(--border);
   border-right: var(--border);
   margin-bottom: 1.5rem;
+  background-color: white;
 }
 
 details[open] {
@@ -521,6 +522,7 @@ details > div {
 .article-card:hover:before,
 .box:before,
 .pill:before,
+details:before,
 table:before {
   content: "";
   background-image: var(--shading);
