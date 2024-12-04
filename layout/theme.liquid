@@ -29,6 +29,13 @@
 </head>
 
 <body>
+  {% comment %}
+  Skip to content accessibility link
+  {% endcomment %}
+  <a href="#main-content" class="skip-to-content desktop">
+    <span>Skip to content</span>
+  </a>
+
   {% sections 'header-group' %}
 
   {% liquid
@@ -37,7 +44,7 @@
   endunless
   %}
 
-  <main>
+  <main id="main-content">
     {{ content_for_layout }}
   </main>
 

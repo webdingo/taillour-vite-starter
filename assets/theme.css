@@ -148,6 +148,32 @@ body .hide {
   background-color: #f7f7f7;
 }
 
+/* Accessibility */
+a.skip-to-content {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transform: translateX(-100%);
+  background-color: var(--cream);
+  padding: 10px;
+  color: var(--black);
+  font-style: italic;
+  text-decoration: underline;
+  text-align: center;
+}
+a.skip-to-content:focus-visible {
+  position: relative;
+  transform: translateX(0%);
+}
+@media (min-width: 769px) {
+  *:focus-visible,
+  a.skip-to-content:focus-visible span {
+    outline: 2px solid orange;
+  }
+}
+
 /* Form & Buttons */
 .form {
   max-width: 600px;
