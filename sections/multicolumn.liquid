@@ -21,10 +21,13 @@ assign columns = section.blocks.size
 {{ section.id | prepend: '#' }}.section-wrap:before {
   background-color:{{ section.settings.background | default: '#ffffff' }}
 }
+{{ section.id | prepend: '#' }} .column-section {
+  grid-template-columns: repeat({{columns}}, 1fr);
+}
 </style>
 
 <div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
-  <div class="section column-section" style="grid-template-columns: repeat({{columns}}, 1fr);">
+  <div class="section column-section">
     {% for block in section.blocks %}
       {% assign image_height = image_width | divided_by: block.settings.image.aspect_ratio | ceil %}
       <div>
