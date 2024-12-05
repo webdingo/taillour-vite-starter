@@ -43,6 +43,7 @@ main#main-content #product {
 /* Header */
 header {
   padding: 0 0.5rem;
+  border-bottom: 2px solid var(--black);
 }
 #logo {
   justify-content: center;
