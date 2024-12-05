@@ -208,6 +208,7 @@ form .errors {
   color: red;
 }
 input[type="text"],
+input[type="search"],
 input[type="number"],
 input[type="email"],
 input[type="tel"],

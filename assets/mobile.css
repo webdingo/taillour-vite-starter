@@ -60,6 +60,17 @@ header {
   text-decoration-thickness: 2px;
   background-color: transparent;
 }
+#header-search-mobile {
+  background-color: var(--black);
+}
+#header-search-mobile input[type="search"] {
+  padding: 0.5rem;
+}
+#header-search-mobile button {
+  background-color: var(--white);
+  padding: 0.6rem;
+  color: var(--black);
+}
 
 /* Nav */
 nav {

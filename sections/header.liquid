@@ -15,14 +15,7 @@
     </a>
   </div>
   <div class="flex center middle" data-device="desktop">
-    <form class="flex middle center" action="{{ routes.search_url }}" method="get">
-      <input type="hidden" name="type" value="product">
-      <input type="text"
-        name="q" value="{{ search.terms }}"
-        placeholder="Enter product name or keywords..."
-        maxlength="128">
-      <button type="submit" class="button">Search</button>
-    </form>
+    {% render 'search-form' %}
   </div>
   <div class="flex align-right middle">
     <div>
@@ -33,3 +26,7 @@
     </div>
   </div>
 </header>
+
+<div class="section-wrap unpadded" data-device="mobile">
+  {% render 'search-form', id: 'header-search-mobile' %}
+</div>
