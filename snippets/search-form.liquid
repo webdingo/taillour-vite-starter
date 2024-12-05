@@ -1,4 +1,4 @@
- <form id="{{- id | default: 'header-search' -}}" class="flex middle center" action="{{ routes.search_url }}" method="get">
+ <form id="{{- id | default: 'header-search' -}}" class="flex middle center" action="{{ routes.search_url }}" method="get" role="search">
   <input type="hidden" name="type" value="product">
   <input type="search"
     name="q"
