@@ -8,6 +8,10 @@ body [data-device="desktop"] {
   display: none;
 }
 
+input[type="search"] {
+  min-width: unset;
+}
+
 /* Sections and grids */
 .section-wrap {
   padding: 1rem 0;
@@ -62,6 +66,7 @@ header {
 }
 #header-search-mobile {
   background-color: var(--black);
+  padding: 0.5rem;
 }
 #header-search-mobile input[type="search"] {
   padding: 0.5rem;
@@ -167,4 +172,13 @@ main#main-content .cart-items-footer__note p {
 main#main-content .image-banner-content {
   margin: 1rem;
   max-width: unset;
+}
+
+/* Predictive search */
+#predictive-search-results {
+  top: 0;
+}
+#predictive-search-results h3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
 }
