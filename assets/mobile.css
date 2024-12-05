@@ -8,6 +8,10 @@ body [data-device="desktop"] {
   display: none;
 }
 
+input[type="search"] {
+  min-width: unset;
+}
+
 /* Sections and grids */
 .section-wrap {
   padding: 1rem 0;
@@ -62,6 +66,7 @@ header {
 }
 #header-search-mobile {
   background-color: var(--black);
+  padding: 0.5rem;
 }
 #header-search-mobile input[type="search"] {
   padding: 0.5rem;
