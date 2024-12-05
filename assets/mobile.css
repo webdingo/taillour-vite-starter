@@ -173,3 +173,12 @@ main#main-content .image-banner-content {
   margin: 1rem;
   max-width: unset;
 }
+
+/* Predictive search */
+#predictive-search-results {
+  top: 0;
+}
+#predictive-search-results h3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
