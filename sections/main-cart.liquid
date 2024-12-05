@@ -35,63 +35,76 @@ END: GIFT WRAP
 
 <link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
 
+{% comment %}
+Empty cart section.
+{% endcomment %}
+{% capture empty_cart %}
+<section>
+  <p>Your basket is empty. <a href="{{ shop.url }}" class="button">Let's go shopping</a></p>
+</section>
+{% endcapture %}
+<script>
+const emptyCartHtml = `{{ empty_cart }}`;
+</script>
+
+{% comment %}
+{% endcomment %}
 <div class="section-wrap">
   <section class="section">
     <h1 data-title="Cart">Cart</h1>
   </section>
 
-{% if cart.items.size > 0 %}
-  <form action="{{ routes.cart_url }}" method="post" class="section-wrap">
-    {% render 'cart-spend', section: section %}
+  <div id="cart-content" class="section">
+    {% if cart.items.size > 0 %}
+      <form action="{{ routes.cart_url }}" method="post">
+        {% render 'cart-spend', section: section %}
 
-    <section class="section">
-      <div class="cart-items-header" data-device="desktop">
-        <div>Product</div>
-        <div>Quantity</div>
-        <div>Total</div>
-      </div>
-      <div class="cart-items-header" data-device="mobile">
-        <div>Items</div>
-      </div>
-      <div class="cart-items-group">
-        {% liquid
-        for item in cart.items
-          unless item.product.handle == "gift-wrap" and cart_item_keys contains item.properties['_id']
-            render 'cart-item', item: item, thumbnail_width: thumbnail_width, gift_wrap: gift_wrap, gift_wrap_items: gift_wrap_items
-          endunless
-        endfor
-        %}
-      </div>
-      <div class="cart-items-footer">
-        <div class="cart-items-footer__total flex">
-          <span>{{ section.settings.cart_total_label }}</span>
-          <strong class="large-text js--cart-total">{{ cart.total_price | money }}</strong>
-        </div>
-        <div class="cart-items-footer__note">
-          {{ section.settings.checkout_note }}
-        </div>
-        <div>
-          <button type="submit" name="checkout" class="button">
-            {{ section.settings.checkout_btn_label }}
-          </button>
-          {%- if additional_checkout_buttons -%}
-            <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
-              {{ content_for_additional_checkout_buttons }}
+        <section>
+          <div class="cart-items-header" data-device="desktop">
+            <div>Product</div>
+            <div>Quantity</div>
+            <div>Total</div>
+          </div>
+          <div class="cart-items-header" data-device="mobile">
+            <div>Items</div>
+          </div>
+          <div class="cart-items-group">
+            {% liquid
+            for item in cart.items
+              unless item.product.handle == "gift-wrap" and cart_item_keys contains item.properties['_id']
+                render 'cart-item', item: item, thumbnail_width: thumbnail_width, gift_wrap: gift_wrap, gift_wrap_items: gift_wrap_items
+              endunless
+            endfor
+            %}
+          </div>
+          <div class="cart-items-footer">
+            <div class="cart-items-footer__total flex">
+              <span>{{ section.settings.cart_total_label }}</span>
+              <strong class="large-text js--cart-total">{{ cart.total_price | money }}</strong>
             </div>
-          {%- endif -%}
-        </div>
-      </div>
-    </section>
-  </form>
+            <div class="cart-items-footer__note">
+              {{ section.settings.checkout_note }}
+            </div>
+            <div>
+              <button type="submit" name="checkout" class="button">
+                {{ section.settings.checkout_btn_label }}
+              </button>
+              {%- if additional_checkout_buttons -%}
+                <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                  {{ content_for_additional_checkout_buttons }}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </section>
+      </form>
+      <script src="{{ 'cart.js' | asset_url }}"></script>
+    {% endif %}
 
-  <script src="{{ 'cart.js' | asset_url }}"></script>
-{% endif %}
-
-{% if cart.items.size == 0 %}
-  <section class="section">
-    <p>Your basket is empty. <a href="{{ shop.url }}" class="button">Let's go shopping</a></p>
-  </section>
-{% endif %}
+    {% if cart.items.size == 0 %}
+      {{ empty_cart }}
+    {% endif %}
+  </div>
 </div>
 
 

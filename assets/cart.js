@@ -45,6 +45,10 @@ function updateLineItemQty(el) {
         }
         // Update cart item count.
         updateCartCounter(cart);
+        // Display empty cart if no items.
+        if (cart.item_count == 0) {
+          document.querySelector('#cart-content').innerHTML = emptyCartHtml;
+        }
       });
   }
 };
