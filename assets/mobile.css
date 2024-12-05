@@ -4,10 +4,6 @@ whatever's already in here: trash all of it, keep bits of it, modify it,
 improve it...the choice is yours! :)
 */
 
-:root {
-  /* --font-size: 1rem; */
-}
-
 body [data-device="desktop"] {
   display: none;
 }
