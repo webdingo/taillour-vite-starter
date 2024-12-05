@@ -2,6 +2,9 @@
   {% comment %}
   Logos will typically be SVG's, so no theme settings for this for maximum control :)
   {% endcomment %}
+  <div id="btn-menu" data-device="mobile" class="flex middle">
+    <button type="button" onclick="toggleNav();">Menu</button>
+  </div>
   <div id="logo">
     <a href="/">
       <svg width="120" height="100" viewBox="0 0 164 138" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -11,22 +14,21 @@
       </svg>
     </a>
   </div>
-  <div class="flex center middle">
+  <div class="flex center middle" data-device="desktop">
     <form class="flex middle center" action="{{ routes.search_url }}" method="get">
       <input type="hidden" name="type" value="product">
       <input type="text"
         name="q" value="{{ search.terms }}"
         placeholder="Enter product name or keywords..."
         maxlength="128">
-      <button type="submit" class="button solid">Search</button>
+      <button type="submit" class="button">Search</button>
     </form>
   </div>
   <div class="flex align-right middle">
     <div>
       <ul class="flex">
-        <li><a href="/account">Account</a></li>
-        <li><a href="/search">Search</a></li>
-        <li><a href="/cart">Cart (<span class="js--cart-counter">{{ cart.item_count }}</span>)</a></li>
+        <li data-device="desktop"><a href="/account">Account</a></li>
+        <li><a href="{{ routes.cart_url }}">Cart (<span class="js--cart-counter">{{ cart.item_count }}</span>)</a></li>
       </ul>
     </div>
   </div>

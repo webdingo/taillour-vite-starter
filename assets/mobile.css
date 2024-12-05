@@ -4,10 +4,15 @@ whatever's already in here: trash all of it, keep bits of it, modify it,
 improve it...the choice is yours! :)
 */
 
+:root {
+  --font-size: 1rem;
+}
+
 body [data-device="desktop"] {
   display: none;
 }
 
+/* Sections and grids */
 .section-wrap {
   padding: 1rem 0;
 }
@@ -38,6 +43,64 @@ main#main-content #product {
   grid-gap: 50px;
 }
 
+/* Header */
+header {
+  padding: 0 0.5rem;
+}
+#logo {
+  justify-content: center;
+}
+#logo svg {
+  width: 75px;
+  height: auto;
+}
+#btn-menu button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  background-color: transparent;
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+nav#header-nav.nav-open {
+  left: 0;
+}
+nav ul {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  margin: 0 1rem;
+}
+nav li {
+  padding: 0.925rem;
+  display: block;
+  border-right: 0;
+  border-bottom: 1px dashed var(--white);
+}
+nav li a {
+  text-decoration: none;
+}
+nav button {
+  color: inherit;
+  background-color: inherit;
+  font-size: 2rem;
+  padding: 0.25rem 1rem;
+}
+
+/* Footer */
 footer ul {
   flex-direction: column;
   gap: 0.25rem;
@@ -48,6 +111,7 @@ footer ul a {
   padding: 0.5rem 0;
 }
 
+/* Typography */
 h1 {
   font-size: 3rem;
 }
@@ -60,6 +124,7 @@ details {
   margin-bottom: 14px;
 }
 
+/* Cart */
 main#main-content .cart-items-header,
 main#main-content .cart-item {
   gap: 0.5rem;
@@ -87,4 +152,10 @@ main#main-content .cart-items-footer__note p {
   font-size: 0.925rem;
   line-height: normal;
   margin-bottom: 0;
+}
+
+/* Sections */
+main#main-content .image-banner-content {
+  margin: 1rem;
+  max-width: unset;
 }

@@ -10,6 +10,7 @@ is yours! :)
   --white: #ffffff;
   --cream: #FFF6D1;
   --font-stack: system-ui, sans-serif;
+  --font-size: 1.125rem;
   --regular: 400;
   --bold: 900;
   --border: 2px solid var(--black);
@@ -30,7 +31,6 @@ is yours! :)
 }
 
 html {
-  font-size: var(--font-size);
   scroll-behavior: smooth;
 }
 
@@ -41,7 +41,10 @@ body {
   color: var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 1.125rem;
+  font-size: var(--font-size);
+}
+button {
+  cursor: pointer;
 }
 
 mark,
@@ -289,7 +292,7 @@ table tbody tr:nth-child(even) td {
 }
 
 /* Buttons */
-button,
+main button,
 .button {
   font-family: var(--font-stack);
   font-size: 1rem;
@@ -305,20 +308,20 @@ button,
   position: relative;
   border-radius: 5px;
 }
-button.button-white,
+main button.button-white,
 .button.button-white {
   box-shadow: inset 0 0 0 2px var(--white);
 }
-button:hover,
+main button:hover,
 .button:hover,
-button.button-white,
+main button.button-white,
 .button.button-white {
   background-color: var(--white);
   color: var(--black);
   box-shadow: inset 0 0 0 2px var(--black);
   font-weight: 600;
 }
-button:before,
+main button:before,
 .button:before {
   content: "";
   background-image: var(--shading);

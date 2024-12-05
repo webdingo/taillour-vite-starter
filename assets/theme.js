@@ -117,5 +117,14 @@ ready(function() {
       });
     });
   });
-
 });
+
+/*
+ * TOGGLE MOBILE NAV
+ * Open/close main nav on mobile. This just applies a class
+ * and the rest is done in CSS.
+ */
+function toggleNav() {
+  let nav = document.querySelector('#header-nav');
+  nav.classList.toggle('nav-open');
+}
