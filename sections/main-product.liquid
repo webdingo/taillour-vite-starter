@@ -201,7 +201,7 @@ sliderComponents.forEach(function(sliderComponent) {
   if (totalImages > 1) {
     sliderComponent.insertAdjacentHTML("beforeend", `
       <div class="product-slider-controls">
-        <div class="product-images-dots">${pagination}</div>
+        <div class="product-images-dots" data-device="desktop">${pagination}</div>
       </div>
   `);
     sliderContainer.insertAdjacentHTML("beforeend", `
@@ -283,7 +283,7 @@ function goToImage(index, container=false) {
           "type": "text",
           "id": "button_label",
           "label": "Button Label",
-          "default": "Add to basket"
+          "default": "Add to cart"
         }
       ]
     },

@@ -96,7 +96,7 @@ ready(function() {
             document.querySelector("#js--addtocart").innerText = "Unavailable";
           } else {
             document.querySelector("#js--addtocart").disabled = false;
-            document.querySelector("#js--addtocart").innerText = "Add to basket";
+            document.querySelector("#js--addtocart").innerText = "Add to cart";
           }
 
           // Update image

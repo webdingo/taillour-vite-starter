@@ -1,3 +1,9 @@
+/*
+Add your theme styles here. You can do whatever you like to whatever's already
+in here: trash all of it, keep bits of it, modify it, improve it...the choice
+is yours! :)
+*/
+
 :root {
   --max-width: 1230px;
   --black: #000000;
@@ -146,6 +152,13 @@ body .hide {
 
 .placeholder {
   background-color: #f7f7f7;
+}
+
+/* Mobile/desktop switch */
+@media (min-width: 769px) {
+  body [data-device="mobile"] {
+    display: none;
+  }
 }
 
 /* Accessibility */
@@ -328,7 +341,6 @@ button + button,
 
 /* Typography */
 h1 {
-  font-size: 78px;
   font-size: 4.875rem;
   font-weight: var(--bold);
   margin-top: 1rem;
@@ -722,26 +734,4 @@ article img {
 }
 
 /* Mobile adjustments */
-@media screen and (max-width: 1023px) {
-  h1 {
-    font-size: 3.375rem;
-  }
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 28px;
-  }
-  section {
-    padding: 10px;
-  }
-
-  /* header, */
-  .grid-2,
-  .grid-3 {
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 0;
-  }
-
-  details {
-    margin-bottom: 14px;
-  }
-}
+@media screen and (max-width: 1023px) {}

@@ -45,10 +45,13 @@ END: GIFT WRAP
     {% render 'cart-spend', section: section %}
 
     <section class="section">
-      <div class="cart-items-header">
+      <div class="cart-items-header" data-device="desktop">
         <div>Product</div>
         <div>Quantity</div>
         <div>Total</div>
+      </div>
+      <div class="cart-items-header" data-device="mobile">
+        <div>Items</div>
       </div>
       <div class="cart-items-group">
         {% liquid

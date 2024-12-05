@@ -1,0 +1,90 @@
+/*
+Add your mobile specific theme styles here. You can do whatever you like to
+whatever's already in here: trash all of it, keep bits of it, modify it,
+improve it...the choice is yours! :)
+*/
+
+body [data-device="desktop"] {
+  display: none;
+}
+
+.section-wrap {
+  padding: 1rem 0;
+}
+.section-wrap > * {
+  padding: 0.5rem;
+}
+
+main#main-content .products-grid,
+main#main-content .collections-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+main#main-content .column-section,
+main#main-content .articles-grid,
+main#main-content #collection,
+main#main-content #product {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+main#main-content #collection,
+main#main-content #product {
+  gap: 0.5rem;
+}
+
+.grid-2,
+.grid-3 {
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 50px;
+}
+
+footer ul {
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: stretch;
+}
+footer ul a {
+  display: block;
+  padding: 0.5rem 0;
+}
+
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+  margin-bottom: 28px;
+}
+
+details {
+  margin-bottom: 14px;
+}
+
+main#main-content .cart-items-header,
+main#main-content .cart-item {
+  gap: 0.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+main#main-content .cart-item input[type="number"] {
+  padding: 0.25rem;
+}
+main#main-content .cart-item__image {
+  order: 2;
+}
+main#main-content .cart-item__image img,
+main#main-content .cart-item__image svg {
+  width: 72px;
+}
+main#main-content .cart-items-header > div:last-child,
+main#main-content .cart-item > div:last-child {
+  text-align: left;
+}
+main#main-content .cart-items-footer {
+  align-items: center;
+  text-align: center;
+}
+main#main-content .cart-items-footer__note p {
+  font-size: 0.925rem;
+  line-height: normal;
+  margin-bottom: 0;
+}
