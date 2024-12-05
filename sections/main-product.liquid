@@ -248,10 +248,11 @@ function goToImage(index, container=false) {
       }
     }
   } else {
-    sliderComponent.querySelector('.product-image-item[data-index="' + index + '"]').scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'end'
+    let slide = sliderComponent.querySelector('.product-image-item[data-index="' + index + '"]');
+    sliderComponent.querySelector('.product-images-track').scrollTo({
+      top: 0,
+      left:  slide.offsetLeft,
+      behavior: 'smooth'
     });
   }
 }
