@@ -8,6 +8,11 @@ class PredictiveSearch extends HTMLElement {
     this.input.addEventListener('input', this.debounce((event) => {
       this.onChange(event);
     }, 300).bind(this));
+    this.addEventListener('focusout', this.onFocusOut.bind(this));
+  }
+
+  getQuery() {
+    return this.input.value.trim();
   }
 
   onChange() {
@@ -57,6 +62,12 @@ class PredictiveSearch extends HTMLElement {
       clearTimeout(t);
       t = setTimeout(() => fn.apply(this, args), wait);
     };
+  }
+
+  onFocusOut() {
+    setTimeout(() => {
+      if (!this.contains(document.activeElement)) this.close();
+    });
   }
 }
 
