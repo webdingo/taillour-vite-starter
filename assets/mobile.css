@@ -19,6 +19,7 @@ body [data-device="desktop"] {
 main#main-content .products-grid,
 main#main-content .collections-grid {
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
 
 main#main-content .column-section,
