@@ -88,6 +88,18 @@
         "color": ""
       }
     },
+    "text_GjxAeE": {
+      "type": "text",
+      "settings": {
+        "max_width": 768,
+        "text": "<p>Unde inventore illo nulla ipsum architecto laborum tempora sit recusandae. Qui quidem dicta commodi est rerum corporis reprehenderit voluptatum est. Amet velit doloremque praesentium quos non consequatur sunt cumque. Temporibus eaque in rerum. Et nam quod ut aut dolor. Velit soluta corrupti et consequatur possimus dignissimos.</p>",
+        "font_size": 1.3,
+        "line_height": 2,
+        "alignment": "center",
+        "background": "#000000",
+        "color": "#ffffff"
+      }
+    },
     "image_with_video_NCkDCh": {
       "type": "image-with-video",
       "blocks": {
@@ -168,6 +180,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/video-game-controller-front.jpg",
+            "show_image": true,
             "text": "Headline",
             "size": "h3",
             "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
@@ -179,6 +192,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/silver-lamp-on-a-white-table-next-to-books.jpg",
+            "show_image": true,
             "text": "Headline",
             "size": "h3",
             "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
@@ -190,6 +204,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/hand-pours-a-green-liquid-into-a-glass-of-ice-and-milk.jpg",
+            "show_image": true,
             "text": "Headline",
             "size": "h3",
             "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
@@ -201,6 +216,7 @@
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/sliced-pumpkin-pie.jpg",
+            "show_image": true,
             "text": "Headline",
             "size": "h3",
             "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
@@ -343,6 +359,7 @@
   "order": [
     "image_banner_6NDtLC",
     "image_with_text_pjRwPQ",
+    "text_GjxAeE",
     "image_with_video_NCkDCh",
     "product_grid_9e9FqV",
     "button_row_NkV6Bn",
