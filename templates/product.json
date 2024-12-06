@@ -104,11 +104,23 @@
         "background": "#f5f5f5",
         "color": ""
       }
+    },
+    "recently_viewed_yG6Mdn": {
+      "type": "recently-viewed",
+      "settings": {
+        "heading": "Recently viewed",
+        "size": "h2",
+        "limit": 4,
+        "products_per_row": 4,
+        "background": "#ffffff",
+        "color": ""
+      }
     }
   },
   "order": [
     "product",
     "faqs_M7fRxe",
-    "product_recommendations_jRYYgX"
+    "product_recommendations_jRYYgX",
+    "recently_viewed_yG6Mdn"
   ]
 }
