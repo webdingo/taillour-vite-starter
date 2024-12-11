@@ -1,26 +1,17 @@
-<footer class="section-wrap">
-  <div class="container">
-    <ul>
-      {% assign menu_handle = section.settings.menu | default: "footer" %}
-      {% for link in linklists[menu_handle].links %}
-        <li>
-          <a href="{{ link.url }}">
-            {{ link.title }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-    <hr>
-    <p class="small-text center">
-      Copyright&copy;{{ "now" | date: "%Y" }}, {{ shop.name }}.
-      <a href="#">License</a>
-    </p>
-  </div>
-</footer>
+<ul>
+  {% assign menu_handle = section.settings.menu | default: "footer" %}
+  {% for link in linklists[menu_handle].links %}
+    <li>
+      <a href="{{ link.url }}">
+        {{ link.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
 
 {% schema %}
 {
-  "name": "Footer",
+  "name": "Links",
   "settings": [
     {
       "type": "link_list",

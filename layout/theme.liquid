@@ -50,7 +50,11 @@
     {{ content_for_layout }}
   </main>
 
-  {% section 'footer' %}
+  <footer class="section-wrap">
+    <div class="container">
+      {% sections 'footer-group' %}
+    </div>
+  </footer>
 
   {% liquid
   # Newsletter Popup.

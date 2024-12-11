@@ -665,10 +665,9 @@ footer.section-wrap {
   background-color: var(--black);
   color: white;
 }
-footer hr {
-  border-color: var(--white);
-  border-width: 1px;
-  margin-top: 1rem;
+footer .container > div:not(:last-child) {
+  border-bottom: 1px dashed var(--white);
+  padding-bottom: 1rem;
   margin-bottom: 1rem;
 }
 footer ul {
