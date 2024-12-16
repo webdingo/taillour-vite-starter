@@ -45,16 +45,16 @@
         "detail_gzcnpK": {
           "type": "detail",
           "settings": {
-            "title": "Delivery",
-            "content": "<p>Voluptatem sint inventore labore sapiente eaque minus occaecati illo maxime fugiat enim aut sit libero odio qui incidunt eum voluptate totam incidunt soluta.</p>",
-            "open": false
+            "title": "Some more information",
+            "content": "<p>These are details/summary tabs and you can add as many as you need via the customiser. There are no restrictions with Taillour - if you don't need them, you can remove them entirely from the section template.</p>",
+            "open": true
           }
         },
         "detail_NhMUn6": {
           "type": "detail",
           "settings": {
-            "title": "Returns",
-            "content": "<p>Consequuntur sint nam voluptatem animi nam aut ad ratione aliquam nesciunt autem maxime cumque at molestiae quis quos autem fuga voluptatibus. </p><p>Et modi voluptatem in rem quam corrupti autem excepturi molestiae tempora ipsam aspernatur voluptatem error est tempora recusandae aut ratione qui ut corrupti quas libero.</p>",
+            "title": "Tabs can be set to open or closed by default",
+            "content": "<p>Any tab can be set to be open or closed as default, so important information is always displayed.</p>",
             "open": false
           }
         }
