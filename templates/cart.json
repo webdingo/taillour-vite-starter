@@ -13,7 +13,7 @@
       "type": "main-cart",
       "settings": {
         "enable_spend_more": true,
-        "spend_more_trigger": 1000,
+        "spend_more_trigger": 100,
         "spend_more_message": "<p>Spend <strong>SPEND_AMT</strong> to qualify for <strong>free delivery</strong>.</p>",
         "cart_total_label": "Estimated total",
         "checkout_note": "<p><em>Tax, shipping and discounts are calculated at checkout.</em></p>",
