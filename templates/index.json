@@ -178,9 +178,9 @@
           "type": "column",
           "settings": {
             "show_image": true,
-            "text": "Headline",
+            "text": "Columns Section",
             "size": "h3",
-            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
+            "content": "<p>This section allows you to add 1 to 4 columns of text, each can have an optional image, heading and button.</p><p>The layout adjusts accordingly, but you can refactor as required depending on your project.</p>",
             "button_label": "Button label",
             "button_link": "#"
           }
