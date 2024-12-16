@@ -104,21 +104,21 @@
         "heading_JbRWKC": {
           "type": "heading",
           "settings": {
-            "text": "Headline",
+            "text": "Video/Text Section",
             "size": "h2"
           }
         },
         "text_VhigEQ": {
           "type": "text",
           "settings": {
-            "text": "<p>Asperiores voluptatem rerum fuga assumenda similique voluptatem sapiente qui non voluptatibus.</p>"
+            "text": "<p>You can display a video using this section. Like the image/text section above the asset can be positioned to the left or the right.</p>"
           }
         },
         "buttons_jzKH3h": {
           "type": "buttons",
           "settings": {
-            "button_label": "Button label",
-            "button_link": ""
+            "button_label": "Optional button?",
+            "button_link": "#"
           }
         }
       },
