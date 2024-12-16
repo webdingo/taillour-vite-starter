@@ -89,8 +89,13 @@ function displayRecentlyViewed() {
               redirect: "error",
             })
             .then(function(response) {
-              if (response.ok) {
+              if (response.status == 200) {
                 return response.text();
+              } else {
+                // Remove this item from the array.
+                let cleanUpArray = items.filter((i) => i.handle != item.handle);
+                localStorage.setItem("recentlyViewed", JSON.stringify(cleanUpArray));
+                return "";
               }
             })
             .then(function(card) {
@@ -98,7 +103,6 @@ function displayRecentlyViewed() {
             })
             .catch(function(error) {
               // Remove this item from the array.
-              /* console.log(error); // for debugging */
               let cleanUpArray = items.filter((i) => i.handle != item.handle);
               localStorage.setItem("recentlyViewed", JSON.stringify(cleanUpArray));
             });
