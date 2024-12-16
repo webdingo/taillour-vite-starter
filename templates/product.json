@@ -84,9 +84,9 @@
         "text_DYzPwt": {
           "type": "text",
           "settings": {
-            "title": "Vitae aut laudantium perspiciatis repellendus?",
-            "content": "<p>Et vel id. Eos numquam sequi placeat et quasi corrupti assumenda. Officia numquam rerum. Excepturi velit tempora. Officiis illo distinctio quisquam minus. Enim iusto adipisci iure impedit. Accusamus doloribus soluta omnis fuga qui eius et.</p>",
-            "open": false
+            "title": "About the Recently Viewed section below",
+            "content": "<p>The recently viewed section below remembers the products the customer browsed on your store. It's a feature that our many of our clients requested and which customer's found useful. So, we've added it into Taillour too. 🙂 </p>",
+            "open": true
           }
         },
         "text_M6ENnC": {
