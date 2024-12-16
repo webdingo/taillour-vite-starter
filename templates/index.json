@@ -15,21 +15,21 @@
         "heading_gnR7KK": {
           "type": "heading",
           "settings": {
-            "text": "Headline",
+            "text": "Hello there 👋🏽",
             "size": "h1"
           }
         },
         "text_yz7Gyj": {
           "type": "text",
           "settings": {
-            "text": "Asperiores voluptatem rerum fuga assumenda similique voluptatem sapiente qui non voluptatibus."
+            "text": "Welcome to the demo store for the Taillour theme. This is the hero/image banner section where you can add a heading, text, CTA and image."
           }
         },
         "buttons_zUiW9p": {
           "type": "buttons",
           "settings": {
-            "button1_label": "Button label",
-            "button1_link": "",
+            "button1_label": "Browse Products",
+            "button1_link": "shopify://collections/classics",
             "button1_enable": true,
             "button2_label": "Button label",
             "button2_link": "",
