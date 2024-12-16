@@ -160,10 +160,11 @@
     "collection_grid_7w6HWG": {
       "type": "collection-grid",
       "settings": {
-        "text": "Headline",
+        "text": "Featured Collections Section",
         "size": "h2",
         "collections": [
-          "classics"
+          "classics",
+          "frontpage"
         ],
         "collections_per_row": 4,
         "background": "#ffffff",
