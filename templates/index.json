@@ -202,8 +202,8 @@
             "show_image": true,
             "text": "Headline",
             "size": "h3",
-            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. Assumenda aut architecto dolores suscipit. Velit voluptatem perferendis nesciunt iste non facilis.</p>",
-            "button_label": "Button label",
+            "content": "<p>Molestiae et repudiandae et voluptatem temporibus deleniti nemo dolor et. Aut et ipsa ab quas tempora eum voluptas nihil cumque. Totam nemo nobis quia et dolores. Officia in vitae exercitationem dolor iste ut possimus. </p>",
+            "button_label": "",
             "button_link": ""
           }
         },
