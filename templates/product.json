@@ -36,6 +36,12 @@
             "content": "<p>{{ product.description }}</p>"
           }
         },
+        "text_NTqjMB": {
+          "type": "text",
+          "settings": {
+            "content": "<p><strong>Need the price further up? You can add as much information as you need here, and reorganise each part of the product details section via the customiser.</strong></p>"
+          }
+        },
         "text_pLP6Me": {
           "type": "text",
           "settings": {
@@ -65,6 +71,7 @@
         "button_bNUm3G",
         "rule_VKccTF",
         "text_VgqAwb",
+        "text_NTqjMB",
         "text_pLP6Me",
         "detail_gzcnpK",
         "detail_NhMUn6"
@@ -85,8 +92,8 @@
         "text_M6ENnC": {
           "type": "text",
           "settings": {
-            "title": "Ut quia ut quae officiis iste iure tempore sed et?",
-            "content": "<p>The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design.</p>",
+            "title": "Show more information as FAQs",
+            "content": "<p>The FAQs section can be added anywhere within the store, and you can add as many as you need.</p>",
             "open": true
           }
         }
