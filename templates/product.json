@@ -81,14 +81,6 @@
     "faqs_M7fRxe": {
       "type": "faqs",
       "blocks": {
-        "text_DYzPwt": {
-          "type": "text",
-          "settings": {
-            "title": "About the Recently Viewed section below",
-            "content": "<p>The recently viewed section below remembers the products the customer browsed on your store. It's a feature that our many of our clients requested and which customer's found useful. So, we've added it into Taillour too. 🙂 </p>",
-            "open": true
-          }
-        },
         "text_M6ENnC": {
           "type": "text",
           "settings": {
@@ -96,11 +88,28 @@
             "content": "<p>The FAQs section can be added anywhere within the store, and you can add as many as you need.</p>",
             "open": true
           }
+        },
+        "text_DYzPwt": {
+          "type": "text",
+          "settings": {
+            "title": "About the \"Recently Viewed\" section below",
+            "content": "<p>The recently viewed section below remembers the products the customer browsed on your store. It's a feature that our many of our clients requested and which customer's found useful. So, we've added it into Taillour too. 🙂 </p>",
+            "open": true
+          }
+        },
+        "text_ABWMfy": {
+          "type": "text",
+          "settings": {
+            "title": "About the \"You may also like...\" section below",
+            "content": "<p>This is the default product recommendations integration provided by Shopify. Integrated so you don't have to. 🙂 </p>",
+            "open": false
+          }
         }
       },
       "block_order": [
+        "text_M6ENnC",
         "text_DYzPwt",
-        "text_M6ENnC"
+        "text_ABWMfy"
       ],
       "settings": {
         "background": "#ffffff",
