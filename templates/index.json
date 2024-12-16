@@ -54,20 +54,20 @@
         "heading_aRADHH": {
           "type": "heading",
           "settings": {
-            "text": "Headline",
+            "text": "Image/Text Section",
             "size": "h2"
           }
         },
         "text_amNwtU": {
           "type": "text",
           "settings": {
-            "text": "<p>Sed error voluptate voluptas quaerat odit officiis provident. Dolorum sed eum dolore. Repellendus velit facere non soluta rerum unde ut. Eveniet non rerum et illo maiores illo sit molestiae. Totam maxime in esse nihil reprehenderit. Expedita quod facere asperiores eos tempore in.</p><p>Non praesentium voluptatem deleniti totam. Nisi ut aut illo rerum. Veritatis distinctio sed error. Ipsam iure esse omnis similique omnis consequatur vel. Cum dolore in dignissimos quo.</p>"
+            "text": "<p>Taillour comes with a few pre-built sections to make building your clients Shopify store a little easier. This is one of them.</p>"
           }
         },
         "buttons_hEXxe6": {
           "type": "buttons",
           "settings": {
-            "button_label": "Go",
+            "button_label": "Continue",
             "button_link": "#"
           }
         }
