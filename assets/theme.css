@@ -46,6 +46,9 @@ body {
 button {
   cursor: pointer;
 }
+button:disabled {
+  background-color: #777;
+}
 
 mark,
 .mark,
@@ -117,7 +120,7 @@ footer img {
 
 .strike,
 s {
-  text-decoration: wavy line-through;
+  text-decoration: line-through;
 }
 
 .underline {
