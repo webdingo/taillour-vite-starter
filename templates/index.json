@@ -141,7 +141,7 @@
     "product_grid_9e9FqV": {
       "type": "product-grid",
       "settings": {
-        "text": "Headline",
+        "text": "Products Section",
         "size": "h2",
         "collection": "frontpage",
         "limit": 8,
