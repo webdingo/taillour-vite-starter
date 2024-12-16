@@ -36,6 +36,12 @@
             "content": "<p>{{ product.description }}</p>"
           }
         },
+        "text_pLP6Me": {
+          "type": "text",
+          "settings": {
+            "content": "<p>Copyright by respective movie studios. Intended for personal use only and strictly forbidden to reproduce as printed posters.</p>"
+          }
+        },
         "detail_gzcnpK": {
           "type": "detail",
           "settings": {
@@ -59,6 +65,7 @@
         "button_bNUm3G",
         "rule_VKccTF",
         "text_VgqAwb",
+        "text_pLP6Me",
         "detail_gzcnpK",
         "detail_NhMUn6"
       ],
