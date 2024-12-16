@@ -340,7 +340,7 @@
     "articles_grid_XrKUxx": {
       "type": "articles-grid",
       "settings": {
-        "text": "Headline",
+        "text": "Latest Articles Section",
         "size": "h2",
         "blog": "main",
         "limit": 3,
