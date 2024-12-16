@@ -12,6 +12,12 @@
     "product": {
       "type": "main-product",
       "blocks": {
+        "text_VgqAwb": {
+          "type": "text",
+          "settings": {
+            "content": "<p>{{ product.description }}</p>"
+          }
+        },
         "options_je9wUj": {
           "type": "options",
           "settings": {}
@@ -29,12 +35,6 @@
         "rule_VKccTF": {
           "type": "rule",
           "settings": {}
-        },
-        "text_VgqAwb": {
-          "type": "text",
-          "settings": {
-            "content": "<p>{{ product.description }}</p>"
-          }
         },
         "text_NTqjMB": {
           "type": "text",
@@ -66,11 +66,11 @@
         }
       },
       "block_order": [
+        "text_VgqAwb",
         "options_je9wUj",
         "prices_zbB86G",
         "button_bNUm3G",
         "rule_VKccTF",
-        "text_VgqAwb",
         "text_NTqjMB",
         "text_pLP6Me",
         "detail_gzcnpK",
