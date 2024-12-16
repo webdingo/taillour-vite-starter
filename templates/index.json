@@ -329,9 +329,9 @@
         "checkbox_wHnRgw"
       ],
       "settings": {
-        "heading": "Contact us",
+        "heading": "Contact Form Section",
         "size": "h2",
-        "text": "<p>Complete the form below to send us a message.</p>",
+        "text": "<p>This is the contact form section where you can add whatever fields you need via the customiser.</p>",
         "button_label": "Submit",
         "background": "#ffffff",
         "color": ""
