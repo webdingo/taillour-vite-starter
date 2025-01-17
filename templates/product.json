@@ -41,7 +41,7 @@
           "settings": {
             "heading": "Frequently purchased together",
             "total_label": "Total Price:",
-            "limit": 2,
+            "limit": "2",
             "thumbnail_size": 150
           }
         },
