@@ -12,8 +12,8 @@ The first item in the "purchase together" block will always be the currently
 viewed product.
 {% endcomment %}
 {% liquid
-# assign current_variant = product.selected_or_first_available_variant
 assign product_list = product.metafields.taillour.purchase_together
+assign product_list_values = product_list.value | where: "available", true
 if current_variant.available == true
   assign count = 1
 else
@@ -25,7 +25,7 @@ unless current_variant.available == false
 endunless
 %}
 
-{% unless product_list == blank %}
+{% unless product_list_values == blank %}
 <style>
 #purchase-together > div {
   flex: 1;
@@ -135,29 +135,27 @@ endunless
   {% comment %}
   Loop through the items in the product metafield.
   {% endcomment %}
-  {% for item in product_list.value limit: block.settings.limit %}
-    {% if item.available == true %}
-      {% assign count = count | plus: 1 %}
-      {% assign total = total | plus: item.price %}
-      <div class="purchase-together-item">
-        <input type="checkbox"
-          class="js--purchase-item"
-          name="purchase[]"
-          value="{{ item.id }}"
-          data-price="{{ item.price }}"
-          checked>
-        <a href="{{ item.product.url }}" style="display:block;width:100%;">
-          <img src="{{ item.product.featured_image | image_url: width: image_width }}"
-            width="{{ image_width }}" height="{{ image_width }}" />
-        </a>
-        <div class="small-text">
-          <a href="{{ item.product.url }}">{{ item.product.title }} - {{ item.title }}</a>
-        </div>
-        <div>
-          <strong>{{ item.price | money }}</strong>
-        </div>
+  {% for item in product_list_values limit: block.settings.limit %}
+    {% assign count = count | plus: 1 %}
+    {% assign total = total | plus: item.price %}
+    <div class="purchase-together-item">
+      <input type="checkbox"
+        class="js--purchase-item"
+        name="purchase[]"
+        value="{{ item.id }}"
+        data-price="{{ item.price }}"
+        checked>
+      <a href="{{ item.product.url }}" style="display:block;width:100%;">
+        <img src="{{ item.product.featured_image | image_url: width: image_width }}"
+          width="{{ image_width }}" height="{{ image_width }}" />
+      </a>
+      <div class="small-text">
+        <a href="{{ item.product.url }}">{{ item.product.title }} - {{ item.title }}</a>
       </div>
-    {% endif %}
+      <div>
+        <strong>{{ item.price | money }}</strong>
+      </div>
+    </div>
   {% endfor %}
 
   {% comment %}
