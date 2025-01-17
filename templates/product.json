@@ -36,6 +36,15 @@
           "type": "rule",
           "settings": {}
         },
+        "product_wtgCmw": {
+          "type": "product",
+          "settings": {
+            "heading": "Frequently purchased together",
+            "total_label": "Total Price:",
+            "limit": 2,
+            "thumbnail_size": 150
+          }
+        },
         "text_NTqjMB": {
           "type": "text",
           "settings": {
@@ -71,6 +80,7 @@
         "prices_zbB86G",
         "button_bNUm3G",
         "rule_VKccTF",
+        "product_wtgCmw",
         "text_NTqjMB",
         "text_pLP6Me",
         "detail_gzcnpK",
