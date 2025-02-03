@@ -4,19 +4,26 @@ A simple Shopify theme to build custom designed Shopify stores with, fast-loadin
 
 Built by Ketan Mistry (hello@ketanmistry.me).
 
-## By purchasing Taillour Theme you agree to the following license agreement:
+---
 
-**1. Usage**
-Licenses are good for any personal and/or commercial work.
+## MIT License
 
-**2. Don’t distribute the theme**
-You may not repackage or resell our theme in any function or form (for example as a Wordpress, Squarespace, WooCommerce or other theme template).
+Copyright (c) 2025 Ketan Mistry
 
-**3. You can modify the theme, but again, please don’t distribute it**
-Modifying the theme for personal or client work use is totally fine.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-**4. One purchase is for one website**
-One purchase of Taillour may only be used to develop one website for a client or yourself. However, you may use the purchase on an accompanying staging/development store.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-**5. Use at your own risk**
-Taillour/Ketan Mistry isn’t responsible for any damages caused by installing our theme.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
