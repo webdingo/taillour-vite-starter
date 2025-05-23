@@ -1,0 +1,13 @@
+{
+  "src/core/main.css": {
+    "file": "main-CT-QZvt2.css",
+    "src": "src/core/main.css",
+    "isEntry": true
+  },
+  "src/core/main.js": {
+    "file": "main-Boq4GBos.js",
+    "name": "main",
+    "src": "src/core/main.js",
+    "isEntry": true
+  }
+}

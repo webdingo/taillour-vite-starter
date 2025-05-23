@@ -1,6 +1,7 @@
 {% comment %}
 Get the first available variant
 {% endcomment %}
+{% render 'vite-tag' with '~/styles/sections/product.css' %}
 {% assign current_variant = product.selected_or_first_available_variant %}
 
 <script>
@@ -8,8 +9,6 @@ var current_variant = {{ current_variant | json }};
 var variants = {{ product.variants | json }};
 var default_image = {{ product.featured_image.id | default: 'null' }};
 </script>
-
-<link rel="stylesheet" href="{{ 'product.css' | asset_url }}">
 
 <div class="section-wrap">
   <div id="product" class="section">
