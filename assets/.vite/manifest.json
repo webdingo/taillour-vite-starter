@@ -1,13 +1,44 @@
 {
   "src/core/main.css": {
-    "file": "main-CT-QZvt2.css",
+    "file": "main-Dw9Hep7s.css",
     "src": "src/core/main.css",
     "isEntry": true
   },
   "src/core/main.js": {
-    "file": "main-Boq4GBos.js",
+    "file": "main-DGaL3yM7.js",
     "name": "main",
     "src": "src/core/main.js",
+    "isEntry": true,
+    "imports": [
+      "src/js/components/predictive-search.js"
+    ]
+  },
+  "src/js/components/cart.js": {
+    "file": "cart-l0sNRNKZ.js",
+    "name": "cart",
+    "src": "src/js/components/cart.js",
+    "isEntry": true
+  },
+  "src/js/components/predictive-search.js": {
+    "file": "predictive-search-ByPHtSKJ.js",
+    "name": "predictive-search",
+    "src": "src/js/components/predictive-search.js",
+    "isEntry": true
+  },
+  "src/js/sections/hero.js": {
+    "file": "hero-CxEVvnM5.js",
+    "name": "hero",
+    "src": "src/js/sections/hero.js",
+    "isEntry": true
+  },
+  "src/styles/sections/hero.css": {
+    "file": "hero-tn0RQdqM.css",
+    "src": "src/styles/sections/hero.css",
+    "isEntry": true
+  },
+  "src/styles/sections/product.css": {
+    "file": "product-DoKl06Nm.css",
+    "src": "src/styles/sections/product.css",
     "isEntry": true
   }
 }
