@@ -33,7 +33,7 @@ line item of the product that needs gift wrapping.
 END: GIFT WRAP
 {% endcomment %}
 
-<link rel="stylesheet" href="{{ 'cart.css' | asset_url }}">
+{% render 'vite-tag' with '~/styles/components/cart.css' %}
 
 {% comment %}
 Empty cart section.
@@ -98,7 +98,7 @@ const emptyCartHtml = `{{ empty_cart }}`;
           </div>
         </section>
       </form>
-      <script src="{{ 'cart.js' | asset_url }}"></script>
+      {% render 'vite-tag' with '~/js/components/cart.js' %}
     {% endif %}
 
     {% if cart.items.size == 0 %}

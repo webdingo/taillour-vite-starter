@@ -4,7 +4,6 @@ import "vite/modulepreload-polyfill";
 import "../js/global/theme.js";
 
 // Import component JavaScript
-import "../js/components/cart.js";
 import "../js/components/predictive-search.js";
 
 // Import page JavaScript

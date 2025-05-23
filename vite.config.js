@@ -7,7 +7,12 @@ export default defineConfig({
 		shopify({
 			sourceCodeDir: "src",
 			entrypointsDir: "src/core",
-			snippetTag: "vite-tag.liquid",
+			additionalEntrypoints: [
+				"src/styles/sections/**/*.css",
+				"src/styles/sections/**/*.scss",
+				"src/js/sections/**/*.js",
+				"src/js/components/**/*.js",
+			],
 		}),
 		tailwindcss(),
 	],

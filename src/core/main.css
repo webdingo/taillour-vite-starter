@@ -4,8 +4,5 @@
 @import "../styles/global/theme.css";
 /* @import "../styles/global/mobile.css"; */
 
-/* Import component styles */
-@import "../styles/components/cart.css";
-
 /* Import Tailwind layers */
 @layer base, components, utilities;
