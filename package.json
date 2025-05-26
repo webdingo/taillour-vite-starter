@@ -18,5 +18,8 @@
     "shopify:push": "shopify theme push",
     "vite:dev": "vite",
     "vite:build": "vite build"
+  },
+  "dependencies": {
+    "daisyui": "^5.0.37"
   }
 }

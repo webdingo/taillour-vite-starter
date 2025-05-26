@@ -16,6 +16,14 @@ export default defineConfig({
 		}),
 		tailwindcss(),
 	],
+	server: {
+		cors: {
+			origin: [
+				/^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
+				"https://theme-development-boilerplates.myshopify.com",
+			],
+		},
+	},
 	css: {
 		postcss: "./postcss.config.js",
 	},

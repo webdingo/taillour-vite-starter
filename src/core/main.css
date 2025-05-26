@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 /* Import global styles */
 @import "../styles/global/theme.css";
