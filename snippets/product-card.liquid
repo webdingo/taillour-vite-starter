@@ -1,26 +1,38 @@
-{% liquid
-assign image_width = 400
-assign image_height = image_width | divided_by: product.featured_image.aspect_ratio | ceil
-%}
-<a class="product-card" href="{{ product.url }}">
-  <div>
-    {% if product.featured_image == blank %}
-      {{ 'product-1' | placeholder_svg_tag: "placeholder" }}
-    {% else %}
-    <img src="{{- product.featured_image.src | image_url: width: image_width -}}"
-      width="{{- image_width -}}"
-      height="{{- image_height -}}"
-      alt="{{- product.featured_image.alt | escape | strip_html | strip_newlines -}}"
-      loading="lazy">
+<div class="card bg-base-100 shadow-xl">
+  <figure class="relative">
+    <a href="{{ product.url }}">
+      {% if product.featured_image %}
+        <img 
+          src="{{ product.featured_image | image_url: width: 400 }}" 
+          alt="{{ product.featured_image.alt | escape }}"
+          width="400"
+          height="400"
+          class="w-full h-80 object-cover"
+          loading="lazy"
+        />
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'w-full h-80 object-cover' }}
       {% endif %}
-  </div>
-  <div>
-    <h3>{{ product.title }}</h3>
-    <p>
-      {% if product.compare_at_price > product.price %}
-        <span class="strike">{{ product.compare_at_price | money }}</span>
-      {% endif %}
+    </a>
+    <div class="absolute top-2 right-2">
+      <button class="btn btn-circle btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+      </button>
+    </div>
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      <a href="{{ product.url }}" class="hover:text-primary">
+        {{ product.title }}
+      </a>
+    </h2>
+    <p class="text-base-content/70">
       {{ product.price | money }}
     </p>
+    <div class="card-actions justify-start">
+      <button class="btn btn-primary">Add to Cart</button>
+    </div>
   </div>
-</a>
+</div>

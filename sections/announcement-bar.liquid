@@ -1,17 +1,19 @@
-<div class="fill center" style="background-color:{{ section.settings.background | default: 'var(--black)' }};color:{{ section.settings.color | default: 'var(--white)' }}">
-  {{ section.settings.text }}
+<div class="w-full py-2 text-center" style="background-color:{{ section.settings.background | default: 'var(--black)' }};color:{{ section.settings.color | default: 'var(--white)' }}">
+  <div class="container mx-auto px-4">
+    {{ section.settings.text }}
+  </div>
 </div>
 
 {% schema %}
 {
   "name": "Announcement Bar",
-  "class": "announcement-bar-section",
+  "tag": "section",
   "settings": [
     {
       "type": "inline_richtext",
       "id": "text",
       "label": "Text",
-      "default": "Welcome to our store! <a href=\"#\"> Find out more</a>"
+      "default": "Welcome to our store! <a href=\"#\" class=\"underline hover:text-primary\">Find out more</a>"
     },
     {
       "type": "color",

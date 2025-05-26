@@ -127,11 +127,11 @@ var default_image = {{ product.featured_image.id | default: 'null' }};
                     name="id"
                     value="{{ current_variant.id }}">
                   {% if current_variant.available == true %}
-                    <button type="submit" id="js--addtocart" class="button">
+                    <button type="submit" id="js--addtocart" class="btn btn-primary">
                       {{ block.settings.button_label }}
                     </button>
                   {% else %}
-                    <button type="submit" id="js--addtocart" class="button" disabled>Unavailable</button>
+                    <button type="submit" id="js--addtocart" class="btn btn-primary" disabled>Unavailable</button>
                   {% endif %}
                 </div>
 

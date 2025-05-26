@@ -1,23 +1,14 @@
-<style>
-{{ section.id | prepend: '#' }}.section-wrap:before {
-  background-color:{{ section.settings.background | default: '#ffffff' }}
-}
-{{ section.id | prepend: '#' }} .products-grid {
-  grid-template-columns: repeat({{ section.settings.products_per_row }}, 1fr);
-}
-</style>
-
-<div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
-  <div class="section">
+<div id="{{ section.id }}" class="py-16" style="background-color: {{ section.settings.background | default: '#ffffff' }}; color: {{ section.settings.color | default: 'inherit' }}">
+  <div class="container mx-auto px-4">
     {% unless section.settings.text == blank %}
-      <{{ section.settings.size }} data-title="{{ section.settings.text }}">
+      <{{ section.settings.size }} class="text-4xl font-bold mb-8" data-title="{{ section.settings.text }}">
         {{ section.settings.text }}
       </{{ section.settings.size }}>
     {% endunless %}
 
     {% assign collection_handle = section.settings.collection | default: "home" %}
 
-    <div class="products-grid">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-{{ section.settings.products_per_row }} gap-6">
       {% liquid
       for product in collections[collection_handle].products limit: section.settings.limit
         render 'product-card', product: product

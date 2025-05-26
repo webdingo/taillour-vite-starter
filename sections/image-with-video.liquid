@@ -1,56 +1,45 @@
-{% stylesheet %}
-.video-text-left .video-text-asset {
-  order: -1;
-}
-{% endstylesheet %}
-
-<style>
-{{ section.id | prepend: '#' }}.section-wrap:before {
-  background-color:{{ section.settings.background | default: '#ffffff' }}
-}
-</style>
-
-<div id="{{ section.id }}" class="section-wrap" style="color:{{ section.settings.color | default:'inherit' }};">
-  <div class="section">
-    <div class="grid-2 middle video-text-{{ section.settings.video_position }}">
+<div id="{{ section.id }}" class="py-16" style="background-color: {{ section.settings.background | default: '#ffffff' }}; color: {{ section.settings.color | default: 'inherit' }}">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center {% if section.settings.video_position == 'left' %}lg:flex-row-reverse{% endif %}">
       <!-- content -->
-      <div class="video-text-content">
+      <div class="flex flex-col gap-6">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
-              <{{- block.settings.size }} data-title="{{ block.settings.text }}">{{ block.settings.text }}</{{- block.settings.size -}}>
+              <{{- block.settings.size }} class="text-4xl font-bold" data-title="{{ block.settings.text }}">{{ block.settings.text }}</{{- block.settings.size -}}>
             {%- when 'text' -%}
-              <div class="rte">
+              <div class="prose">
                 {{ block.settings.text }}
               </div>
             {% when 'buttons' %}
-              <p>
-                <a class="button" href="{{ block.settings.button_link | default: '#' }}">
+              <div>
+                <a class="btn btn-primary" href="{{ block.settings.button_link | default: '#' }}">
                   {{ block.settings.button_label }}
                 </a>
-              </p>
+              </div>
           {% endcase %}
         {%- endfor -%}
       </div>
-      <div class="video-text-asset">
-        <!-- video -->
-        <div>
-          {% if section.settings.video == blank %}
-            {{ 'collection-4' | placeholder_svg_tag: "placeholder" }}
-          {% else %}
-            {% capture video_sizes %}
-            width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
-            {% endcapture %}
 
-            {% liquid
-            if section.settings.video.type == 'youtube'
-              assign video_src = section.settings.video.id | prepend: "https://www.youtube.com/embed/"
-              assign video_class = "video-iframe-youtube"
-            else
-              assign video_src = section.settings.video.id | prepend: "https://player.vimeo.com/video/"
-              assign video_class = "video-iframe-vimeo"
-            endif
-            %}
+      <div class="relative w-full">
+        <!-- video -->
+        {% if section.settings.video == blank %}
+          {{ 'collection-4' | placeholder_svg_tag: "w-full h-full object-cover" }}
+        {% else %}
+          {% capture video_sizes %}
+            width:100%; height:100%; object-fit: {{ section.settings.object_fit }}; object-position: {{ section.settings.object_position }}; aspect-ratio: {{ section.settings.aspect_ratio }}
+          {% endcapture %}
+
+          {% liquid
+          if section.settings.video.type == 'youtube'
+            assign video_src = section.settings.video.id | prepend: "https://www.youtube.com/embed/"
+            assign video_class = "w-full h-full rounded-lg"
+          else
+            assign video_src = section.settings.video.id | prepend: "https://player.vimeo.com/video/"
+            assign video_class = "w-full h-full rounded-lg"
+          endif
+          %}
+          <div class="relative w-full" style="aspect-ratio: {{ section.settings.aspect_ratio }}">
             <iframe
               class="{{ video_class }}"
               style="{{ video_sizes }}"
@@ -60,8 +49,8 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen></iframe>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>

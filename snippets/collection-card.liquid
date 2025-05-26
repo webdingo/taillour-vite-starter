@@ -1,20 +1,33 @@
-{% liquid
-assign image_width = 400
-assign image_height = image_width | divided_by: collection.featured_image.aspect_ratio | ceil
-%}
-<a class="collection-card" href="{{ collection.url }}">
-  <div>
-    {% if collection.featured_image == blank %}
-      {{ 'collection-4' | placeholder_svg_tag: 'placeholder' }}
-    {% else %}
-      <img src="{{ collection.featured_image.src | image_url: width: image_width }}"
-        width="{{ image_width }}"
-        height="{{ image_height }}"
-        alt="{{ collection.featured_image.alt }}"
-        loading="lazy">
+<div class="card bg-base-100 shadow-xl">
+  <figure class="relative">
+    <a href="{{ collection.url }}">
+      {% if collection.image %}
+        <img 
+          src="{{ collection.image | image_url: width: 400 }}" 
+          alt="{{ collection.image.alt | escape }}"
+          width="400"
+          height="400"
+          class="w-full h-80 object-cover"
+          loading="lazy"
+        />
+      {% else %}
+        {{ 'collection-1' | placeholder_svg_tag: 'w-full h-80 object-cover' }}
+      {% endif %}
+    </a>
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">
+      <a href="{{ collection.url }}" class="hover:text-primary">
+        {{ collection.title }}
+      </a>
+    </h2>
+    {% if collection.description != blank %}
+      <p class="text-base-content/70 line-clamp-2">
+        {{ collection.description }}
+      </p>
     {% endif %}
+    <div class="card-actions justify-start">
+      <a href="{{ collection.url }}" class="btn btn-primary">View Collection</a>
+    </div>
   </div>
-  <div>
-    <h3>{{ collection.title }}</h3>
-  </div>
-</a>
+</div>
